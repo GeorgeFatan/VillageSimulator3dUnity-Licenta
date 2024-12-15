@@ -43,14 +43,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            playerAnim.SetTrigger("WalkBack");
+            playerAnim.SetTrigger("WalkbackAnimation");
             playerAnim.ResetTrigger("IdleAnimation");
-            //steps1.SetActive(true);
         }
 
         if (Input.GetKeyUp(KeyCode.S))
         {
-            playerAnim.ResetTrigger("WalkBack");
+            playerAnim.ResetTrigger("WalkbackAnimation");
             playerAnim.SetTrigger("IdleAnimation");
             //steps1.SetActive(false);
         }
