@@ -1,121 +1,123 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class DayNightCycle : MonoBehaviour
+public class TimeController : MonoBehaviour
 {
-    [Header("Time")]
-    [Tooltip("Day Length in Minutes")]
     [SerializeField]
-    private float _targetDayLength = 0.5f; // lungimea unei zile
-    public float targetDayLength => _targetDayLength;
+    private float timeMultiplier;
 
     [SerializeField]
-    [Range(0f, 1f)]
-    private float _timeOfDay = 7f / 24f; // Inițiere la ora 7 dimineața (7/24)
-    public float timeOfDay => _timeOfDay;
+    private float startHour;
 
     [SerializeField]
-    private int _dayNumber = 0;
-    public int dayNumber => _dayNumber;
+    private TextMeshProUGUI timeText;
 
     [SerializeField]
-    private int _yearNumber = 0;
-    public int yearNumber => _yearNumber;
-
-    private float _timeScale = 100f;
+    private Light sunLight;
 
     [SerializeField]
-    private int _yearLength = 100;
-    public int yearLength => _yearLength;
+    private float sunriseHour;
 
-    public bool pause = false;
+    [SerializeField]
+    private float sunsetHour;
 
-    [Header("Sun Light")]
     [SerializeField]
-    private Transform dailyRotation;
-    [SerializeField]
-    private Light sun;
-    [SerializeField]
-    private Light moon; // Adăugăm lumina lunii
-    private float intensity;
-    [SerializeField]
-    private float sunBaseIntensity = 1f;
-    [SerializeField]
-    private float sunVariation = 1.5f;
-    [SerializeField]
-    private Gradient sunColor;
-    [SerializeField]
-    private Gradient moonColor; // Adăugăm gradientul pentru culoarea lunii
-    [SerializeField]
-    private AnimationCurve sunIntensityCurve; // Adăugăm curba de intensitate a soarelui
+    private Color dayAmbientLight;
 
-    private void Update()
+    [SerializeField]
+    private Color nightAmbientLight;
+
+    [SerializeField]
+    private AnimationCurve lightChangeCurve;
+
+    [SerializeField]
+    private float maxSunLightIntensity;
+
+    [SerializeField]
+    private Light moonLight;
+
+    [SerializeField]
+    private float maxMoonLightIntensity;
+
+    private DateTime currentTime;
+
+    private TimeSpan sunriseTime;
+
+    private TimeSpan sunsetTime;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        if (!pause)
-        {
-            UpdateTimeScale();
-            UpdateTime();
-        }
-        AdjustSunRotation();
-        AdjustMoonRotation();
-        SunIntensity();
-        AdjustSunColor();
-        AdjustMoonColor();
+        currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
+
+        sunriseTime = TimeSpan.FromHours(sunriseHour);
+        sunsetTime = TimeSpan.FromHours(sunsetHour);
     }
 
-    private void UpdateTimeScale()
+    // Update is called once per frame
+    void Update()
     {
-        _timeScale = 24 / (_targetDayLength / 60);
+        UpdateTimeOfDay();
+        RotateSun();
+        UpdateLightSettings();
     }
 
-    private void UpdateTime()
+    private void UpdateTimeOfDay()
     {
-        _timeOfDay += Time.deltaTime * _timeScale / 86400; // secunde într-o zi
-        if (_timeOfDay > 1) // o nouă zi
-        {
-            _dayNumber++;
-            _timeOfDay -= 1;
+        currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
 
-            if (_dayNumber > _yearLength) // an nou 
-            {
-                _yearNumber++;
-                _dayNumber = 0;
-            }
+        if (timeText != null)
+        {
+            timeText.text = currentTime.ToString("HH:mm");
         }
     }
 
-    private void AdjustSunRotation()
+    private void RotateSun()
     {
-        float sunAngle = _timeOfDay * 360f - 90f; // Offset pentru a începe la ora 7
-        dailyRotation.transform.localRotation = Quaternion.Euler(new Vector3(sunAngle, 0f, 0f));
+        float sunLightRotation;
+
+        if (currentTime.TimeOfDay > sunriseTime && currentTime.TimeOfDay < sunsetTime)
+        {
+            TimeSpan sunriseToSunsetDuration = CalculateTimeDifference(sunriseTime, sunsetTime);
+            TimeSpan timeSinceSunrise = CalculateTimeDifference(sunriseTime, currentTime.TimeOfDay);
+
+            double percentage = timeSinceSunrise.TotalMinutes / sunriseToSunsetDuration.TotalMinutes;
+
+            sunLightRotation = Mathf.Lerp(0, 180, (float)percentage);
+        }
+        else
+        {
+            TimeSpan sunsetToSunriseDuration = CalculateTimeDifference(sunsetTime, sunriseTime);
+            TimeSpan timeSinceSunset = CalculateTimeDifference(sunsetTime, currentTime.TimeOfDay);
+
+            double percentage = timeSinceSunset.TotalMinutes / sunsetToSunriseDuration.TotalMinutes;
+
+            sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
+        }
+
+        sunLight.transform.rotation = Quaternion.AngleAxis(sunLightRotation, Vector3.right);
     }
 
-    private void AdjustMoonRotation()
+    private void UpdateLightSettings()
     {
-        float moonAngle = _timeOfDay * 360f + 90f; // Luna este opusă soarelui
-        moon.transform.localRotation = Quaternion.Euler(new Vector3(moonAngle, 0f, 0f));
+        float dotProduct = Vector3.Dot(sunLight.transform.forward, Vector3.down);
+        sunLight.intensity = Mathf.Lerp(0, maxSunLightIntensity, lightChangeCurve.Evaluate(dotProduct));
+        moonLight.intensity = Mathf.Lerp(maxMoonLightIntensity, 0, lightChangeCurve.Evaluate(dotProduct));
+        RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
 
-    private void SunIntensity()
+    private TimeSpan CalculateTimeDifference(TimeSpan fromTime, TimeSpan toTime)
     {
-        intensity = Vector3.Dot(sun.transform.forward, Vector3.down);
-        intensity = Mathf.Clamp01(intensity);
-        sun.intensity = sunBaseIntensity * sunIntensityCurve.Evaluate(_timeOfDay);
+        TimeSpan difference = toTime - fromTime;
 
-        // Gestionăm intensitatea lunii
-        float moonIntensity = 1 - intensity;
-        moon.intensity = moonIntensity * sunVariation * sunBaseIntensity;
-    }
+        if (difference.TotalSeconds < 0)
+        {
+            difference += TimeSpan.FromHours(24);
+        }
 
-    private void AdjustSunColor()
-    {
-        sun.color = sunColor.Evaluate(intensity);
-    }
-
-    private void AdjustMoonColor()
-    {
-        float moonIntensity = 1 - intensity;
-        moon.color = moonColor.Evaluate(moonIntensity);
+        return difference;
     }
 }
