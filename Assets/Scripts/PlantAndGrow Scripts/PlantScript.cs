@@ -4,53 +4,83 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
-    public GameObject subPlanePrefab; // Prefabul pentru subdiviziuni
-    public GameObject originalPlane;  // Plane-ul inițial de teren arat
-    public int gridSize = 2; // Dimensiunea grilei de subdiviziuni (2 pentru două jumătăți)
-    private int currentStep = 0;
+    public GameObject[] plantStages; // Array cu prefabs pentru cele 3 stagii ale plantei (CornSt1, CornSt2, CornSt3)
+    public List<GameObject> soilCubes; // Lista cuburilor reprezentând terenul arabil
+
+    private List<GameObject> plantedPlants = new List<GameObject>(); // Lista plantelor curente
+    private int currentStage = 0; // Stagiul curent al plantelor
+    private int currentIndex = 0; // Index pentru următorul cub
+
+    [SerializeField]
+    private TimeController timeController; // Referință la TimeController
+
+    private int lastDaysPassed = 0; // Ultima valoare a zilelor trecute
 
     void Update()
     {
+        // Verifică apăsarea butonului P pentru a planta pe următorul cub
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PlantHalfPlane();
+            PlantOnNextCube();
+        }
+
+        // Verifică dacă a trecut o zi
+        if (timeController != null && timeController.daysPassed > lastDaysPassed)
+        {
+            lastDaysPassed = timeController.daysPassed;
+            AdvanceGrowthStage(); // Treci la următorul stagiu de creștere
         }
     }
 
-    void PlantHalfPlane()
+    void PlantOnNextCube()
     {
-        Renderer renderer = originalPlane.GetComponent<Renderer>();
-        Vector3 size = renderer.bounds.size;
-
-        float halfPlaneWidth = size.x / 2; // Împarte plane-ul în două jumătăți
-        float planeHeight = size.z;        // Înălțimea plane-ului rămâne aceeași
-
-        // Determină jumătatea curentă care trebuie plantată
-        if (currentStep == 0)
+        // Verifică dacă mai există cuburi disponibile pentru plantare
+        if (currentIndex < soilCubes.Count)
         {
-            PlantSubPlanes(new Vector3(originalPlane.transform.position.x - size.x / 2, originalPlane.transform.position.y + 0.025f, originalPlane.transform.position.z), halfPlaneWidth, planeHeight);
-            currentStep = 1;
+            GameObject currentCube = soilCubes[currentIndex];
+            Vector3 position = currentCube.transform.position;
+
+            // Ajustează poziția pe Y pentru a plasa planta pe fața superioară a cubului
+            position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
+
+            // Instanțiază planta din stadiul 1 (CornSt1)
+            GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity);
+            plantedPlants.Add(plant);
+
+            // Crește indexul pentru a planta pe următorul cub la următoarea apăsare
+            currentIndex++;
         }
-        else if (currentStep == 1)
+        else
         {
-            PlantSubPlanes(new Vector3(originalPlane.transform.position.x, originalPlane.transform.position.y + 0.025f, originalPlane.transform.position.z), halfPlaneWidth, planeHeight);
-            currentStep = 2;
+            Debug.Log("Toate cuburile au fost plantate!");
         }
     }
 
-    void PlantSubPlanes(Vector3 startPosition, float width, float height)
+    void AdvanceGrowthStage()
     {
-        float subPlaneWidth = width / gridSize;
-        float subPlaneHeight = height / gridSize;
-
-        for (int x = 0; x < gridSize; x++)
+        // Dacă toate plantele sunt deja în stadiul final, nu face nimic
+        if (currentStage >= plantStages.Length - 1)
         {
-            for (int z = 0; z < gridSize; z++)
-            {
-                Vector3 position = new Vector3(startPosition.x + x * subPlaneWidth, startPosition.y, startPosition.z + z * subPlaneHeight);
-                GameObject subPlane = Instantiate(subPlanePrefab, position, Quaternion.identity, originalPlane.transform);
-                subPlane.transform.localScale = new Vector3(subPlaneWidth, 1, subPlaneHeight);
-            }
+            Debug.Log("Plantele sunt deja în stadiul final!");
+            return;
         }
+
+        currentStage++; // Treci la stagiul următor
+
+        // Înlocuiește toate plantele curente cu cele din stagiul următor
+        for (int i = 0; i < plantedPlants.Count; i++)
+        {
+            GameObject currentPlant = plantedPlants[i];
+            Vector3 position = currentPlant.transform.position;
+            Quaternion rotation = currentPlant.transform.rotation;
+
+            Destroy(currentPlant); // Șterge planta curentă
+
+            // Creează planta din stagiul următor
+            GameObject newPlant = Instantiate(plantStages[currentStage], position, rotation);
+            plantedPlants[i] = newPlant; // Actualizează lista plantelor
+        }
+
+        Debug.Log($"Plantele au avansat la stagiul {currentStage + 1}!");
     }
 }

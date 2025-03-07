@@ -49,7 +49,7 @@ public class TimeController : MonoBehaviour
     private TimeSpan sunsetTime;
 
     [SerializeField]
-    private int daysPassed; 
+    public  int daysPassed; 
 
     private DateTime previousTime; 
 
