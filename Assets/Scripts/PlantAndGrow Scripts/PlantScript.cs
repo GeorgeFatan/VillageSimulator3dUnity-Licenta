@@ -3,54 +3,59 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
-    public GameObject[] plantStages; // Array cu prefabs pentru cele 3 stagii ale plantei (CornSt1, CornSt2, CornSt3)
-    public List<GameObject> soilCubes; // Lista cuburilor reprezentând terenul arabil
+    public GameObject[] plantStages; // Stagiile plantei
+    public List<GameObject> soilCubes; // Lista cuburilor
 
-    private List<GameObject> plantedPlants = new List<GameObject>(); // Lista plantelor curente
-    private int currentStage = 0; // Stagiul curent al plantelor
-    private int currentIndex = 0; // Index pentru următorul cub
+    private List<GameObject> plantedPlants = new List<GameObject>(); // Plantele curente
+    private int currentStage = 0; // Stagiul curent al creșterii
 
     [SerializeField]
-    private TimeController timeController; // Referință la TimeController
+    private TimeController timeController; // Referință la timpul zilelor
 
-    private int lastDaysPassed = 0; // Ultima valoare a zilelor trecute
+    private int lastDaysPassed = 0;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // Plantează pe următorul cub
+        if (Input.GetKeyDown(KeyCode.P)) // Plantare
         {
-            PlantOnNextCube();
+            PlantOnCube();
         }
 
-        if (timeController != null && timeController.daysPassed > lastDaysPassed) // Verifică dacă a trecut o zi
+        if (timeController != null && timeController.daysPassed > lastDaysPassed) // Creștere
         {
             lastDaysPassed = timeController.daysPassed;
-            AdvanceGrowthStage(); // Treci la următorul stagiu de creștere
+            AdvanceGrowthStage();
         }
     }
 
-    void PlantOnNextCube()
+    void PlantOnCube()
     {
-        if (currentIndex < soilCubes.Count)
+        foreach (GameObject currentCube in soilCubes)
         {
-            GameObject currentCube = soilCubes[currentIndex];
-            Vector3 position = currentCube.transform.position;
+            StCubes soilCube = currentCube.GetComponent<StCubes>();
 
-            position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
+            if (soilCube != null)
+            {
+                Debug.Log($"Cubul verificat: {currentCube.name} are starea: {soilCube.stareCurenta}");
 
-            GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity);
-            plantedPlants.Add(plant);
+                if (soilCube.CanPlant())
+                {
+                    Vector3 position = currentCube.transform.position;
 
-            BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
-            boxCollider.isTrigger = true;
-            plant.AddComponent<PickUpScript>();
+                    // Plasează planta
+                    position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
 
-            currentIndex++;
+                    GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity);
+                    plantedPlants.Add(plant);
+
+                    soilCube.Planted();
+                    Debug.Log($"Planta a fost plantată pe cubul: {currentCube.name}");
+                    return;
+                }
+            }
         }
-        else
-        {
-            Debug.Log("Toate cuburile au fost plantate!");
-        }
+
+        Debug.Log("Niciun cub nu este pregătit pentru plantare!");
     }
 
     void AdvanceGrowthStage()

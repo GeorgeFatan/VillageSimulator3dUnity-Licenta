@@ -9,10 +9,24 @@ public class PickUpScript : MonoBehaviour
             InventorySystem inventory = FindObjectOfType<InventorySystem>();
             if (inventory != null)
             {
-                Debug.Log("Se apelează metoda AddItemToSlot...");
                 inventory.AddItemToSlot(); // Adaugă planta în inventar
                 Destroy(gameObject); // Distruge planta recoltată
                 Debug.Log("Planta a fost recoltată!");
+
+                // Găsește cubul pe baza poziției plantei
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit))
+                {
+                    StCubes soilCube = hit.collider.GetComponent<StCubes>();
+                    if (soilCube != null)
+                    {
+                        soilCube.ResetStare(); // Resetează cubul
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Cubul asociat nu a fost găsit!");
+                    }
+                }
             }
             else
             {
