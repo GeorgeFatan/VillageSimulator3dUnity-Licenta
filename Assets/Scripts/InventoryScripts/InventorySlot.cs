@@ -4,10 +4,10 @@ using UnityEngine.UI;
 [System.Serializable]
 public class InventorySlot
 {
-    public RawImage slotImage; // Imaginea obiectului din slot
-    public Text itemCountText; // Textul pentru numărul de obiecte
-    public Texture itemTexture; // Textura obiectului din slot
-    public int itemCount = 0; // Numărul de obiecte din slot
+    public RawImage slotImage; 
+    public Text itemCountText; 
+    public Texture itemTexture;  
+    public int itemCount = 0; 
 
     public void SetItem(Texture texture, int count)
     {
@@ -16,7 +16,7 @@ public class InventorySlot
 
         if (slotImage != null)
         {
-            slotImage.texture = texture; // Aplică textura obiectului în RawImage
+            slotImage.texture = texture; 
             Debug.Log($"Textura {texture.name} a fost setată în slot.");
         }
         else
@@ -24,7 +24,7 @@ public class InventorySlot
             Debug.LogError("Slot Image nu este configurat corect în Inspector!");
         }
 
-        UpdateItemCountText(); // Actualizează numărul de obiecte
+        UpdateItemCountText(); 
     }
 
     public void IncrementItemCount()
@@ -32,7 +32,7 @@ public class InventorySlot
         itemCount++;
         if (slotImage != null && itemTexture != null)
         {
-            slotImage.texture = itemTexture; // Forțează aplicarea texturii
+            slotImage.texture = itemTexture; 
         }
 
         UpdateItemCountText();
@@ -40,7 +40,7 @@ public class InventorySlot
 
     private void UpdateItemCountText()
     {
-        itemCountText.text = itemCount > 1 ? itemCount.ToString() : ""; // Ascunde textul dacă numărul e 1
+        itemCountText.text = itemCount > 0 ? itemCount.ToString() : "";
     }
 }
     

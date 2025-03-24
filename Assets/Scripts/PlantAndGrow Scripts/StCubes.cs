@@ -7,7 +7,6 @@ public class StCubes : MonoBehaviour
 
     void Start()
     {
-        // Cand pornim jocu sa cuburile sa fie in starea Ready
         stareCurenta = StareCuburi.ReadyToPlant;
         Debug.Log($"Cubul {gameObject.name} este pregătit pentru plantare.");
     }
@@ -15,7 +14,7 @@ public class StCubes : MonoBehaviour
     public void ResetStare()
     {
         stareCurenta = StareCuburi.ReadyToPlant;
-        Debug.Log($"Cubul {gameObject.name} este acum pregătit pentru plantare.");
+        Debug.Log($"Cubul {gameObject.name} a fost resetat la starea ReadyToPlant.");
     }
 
     public bool CanPlant()
