@@ -42,5 +42,22 @@ public class InventorySlot
     {
         itemCountText.text = itemCount > 0 ? itemCount.ToString() : "";
     }
+
+    public void ClearSlot()
+    {
+        itemTexture = null; // Șterge textura obiectului
+        itemCount = 0; // Resetează contorul
+        if (slotImage != null)
+        {
+            slotImage.texture = null; // Șterge imaginea din UI
+        }
+        if (itemCountText != null)
+        {
+            itemCountText.text = ""; // Golește textul
+        }
+
+        Debug.Log("Slot resetat!");
+
+    }
 }
     
