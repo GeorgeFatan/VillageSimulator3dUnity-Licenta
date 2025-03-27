@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1030971928}
   - component: {fileID: 1030971929}
   m_Layer: 0
-  m_Name: SM_Plant_04
+  m_Name: PorumbStage0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
