@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 147434387}
   - component: {fileID: 147434386}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 251116446}
   - component: {fileID: 251116445}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 520954484}
   - component: {fileID: 520954483}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3634,7 +3634,7 @@ GameObject:
   - component: {fileID: 711945405}
   - component: {fileID: 711945404}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4648,7 +4648,7 @@ GameObject:
   - component: {fileID: 842485297}
   - component: {fileID: 842485296}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5247,7 +5247,7 @@ GameObject:
   - component: {fileID: 957617684}
   - component: {fileID: 957617683}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6513,7 +6513,7 @@ GameObject:
   - component: {fileID: 1170132315}
   - component: {fileID: 1170132314}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7776,7 +7776,7 @@ GameObject:
   - component: {fileID: 1327699961}
   - component: {fileID: 1327699960}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8187,6 +8187,34 @@ MonoBehaviour:
     itemCountText: {fileID: 2042884680}
     itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
     itemCount: 0
+  - slotImage: {fileID: 2124484180}
+    itemCountText: {fileID: 147434386}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 957617683}
+    itemCountText: {fileID: 520954483}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 1327699960}
+    itemCountText: {fileID: 2084257931}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 1596726341}
+    itemCountText: {fileID: 251116445}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 1978648561}
+    itemCountText: {fileID: 711945404}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 1836579696}
+    itemCountText: {fileID: 1578117627}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
+  - slotImage: {fileID: 842485296}
+    itemCountText: {fileID: 1170132314}
+    itemTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
+    itemCount: 0
   cornTexture: {fileID: 2800000, guid: d00e482d64b3794448cebac4f87b6bc2, type: 3}
 --- !u!1 &1550082862
 GameObject:
@@ -8277,7 +8305,7 @@ GameObject:
   - component: {fileID: 1578117628}
   - component: {fileID: 1578117627}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8445,7 +8473,7 @@ GameObject:
   - component: {fileID: 1596726342}
   - component: {fileID: 1596726341}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9570,7 +9598,7 @@ GameObject:
   - component: {fileID: 1836579697}
   - component: {fileID: 1836579696}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10850,7 +10878,7 @@ GameObject:
   - component: {fileID: 1978648562}
   - component: {fileID: 1978648561}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11239,7 +11267,7 @@ GameObject:
   - component: {fileID: 2084257932}
   - component: {fileID: 2084257931}
   m_Layer: 5
-  m_Name: ItemCountText
+  m_Name: ItemCountTextS4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11318,7 +11346,7 @@ GameObject:
   - component: {fileID: 2124484181}
   - component: {fileID: 2124484180}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RawImageS2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

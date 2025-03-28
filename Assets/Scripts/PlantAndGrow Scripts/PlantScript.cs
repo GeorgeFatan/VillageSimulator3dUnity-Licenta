@@ -3,63 +3,59 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
-    public GameObject[] plantStages; // Stagiile plantei
-    public List<GameObject> soilCubes; // Lista cuburilor
-
-    private List<GameObject> plantedPlants = new List<GameObject>(); // Plantele curente
-    private int currentStage = 0; // Stagiul curent al creșterii
+    public GameObject[] plantStages; // prefabs pentru fiecare stadiu al plantei
+    public List<GameObject> soilCubes; // lista cuburilor disponibile pentru plantare
+    private List<GameObject> plantedPlants = new List<GameObject>(); // plante curente
+    private int currentStage = 0; // stadiu curent de crestere al plantei
 
     [SerializeField]
-    private TimeController timeController; // Referință la timpul zilelor
-
+    private TimeController timeController; // ref la nr de zile
     private int lastDaysPassed = 0;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // Plantare
+        if (Input.GetKeyDown(KeyCode.P)) // pe p plantam
         {
             PlantOnCube();
         }
 
-        if (timeController != null && timeController.daysPassed > lastDaysPassed) // Creștere
+        if (timeController != null && timeController.daysPassed > lastDaysPassed)
         {
             lastDaysPassed = timeController.daysPassed;
             AdvanceGrowthStage();
         }
     }
+
+    // planting pe cuburi disp
     void PlantOnCube()
     {
         foreach (GameObject currentCube in soilCubes)
         {
             StCubes soilCube = currentCube.GetComponent<StCubes>();
-
             if (soilCube != null && soilCube.CanPlant())
             {
                 Vector3 position = currentCube.transform.position;
-
                 position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
 
-                GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity);
-                plantedPlants.Add(plant); 
+                GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity); // instantiem planta la primu stadiu de crestere
+                plantedPlants.Add(plant);
 
-                soilCube.Planted(); 
-                currentStage = 0; // resetam stagiu de crestere dupa ce plantam
+                soilCube.Planted();
+                currentStage = 0; // resetam stadiu dupa ce plantam 
 
-                
                 BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
-                boxCollider.isTrigger = true; 
-                boxCollider.size = new Vector3(1.3f, 2.9f, 1.3f); 
-                plant.AddComponent<PickUpScript>();
+                boxCollider.isTrigger = true;
+                plant.AddComponent<PickUpScript>(); 
 
-                Debug.Log("Planta a fost replantată!");
+                Debug.Log("A fost plantata o nouă leguma!");
                 return;
             }
         }
 
-        Debug.Log("Niciun cub nu este pregătit pentru plantare!");
+        Debug.LogWarning("Nu exista locuri disponibile pentru plantare!");
     }
 
-
+    // avansare la stadiul urmator 
     void AdvanceGrowthStage()
     {
         if (currentStage >= plantStages.Length - 1)
@@ -69,9 +65,8 @@ public class PlantScript : MonoBehaviour
         }
 
         currentStage++;
-        Debug.Log($"Avansăm la stagiul {currentStage}. Total plante: {plantedPlants.Count}");
+        Debug.Log($"Avansam la stadiul {currentStage}.");
 
-        // Creăm o listă temporară pentru actualizarea plantelor
         List<GameObject> newPlantedPlants = new List<GameObject>();
 
         for (int i = 0; i < plantedPlants.Count; i++)
@@ -83,24 +78,28 @@ public class PlantScript : MonoBehaviour
                 Vector3 position = currentPlant.transform.position;
                 Quaternion rotation = currentPlant.transform.rotation;
 
-                Destroy(currentPlant); // Distruge planta curentă
+                Destroy(currentPlant);
 
-                GameObject newPlant = Instantiate(plantStages[currentStage], position, rotation); // Creează noua plantă
-                newPlantedPlants.Add(newPlant); // Adaugă planta în lista temporară
+                GameObject newPlant = Instantiate(plantStages[currentStage], position, rotation);
+                newPlantedPlants.Add(newPlant);
 
                 BoxCollider boxCollider = newPlant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
                 newPlant.AddComponent<PickUpScript>();
 
-                Debug.Log($"Planta din poziția {i} a avansat la stagiul {currentStage}.");
+                Debug.Log($"Planta la pozitia {i} a avansat la stadiul {currentStage}.");
             }
             else
             {
-                Debug.LogWarning($"Planta de pe poziția {i} lipsește sau a fost deja distrusă!");
+                Debug.LogWarning($"Planta de la pozitia {i} lipseste sau a fost distrusa/recoltata deja!");
             }
         }
 
-        // Înlocuim lista originală cu lista actualizată
         plantedPlants = newPlantedPlants;
+    }
+
+    public bool IsReadyToHarvest(GameObject plant)
+    {
+        return currentStage == plantStages.Length - 1; 
     }
 }

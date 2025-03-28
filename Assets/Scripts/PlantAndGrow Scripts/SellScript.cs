@@ -9,11 +9,11 @@ public class SellScript : MonoBehaviour
     public int pretPerItem = 10; 
     private int playerMoney = 0; 
     public TextMeshProUGUI moneyText; 
-    public int selectedSlotIndex = 0;  // deocamdata nu merge
+    public int selectedSlotIndex = 0;  
 
     private void Update()
     {
-        //HandleSlotSelection(); 
+        HandleSlotSelection(); 
     }
 
     private void OnTriggerStay(Collider other)
@@ -43,11 +43,11 @@ public class SellScript : MonoBehaviour
 
                 // apar bannii sus
                 UpdateMoneyDisplay();
-                Debug.Log($"Ai vândut {totalItems} legume pentru {baniCastigati} bani! Total bani: {playerMoney}");
+                Debug.Log($"Ai vandut {totalItems} legume pentru {baniCastigati} bani! Total bani: {playerMoney}");
             }
             else
             {
-                Debug.Log("Nu există legume în slotul selectat pentru a fi vândute!");
+                Debug.Log("Nu exista legume in slotul selectat pentru a fi vandute!");
             }
         }
         else
@@ -64,16 +64,18 @@ public class SellScript : MonoBehaviour
         }
     }
 
- /*   void HandleSlotSelection()
+   void HandleSlotSelection()
     {
-        
+          // apasam pe 1 , 2 ,3 ,4 ,5 ,6 ,7 , 8 pt a selecta slotu   
         if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectSlot(0); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectSlot(1); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectSlot(2); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); }
         if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectSlot(4); }
         if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectSlot(5); }
-    }*/
+        if (Input.GetKeyDown(KeyCode.Alpha7)) { SelectSlot(6); }
+        if (Input.GetKeyDown(KeyCode.Alpha8)) { SelectSlot(7); }
+    }
 
     void SelectSlot(int index)
     {
@@ -84,7 +86,7 @@ public class SellScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Indexul slot-ului selectat este în afara limitelor!");
+            Debug.LogWarning("Indexul slot-ului selectat este in afara limitelor!");
         }
     }
 }
