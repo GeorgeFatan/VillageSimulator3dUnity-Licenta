@@ -8822,6 +8822,7 @@ MonoBehaviour:
   - {fileID: 1992462089}
   - {fileID: 1895021044}
   timeController: {fileID: 1580652890}
+  playerAnimator: {fileID: 566799963909845317}
 --- !u!1 &1632106238
 GameObject:
   m_ObjectHideFlags: 0

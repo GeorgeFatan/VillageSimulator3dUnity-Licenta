@@ -12,17 +12,34 @@ public class PlantScript : MonoBehaviour
     private TimeController timeController; // ref la nr de zile
     private int lastDaysPassed = 0;
 
+    public Animator playerAnimator; // referinta la Animator-ul jucatorului
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) // pe p plantam
         {
-            PlantOnCube();
+            PlayPlantingAnimation(); // apelam animatia de plantare
+            PlantOnCube(); // logica pentru plantare
         }
 
         if (timeController != null && timeController.daysPassed > lastDaysPassed)
         {
             lastDaysPassed = timeController.daysPassed;
             AdvanceGrowthStage();
+        }
+    }
+
+    // declansarea animatiei de plantare
+    void PlayPlantingAnimation()
+    {
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("Plant"); 
+            Debug.Log("Animatia de plantare a fost declansata");
+        }
+        else
+        {
+            Debug.LogWarning("Animatoru nu este setat!");
         }
     }
 
@@ -45,9 +62,9 @@ public class PlantScript : MonoBehaviour
 
                 BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
-                plant.AddComponent<PickUpScript>(); 
+                plant.AddComponent<PickUpScript>();
 
-                Debug.Log("A fost plantata o nouă leguma!");
+                Debug.Log("A fost plantata o noua leguma!");
                 return;
             }
         }
@@ -100,6 +117,6 @@ public class PlantScript : MonoBehaviour
 
     public bool IsReadyToHarvest(GameObject plant)
     {
-        return currentStage == plantStages.Length - 1; 
+        return currentStage == plantStages.Length - 1;
     }
 }
