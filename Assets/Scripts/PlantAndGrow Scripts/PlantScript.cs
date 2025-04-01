@@ -14,12 +14,22 @@ public class PlantScript : MonoBehaviour
 
     public Animator playerAnimator; // referinta la Animator-ul jucatorului
 
+    //verificam daca jucatoru este in zona de plantare
+    public bool isPlayerInPlantingZone = false;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) // pe p plantam
         {
-            PlayPlantingAnimation(); // apelam animatia de plantare
-            PlantOnCube(); // logica pentru plantare
+            if (isPlayerInPlantingZone) // verifica daca jucatorul e in zona
+            {
+                PlayPlantingAnimation(); // apelam animatia de plantare
+                PlantOnCube(); // logica pentru plantare
+            }
+            else
+            {
+                Debug.LogWarning("Nu se poate planta deoarece jucatorul nu se afla in zona niciunui teren");
+            }
         }
 
         if (timeController != null && timeController.daysPassed > lastDaysPassed)
@@ -34,7 +44,7 @@ public class PlantScript : MonoBehaviour
     {
         if (playerAnimator != null)
         {
-            playerAnimator.SetTrigger("Plant"); 
+            playerAnimator.SetTrigger("Plant");
             Debug.Log("Animatia de plantare a fost declansata");
         }
         else
@@ -118,5 +128,23 @@ public class PlantScript : MonoBehaviour
     public bool IsReadyToHarvest(GameObject plant)
     {
         return currentStage == plantStages.Length - 1;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInPlantingZone = true;
+            Debug.Log("jucatoru a intrat in zona de plantare a terenului..");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInPlantingZone = false;
+            Debug.Log("Jucatoru a iesit din zona de plantare a terenului..");
+        }
     }
 }
