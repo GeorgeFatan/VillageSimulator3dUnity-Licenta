@@ -14,8 +14,8 @@ public class InventorySystem : MonoBehaviour
         {
             if (slot.itemTexture == cornTexture && slot.itemCount < maxItemsPerSlot)
             {
-                slot.IncrementItemCount(); // Crește contorul
-                Debug.Log($"Item adaugat în slot. Total obiecte în acest slot: {slot.itemCount}");
+                slot.IncrementItemCount(); // Creste contorul
+                Debug.Log($"Item adaugat in slot. Total obiecte in acest slot: {slot.itemCount}");
                 return; 
             }
         }

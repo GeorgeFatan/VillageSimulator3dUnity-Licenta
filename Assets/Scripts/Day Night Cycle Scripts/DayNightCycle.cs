@@ -136,4 +136,23 @@ public class TimeController : MonoBehaviour
 
         return difference;
     }
+
+    //script pt Day Skip (somn)
+    public void SkipLaZiuaUrmatoare()
+    {
+        daysPassed++;   
+        Debug.Log($"Ziua curenta este acum: {daysPassed}");
+
+
+        // ne trezim mereu la 7 dimi => reset ceas la ora 7
+        currentTime = DateTime.Now.Date + TimeSpan.FromHours(7.0f);
+        Debug.Log($"Ora este acum: {currentTime.ToString("HH:mm")}");
+
+        if(timeText != null)
+        {
+            timeText.text = currentTime.ToString("HH:mm");
+        }
+        RotateSun();
+        UpdateLightSettings();
+    }
 }

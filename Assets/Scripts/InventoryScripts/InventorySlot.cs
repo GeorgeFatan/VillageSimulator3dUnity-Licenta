@@ -17,11 +17,11 @@ public class InventorySlot
         if (slotImage != null)
         {
             slotImage.texture = texture; 
-            Debug.Log($"Textura {texture.name} a fost setată în slot.");
+            Debug.Log($"Textura {texture.name} a fost setata in slot.");
         }
         else
         {
-            Debug.LogError("Slot Image nu este configurat corect în Inspector!");
+            Debug.LogError("Slot Image nu este configurat corect in Inspector!");
         }
 
         UpdateItemCountText(); 
@@ -45,15 +45,15 @@ public class InventorySlot
 
     public void ClearSlot()
     {
-        itemTexture = null; // Șterge textura obiectului
-        itemCount = 0; // Resetează contorul
+        itemTexture = null; // Sterge textura obiectului
+        itemCount = 0; // Reset contorul
         if (slotImage != null)
         {
-            slotImage.texture = null; // Șterge imaginea din UI
+            slotImage.texture = null; // Sterge imaginea din UI
         }
         if (itemCountText != null)
         {
-            itemCountText.text = ""; // Golește textul
+            itemCountText.text = ""; // Goleste nr de iteme (textu ala)
         }
 
         Debug.Log("Slot resetat!");
