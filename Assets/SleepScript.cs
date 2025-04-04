@@ -6,6 +6,8 @@ public class SleepScript : MonoBehaviour
 {
     public TimeController timeController; // referinta la tController
     private bool isPlayerInTrigger = false; // verificare daca suntem in trigger
+    public Transform playerTranform; // ca sa putem accesa setarile player-ului (pozitie)
+   
 
     // trebuie sa apasam pe tasta F ca sa dormim
 
@@ -16,12 +18,31 @@ public class SleepScript : MonoBehaviour
             if(timeController != null)
             {
                 timeController.SkipLaZiuaUrmatoare();
+                RotatePlayer(); 
             }
             else
             {
                 Debug.LogWarning("EROAREEE");
             }
         }
+    }
+
+    private void RotatePlayer()
+    {
+        if(playerTranform != null)
+        {
+            playerTranform.rotation = Quaternion.Euler(
+                playerTranform.rotation.eulerAngles.x,
+                playerTranform.rotation.eulerAngles.y + 180,
+                playerTranform.rotation.eulerAngles.z
+                );
+            Debug.Log("Pozitia player-ului a fost updatata!!!!");
+        }
+        else
+        {
+            Debug.Log("eroareeeeeee");
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
