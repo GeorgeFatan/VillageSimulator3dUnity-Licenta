@@ -4,11 +4,12 @@ using UnityEngine.UI;
 [System.Serializable]
 public class InventorySlot
 {
-    public RawImage slotImage; 
-    public Text itemCountText; 
-    public Texture itemTexture;  
-    public int itemCount = 0; 
+    public RawImage slotImage; // Imaginea din UI
+    public Text itemCountText; // Textul care afiseaza numarul de obiecte
+    private Texture itemTexture; 
+    public int itemCount = 0; // Nr curent de obiecte în slot
 
+    // Metodata pentru setarea unui item
     public void SetItem(Texture texture, int count)
     {
         itemTexture = texture;
@@ -16,48 +17,43 @@ public class InventorySlot
 
         if (slotImage != null)
         {
-            slotImage.texture = texture; 
-            Debug.Log($"Textura {texture.name} a fost setata in slot.");
+            slotImage.texture = texture; // Update imaginea in UI
+            Debug.Log($"Textura {texture.name} a fost setata în slot.");
         }
         else
         {
             Debug.LogError("Slot Image nu este configurat corect in Inspector!");
         }
 
-        UpdateItemCountText(); 
+        UpdateItemCountText();
     }
 
     public void IncrementItemCount()
     {
-        itemCount++;
-        if (slotImage != null && itemTexture != null)
-        {
-            slotImage.texture = itemTexture; 
-        }
-
+        itemCount++; // creste nr de obiecte
         UpdateItemCountText();
     }
 
     private void UpdateItemCountText()
     {
-        itemCountText.text = itemCount > 0 ? itemCount.ToString() : "";
+        itemCountText.text = itemCount > 0 ? itemCount.ToString() : ""; // afiseaza nr de iteme
     }
 
     public void ClearSlot()
     {
-        itemTexture = null; // Sterge textura obiectului
-        itemCount = 0; // Reset contorul
+        itemTexture = null; // Reset textura
+        itemCount = 0; // Reset numărul de iteme
+
         if (slotImage != null)
         {
-            slotImage.texture = null; // Sterge imaginea din UI
+            slotImage.texture = null; // Delete imaginea din UI
         }
+
         if (itemCountText != null)
         {
-            itemCountText.text = ""; // Goleste nr de iteme (textu ala)
+            itemCountText.text = ""; // Goleste textul
         }
 
         Debug.Log("Slot resetat!");
-
     }
 }
-    

@@ -2,52 +2,52 @@
 
 public class PickUpScript : MonoBehaviour
 {
+    private PlantData plantData;
+
+    void Start()
+    {
+        // Obtine referinta la PlantData prin PlantInfo
+        PlantInfo plantInfo = GetComponent<PlantInfo>();
+        if (plantInfo != null)
+        {
+            plantData = plantInfo.plantData;
+        }
+        else
+        {
+            Debug.LogError("PlantInfo nu este atasat acestui obiect!");
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            PlantScript plantScript = FindObjectOfType<PlantScript>(); 
+            PlantScript plantScript = FindObjectOfType<PlantScript>();
 
-            if (plantScript != null)
+            if (plantScript != null && plantScript.IsReadyToHarvest(gameObject))
             {
-                if (plantScript.IsReadyToHarvest(gameObject)) 
+                if (plantData != null)
                 {
                     InventorySystem inventory = FindObjectOfType<InventorySystem>();
                     if (inventory != null)
                     {
-                        inventory.AddItemToSlot();
-                        Destroy(gameObject); // dupa ce recoltam planta, distrugem obiectu de pe jos
-                        Debug.Log("Planta a fost recoltată!");
-
-                        // Practic dam reset la starea cubului asociat
-                        RaycastHit hit;
-                        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit))
-                        {
-                            StCubes soilCube = hit.collider.GetComponent<StCubes>();
-                            if (soilCube != null)
-                            {
-                                soilCube.ResetStare();
-                                Debug.Log($"Cubul {soilCube.gameObject.name} a fost resetat.");
-                            }
-                            else
-                            {
-                                Debug.LogWarning("Cubul asociat nu a fost gasit!");
-                            }
-                        }
+                        inventory.AddItemToSlot(plantData); // Trimite PlantData
+                        Destroy(gameObject); // Distruge planta recoltata
+                        Debug.Log($"{plantData.plantName} a fost recoltata si adaugata in inventar!");
                     }
                     else
-                    { //debuguri 
+                    {
                         Debug.LogError("InventorySystem nu a fost gasit!");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning("Planta nu este gata pentru recoltare! (Stadiul 3 necesar)");
+                    Debug.LogError("PlantData nu este setat!");
                 }
             }
             else
             {
-                Debug.LogError("PlantScript nu a fost gasit pe această planta!");
+                Debug.LogWarning("Planta nu este gata de recoltare!");
             }
         }
     }

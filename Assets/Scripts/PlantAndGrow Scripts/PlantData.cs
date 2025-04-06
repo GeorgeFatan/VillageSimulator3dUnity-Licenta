@@ -5,5 +5,6 @@ using UnityEngine;
 public class PlantData : ScriptableObject
 {
     public string plantName;
-    public GameObject[] growthStages; // cele 3 stadii ale plantei
+    public Texture plantTexture;
+    public GameObject[] growthStages; // cele 3 stagii de crestere
 }

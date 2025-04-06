@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RosiiPlantData
   m_EditorClassIdentifier: 
   plantName: Rosii
+  plantTexture: {fileID: 2800000, guid: 22da86728780f294db38b0de882f9fce, type: 3}
   growthStages:
   - {fileID: 1030972080, guid: 4d446da144353d849a15441f7176febb, type: 3}
   - {fileID: 1030972062, guid: c93d93e7cb88c274e944eb3bac5c9267, type: 3}

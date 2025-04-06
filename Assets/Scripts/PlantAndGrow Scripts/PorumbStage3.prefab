@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1030971892}
   - component: {fileID: 1030971893}
+  - component: {fileID: -6302349439618299302}
   m_Layer: 0
   m_Name: PorumbStage3
   m_TagString: Untagged
@@ -55,6 +56,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: abc00000000001410683242166460867, type: 3}
+--- !u!114 &-6302349439618299302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030971891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edc2c4d45352d147b81d080c5075ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantData: {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
 --- !u!1 &1030971894
 GameObject:
   m_ObjectHideFlags: 0

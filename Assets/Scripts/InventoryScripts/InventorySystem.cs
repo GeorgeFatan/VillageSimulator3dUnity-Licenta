@@ -3,35 +3,40 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public List<InventorySlot> inventorySlots; 
-    public Texture cornTexture; 
-    private int maxItemsPerSlot = 12; 
+    public List<InventorySlot> inventorySlots; // Lista sloturilor
+    public int maxItemsPerSlot = 12; // Nr maxim de iteme per slot
 
-    public void AddItemToSlot()
+    public void AddItemToSlot(PlantData plantData)
     {
-       
+        if (plantData == null || plantData.plantTexture == null)
+        {
+            Debug.LogError("PlantData sau textura lipsesc!");
+            return;
+        }
+
+        // Gaseste un slot care deja contine planta selectata
         foreach (InventorySlot slot in inventorySlots)
         {
-            if (slot.itemTexture == cornTexture && slot.itemCount < maxItemsPerSlot)
+            if (slot.slotImage.texture == plantData.plantTexture && slot.itemCount < maxItemsPerSlot)
             {
-                slot.IncrementItemCount(); // Creste contorul
-                Debug.Log($"Item adaugat in slot. Total obiecte in acest slot: {slot.itemCount}");
-                return; 
+                slot.IncrementItemCount(); // Crestere numarul de iteme
+                Debug.Log($"Item {plantData.plantName} adăugat în slot existent. Total: {slot.itemCount}");
+                return;
             }
         }
 
-       // daca slotu e gol atunci:
+        // Găsește un slot gol pentru plante noi
         foreach (InventorySlot slot in inventorySlots)
         {
-            if (slot.itemTexture == null) 
+            if (slot.slotImage.texture == null)
             {
-                slot.SetItem(cornTexture, 1); 
-                Debug.Log("Item adaugat intr-un slot gol.");
-                return; 
+                slot.SetItem(plantData.plantTexture, 1); // Set textura automat
+                Debug.Log($"Item {plantData.plantName} adăugat într-un slot nou.");
+                return;
             }
         }
 
-       
-        Debug.LogWarning("Inventarul este plin! Nu mai exista sloturi disponibile.");
+        // Mesaj de avertizare pentru inventar plin
+        Debug.LogWarning("Inventarul este plin! Nu mai există sloturi disponibile.");
     }
 }
