@@ -3,32 +3,40 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
-    public GameObject[] plantStages; // prefabs pentru fiecare stadiu al plantei
     public List<GameObject> soilCubes; // lista cuburilor disponibile pentru plantare
     private List<GameObject> plantedPlants = new List<GameObject>(); // plante curente
     private int currentStage = 0; // stadiu curent de crestere al plantei
 
     [SerializeField]
-    private TimeController timeController; // ref la nr de zile
+    private TimeController timeController; // referinta la sistemul de timp
     private int lastDaysPassed = 0;
 
     public Animator playerAnimator; // referinta la Animator-ul jucatorului
 
-    //verificam daca jucatoru este in zona de plantare
     public bool isPlayerInPlantingZone = false;
+
+    private PlantData selectedPlantData;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // pe p plantam
+        if (Input.GetKeyDown(KeyCode.P)) // plantați cu P
         {
-            if (isPlayerInPlantingZone) // verifica daca jucatorul e in zona
+            if (isPlayerInPlantingZone)
             {
-                PlayPlantingAnimation(); // apelam animatia de plantare
-                PlantOnCube(); // logica pentru plantare
+                selectedPlantData = SeedSelector.selectedPlant;
+
+                if (selectedPlantData == null)
+                {
+                    Debug.LogWarning("Nu a fost selectată nicio plantă!");
+                    return;
+                }
+
+                PlayPlantingAnimation();
+                PlantOnCube();
             }
             else
             {
-                Debug.LogWarning("Nu se poate planta deoarece jucatorul nu se afla in zona niciunui teren");
+                Debug.LogWarning("Nu te afli într-o zonă de plantare.");
             }
         }
 
@@ -39,21 +47,19 @@ public class PlantScript : MonoBehaviour
         }
     }
 
-    // declansarea animatiei de plantare
     void PlayPlantingAnimation()
     {
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("Plant");
-            Debug.Log("Animatia de plantare a fost declansata");
+            Debug.Log("Animația de plantare a fost declanșată.");
         }
         else
         {
-            Debug.LogWarning("Animatoru nu este setat!");
+            Debug.LogWarning("Animatorul nu este setat!");
         }
     }
 
-    // planting pe cuburi disp
     void PlantOnCube()
     {
         foreach (GameObject currentCube in soilCubes)
@@ -64,35 +70,40 @@ public class PlantScript : MonoBehaviour
                 Vector3 position = currentCube.transform.position;
                 position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
 
-                GameObject plant = Instantiate(plantStages[0], position, Quaternion.identity); // instantiem planta la primu stadiu de crestere
+                GameObject plant = Instantiate(selectedPlantData.growthStages[0], position, Quaternion.identity);
                 plantedPlants.Add(plant);
 
                 soilCube.Planted();
-                currentStage = 0; // resetam stadiu dupa ce plantam 
+                currentStage = 0;
 
                 BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
                 plant.AddComponent<PickUpScript>();
 
-                Debug.Log("A fost plantata o noua leguma!");
+                Debug.Log($"A fost plantat un/o {selectedPlantData.plantName}.");
                 return;
             }
         }
 
-        Debug.LogWarning("Nu exista locuri disponibile pentru plantare!");
+        Debug.LogWarning("Nu există locuri disponibile pentru plantare.");
     }
 
-    // avansare la stadiul urmator 
     void AdvanceGrowthStage()
     {
-        if (currentStage >= plantStages.Length - 1)
+        if (selectedPlantData == null)
+        {
+            Debug.LogWarning("Nu a fost selectată nicio plantă pentru creștere.");
+            return;
+        }
+
+        if (currentStage >= selectedPlantData.growthStages.Length - 1)
         {
             Debug.Log("Plantele sunt deja în stadiul final!");
             return;
         }
 
         currentStage++;
-        Debug.Log($"Avansam la stadiul {currentStage}.");
+        Debug.Log($"Toate plantele avansează la stadiul {currentStage}.");
 
         List<GameObject> newPlantedPlants = new List<GameObject>();
 
@@ -107,18 +118,18 @@ public class PlantScript : MonoBehaviour
 
                 Destroy(currentPlant);
 
-                GameObject newPlant = Instantiate(plantStages[currentStage], position, rotation);
+                GameObject newPlant = Instantiate(selectedPlantData.growthStages[currentStage], position, rotation);
                 newPlantedPlants.Add(newPlant);
 
                 BoxCollider boxCollider = newPlant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
                 newPlant.AddComponent<PickUpScript>();
 
-                Debug.Log($"Planta la pozitia {i} a avansat la stadiul {currentStage}.");
+                Debug.Log($"Planta de la poziția {i} a crescut la stadiul {currentStage}.");
             }
             else
             {
-                Debug.LogWarning($"Planta de la pozitia {i} lipseste sau a fost distrusa/recoltata deja!");
+                Debug.LogWarning($"Planta de la poziția {i} lipsește sau a fost distrusă.");
             }
         }
 
@@ -127,7 +138,7 @@ public class PlantScript : MonoBehaviour
 
     public bool IsReadyToHarvest(GameObject plant)
     {
-        return currentStage == plantStages.Length - 1;
+        return selectedPlantData != null && currentStage == selectedPlantData.growthStages.Length - 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,7 +146,7 @@ public class PlantScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInPlantingZone = true;
-            Debug.Log("jucatoru a intrat in zona de plantare a terenului..");
+            Debug.Log("Jucătorul a intrat în zona de plantare.");
         }
     }
 
@@ -144,7 +155,7 @@ public class PlantScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInPlantingZone = false;
-            Debug.Log("Jucatoru a iesit din zona de plantare a terenului..");
+            Debug.Log("Jucătorul a ieșit din zona de plantare.");
         }
     }
 }

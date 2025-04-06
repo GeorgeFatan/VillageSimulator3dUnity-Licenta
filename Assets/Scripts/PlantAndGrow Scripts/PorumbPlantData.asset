@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25234cd9c9f425e4da15bcfc9c819f30, type: 3}
+  m_Name: PorumbPlantData
+  m_EditorClassIdentifier: 
+  plantName: Porumb
+  growthStages:
+  - {fileID: 1030971918, guid: a5f09e2480e71974fac99b31f196540a, type: 3}
+  - {fileID: 1030971909, guid: 86d81be581cd3854cba200e97720aafb, type: 3}
+  - {fileID: 1030971891, guid: 928514a437384414eb2077167bfafd97, type: 3}
