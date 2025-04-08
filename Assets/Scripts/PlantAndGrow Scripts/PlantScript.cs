@@ -70,15 +70,21 @@ public class PlantScript : MonoBehaviour
                 Vector3 position = currentCube.transform.position;
                 position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
 
+                // Obiectu Plantei
                 GameObject plant = Instantiate(selectedPlantData.growthStages[0], position, Quaternion.identity);
                 plantedPlants.Add(plant);
 
+                // set cub as planted
                 soilCube.Planted();
                 currentStage = 0;
 
+                // Adaugam colider si scriptu PickUpScript
                 BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
-                plant.AddComponent<PickUpScript>();
+
+                PickUpScript pickUpScript = plant.AddComponent<PickUpScript>();
+                pickUpScript.playerAnimator = playerAnimator;  // Trebuie sa facem cumva sa fie setat automat atunci cand plantam o planta
+                 // PlayerArmature.
 
                 Debug.Log($"A fost plantat un/o {selectedPlantData.plantName}.");
                 return;
