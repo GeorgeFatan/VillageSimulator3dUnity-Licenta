@@ -9,12 +9,12 @@ public class SeedSelector : MonoBehaviour
 
     private bool isPlayerInRange = false;
 
-    // Referință către InventorySystem
+    // Ref catre InventorySystem
     private InventorySystem inventorySystem;
 
     void Start()
     {
-        // Găsim sistemul de inventar în scenă
+        // Gasim sistemul de inventar in scena
         inventorySystem = FindObjectOfType<InventorySystem>();
         if (inventorySystem == null)
         {

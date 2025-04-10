@@ -5,7 +5,7 @@ public class PlantScript : MonoBehaviour
 {
     public List<GameObject> soilCubes; // Lista cuburilor disponibile pentru plantare
     private List<GameObject> plantedPlants = new List<GameObject>(); // Plante curente
-    private int currentStage = 0; // Stadiu curent de creștere al plantei
+    private int currentStage = 0; // Stadiu curent de crestere al plantei
 
     [SerializeField]
     private TimeController timeController; // Ref la sistemul de timp
@@ -42,7 +42,7 @@ public class PlantScript : MonoBehaviour
                     return;
                 }
 
-                // Ver daca exista suficiente seminte in inventar
+                // Verif daca exista suficiente seminte in inventar
                 if (!inventorySystem.HasItemInSlot(selectedPlantData.seedTexture, 1))
                 {
                     Debug.LogWarning($"Nu mai sunt seminte de {selectedPlantData.plantName} in inventar!");
@@ -90,52 +90,52 @@ public class PlantScript : MonoBehaviour
                 Vector3 position = currentCube.transform.position;
                 position.y += currentCube.GetComponent<Renderer>().bounds.size.y / 2;
 
-                // Instanțiem planta
+                // Instantiem planta
                 GameObject plant = Instantiate(selectedPlantData.growthStages[0], position, Quaternion.identity);
                 plantedPlants.Add(plant);
 
-                // Setăm cubul ca plantat
+                // Setam cubul ca plantat
                 soilCube.Planted();
                 currentStage = 0;
 
-                // Adăugăm BoxCollider și PickUpScript
+                // Adaugam BoxCollider si PickUpScript
                 BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
 
                 PickUpScript pickUpScript = plant.AddComponent<PickUpScript>();
 
-                // Verificăm și setăm Animator-ul jucătorului
+                // Verif si setam Animator-ul player-ului
                 if (playerAnimator == null)
                 {
-                    // Încercăm să găsim automat Animator-ul în scenă
-                    playerAnimator = FindObjectOfType<Animator>(); // Găsește orice Animator disponibil
+                    // Trebuie sa gasim animatorul, ca sa putem sa il punem automat in scriptul de PickUp
+                    playerAnimator = FindObjectOfType<Animator>(); 
                     if (playerAnimator != null)
                     {
-                        Debug.Log("PlayerAnimator a fost găsit automat și setat.");
+                        Debug.Log("PlayerAnimator a fost gasit automat si setat.");
                     }
                     else
                     {
-                        Debug.LogError("PlayerAnimator nu este configurat și nu a fost găsit în scenă!");
+                        Debug.LogError("PlayerAnimator nu este configurat si nu a fost gasit in scena!");
                     }
                 }
 
-                // Setăm Animator-ul pentru PickUpScript
+                // Setam Animator-ul pentru PickUpScript
                 if (playerAnimator != null)
                 {
-                    pickUpScript.playerAnimator = playerAnimator; // Asignăm referința
-                    Debug.Log("Animator-ul Player a fost setat pentru plantă.");
+                    pickUpScript.playerAnimator = playerAnimator; 
+                    Debug.Log("Animator-ul Player a fost setat.");
                 }
                 else
                 {
                     Debug.LogWarning("PickUpScript nu a primit Animator-ul Player.");
                 }
 
-                Debug.Log($"A fost plantat un/o {selectedPlantData.plantName}. Semințele din inventar au fost decrementate.");
+                Debug.Log($"A fost plantat un/o {selectedPlantData.plantName}. Semintele din inventar au fost decrementate.");
                 return;
             }
         }
 
-        Debug.LogWarning("Nu există locuri disponibile pentru plantare.");
+        Debug.LogWarning("Nu exista locuri disponibile pentru plantare.");
     }
 
     void AdvanceGrowthStage()

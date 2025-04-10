@@ -11377,6 +11377,7 @@ MonoBehaviour:
   availablePlants:
   - {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
   - {fileID: 11400000, guid: 1c258cfba2a08ac4fa171c3545328763, type: 2}
+  - {fileID: 11400000, guid: 63816c16a5b8d764f86c36bb3746f590, type: 2}
 --- !u!65 &1918240542
 BoxCollider:
   m_ObjectHideFlags: 0
