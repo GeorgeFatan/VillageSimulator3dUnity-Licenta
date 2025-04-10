@@ -1,36 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SeedSelector : MonoBehaviour
 {
-    public List<PlantData> availablePlants;
-    private int currentIndex = 0;
-    public static PlantData selectedPlant;
+    public List<PlantData> availablePlants; // Lista plantelor disponibile
+    private int currentIndex = 0; // Indexul curent al selectiei
+    public static PlantData selectedPlant; // Planta selectata curent
 
     private bool isPlayerInRange = false;
+
+    // Referință către InventorySystem
+    private InventorySystem inventorySystem;
+
+    void Start()
+    {
+        // Găsim sistemul de inventar în scenă
+        inventorySystem = FindObjectOfType<InventorySystem>();
+        if (inventorySystem == null)
+        {
+            Debug.LogError("InventorySystem nu a fost gasit in scena curenta!");
+        }
+    }
 
     void Update()
     {
         if (!isPlayerInRange) return;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q)) // stanga
         {
             currentIndex = (currentIndex - 1 + availablePlants.Count) % availablePlants.Count;
             Debug.Log($"Selectat: {availablePlants[currentIndex].plantName}");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) // dreapta
         {
             currentIndex = (currentIndex + 1) % availablePlants.Count;
             Debug.Log($"Selectat: {availablePlants[currentIndex].plantName}");
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) // ENTER = confirmare
+        if (Input.GetKeyDown(KeyCode.Return)) // Confirm cu Enter
         {
             selectedPlant = availablePlants[currentIndex];
-            Debug.Log($"Planta selectată: {selectedPlant.plantName}");
+            Debug.Log($"Seminte selectate: {selectedPlant.seedName}");
+
+            // Adaugam un stack de 12 seminte in inventar
+            AddSeedsToInventory(selectedPlant);
         }
+    }
+
+    private void AddSeedsToInventory(PlantData plantData)
+    {
+        if (inventorySystem == null || plantData == null)
+        {
+            Debug.LogError("InventorySystem sau PlantData este null!");
+            return;
+        }
+
+        foreach (InventorySlot slot in inventorySystem.inventorySlots)
+        {
+            if (slot.slotImage.texture == plantData.seedTexture)
+            {
+                slot.IncrementItemCount(12); //  nr de seminte 12
+                Debug.Log($"Seminte de {plantData.plantName} adaugate intr-un slot existent. Total: {slot.itemCount}");
+                return;
+            }
+            else if (slot.slotImage.texture == null)
+            {
+                slot.SetItem(plantData.seedTexture, 12); // Ad un stack de 12 seminte intr-un slot gol
+                Debug.Log($"Seminte de {plantData.plantName} adăugate intr-un slot nou.");
+                return;
+            }
+        }
+
+        Debug.LogWarning("Inventarul este plin! Nu mai exista sloturi disponibile.");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +80,7 @@ public class SeedSelector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            Debug.Log("Intrat în zona de selecție a plantei.");
+            Debug.Log("Intrat in zona de selectia a semintelor.");
         }
     }
 
@@ -47,7 +89,7 @@ public class SeedSelector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            Debug.Log("Ieșit din zona de selecție.");
+            Debug.Log("Ai iesit din zona de selectia a semintelor.");
         }
     }
 }

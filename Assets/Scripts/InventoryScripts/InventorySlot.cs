@@ -18,7 +18,7 @@ public class InventorySlot
         if (slotImage != null)
         {
             slotImage.texture = texture; // Update imaginea in UI
-            Debug.Log($"Textura {texture.name} a fost setata în slot.");
+            Debug.Log($"Textura {texture.name} a fost setata in slot.");
         }
         else
         {
@@ -28,12 +28,24 @@ public class InventorySlot
         UpdateItemCountText();
     }
 
-    public void IncrementItemCount()
+    public void IncrementItemCount(int amount = 1)
     {
-        itemCount++; // creste nr de obiecte
+        itemCount += amount; // Crestem nr de iteme cu valoarea specif.
         UpdateItemCountText();
     }
 
+    public void DecrementItemCount()
+    {
+        if (itemCount > 0) {
+            itemCount--; //scadem nr de iteme (in cazu nostru de seminte)
+            UpdateItemCountText();
+        }
+        if (itemCount == 0)
+        {
+            ClearSlot(); // golim slotu
+            Debug.Log("Slotul este gol!!!! Nu mai sunt seminte (TEST)");
+        }
+    }
     private void UpdateItemCountText()
     {
         itemCountText.text = itemCount > 0 ? itemCount.ToString() : ""; // afiseaza nr de iteme
@@ -42,7 +54,7 @@ public class InventorySlot
     public void ClearSlot()
     {
         itemTexture = null; // Reset textura
-        itemCount = 0; // Reset numărul de iteme
+        itemCount = 0; // Reset nr de iteme
 
         if (slotImage != null)
         {
