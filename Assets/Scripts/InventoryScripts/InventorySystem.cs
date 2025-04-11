@@ -6,7 +6,7 @@ public class InventorySystem : MonoBehaviour
     public List<InventorySlot> inventorySlots; // Lista sloturilor de inventar
     public int maxItemsPerSlot = 12; // Nr maxim de iteme per slot
 
-    // adaugam un item în inventar
+    // Adaugam un item în inventar
     public void AddItemToSlot(PlantData plantData)
     {
         if (plantData == null || plantData.plantTexture == null)

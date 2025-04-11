@@ -4,6 +4,7 @@ public class PickUpScript : MonoBehaviour
 {
     private PlantData plantData; // Ref catre datele plantei
     public Animator playerAnimator; // Animator-ul jucătorului
+    public StCubes associatedCube; //ref catre cub
 
     void Start()
     {
@@ -33,13 +34,27 @@ public class PickUpScript : MonoBehaviour
         }
     }
 
+    void ResetSoilCube()
+    {
+        // Cautam componenta StCubes in GameObject-ul parent
+        if (associatedCube != null)
+        {
+            associatedCube.ResetStare();
+            Debug.Log($"Cubul {associatedCube.gameObject.name} a fost resetat la starea ReadyToPlant..");
+        }
+        else 
+        {
+            Debug.LogError("Cubul asociat nu a fost setat!");
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E)) // Rec cu E
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E)) // Recoltam cu  tasta E
         {
             PlantScript plantScript = FindObjectOfType<PlantScript>();
 
-            // Ver daca planta este gata de recoltare
+            // Verif daca planta este gata de recoltare
             if (plantScript != null && plantScript.IsReadyToHarvest(gameObject))
             {
                 TriggerHarvestAnimation();
@@ -49,10 +64,12 @@ public class PickUpScript : MonoBehaviour
                     InventorySystem inventory = FindObjectOfType<InventorySystem>();
                     if (inventory != null)
                     {
-                        // Adăugăm planta recoltată în inventar
-                        inventory.AddItemToSlot(plantData); // Se foloseste plantData.plantTexture
-                        Destroy(gameObject); // Distrugem planta recoltata
-                        Debug.Log($"{plantData.plantName} a fost recoltata si adaugata în inventar!");
+                        inventory.AddItemToSlot(plantData); // Adaugam leguma intr-un slot din inventar
+
+                        ResetSoilCube(); 
+                        Destroy(gameObject);
+
+                        Debug.Log($"{plantData.plantName} a fost recoltata si cubul a fost resetat!");
                     }
                     else
                     {

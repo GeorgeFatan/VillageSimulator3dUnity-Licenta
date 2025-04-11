@@ -59,6 +59,11 @@ public class PlantScript : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.U)) // Udam cu U
+        {
+            WaterPlants();
+        }
+
         // avansam stadiul de crestere în functie de timp
         if (timeController != null && timeController.daysPassed > lastDaysPassed)
         {
@@ -92,7 +97,12 @@ public class PlantScript : MonoBehaviour
 
                 // Instantiem planta
                 GameObject plant = Instantiate(selectedPlantData.growthStages[0], position, Quaternion.identity);
+                plant.transform.SetParent(currentCube.transform);
                 plantedPlants.Add(plant);
+
+                //resetam starea de udare. Sa pornim cu ea pe false dupa ce plantam
+                selectedPlantData.isWatered = false;
+
 
                 // Setam cubul ca plantat
                 soilCube.Planted();
@@ -104,11 +114,13 @@ public class PlantScript : MonoBehaviour
 
                 PickUpScript pickUpScript = plant.AddComponent<PickUpScript>();
 
+                // Asociem cubul curent cu planta
+                pickUpScript.associatedCube = soilCube;
+
                 // Verif si setam Animator-ul player-ului
                 if (playerAnimator == null)
                 {
-                    // Trebuie sa gasim animatorul, ca sa putem sa il punem automat in scriptul de PickUp
-                    playerAnimator = FindObjectOfType<Animator>(); 
+                    playerAnimator = FindObjectOfType<Animator>();
                     if (playerAnimator != null)
                     {
                         Debug.Log("PlayerAnimator a fost gasit automat si setat.");
@@ -122,7 +134,7 @@ public class PlantScript : MonoBehaviour
                 // Setam Animator-ul pentru PickUpScript
                 if (playerAnimator != null)
                 {
-                    pickUpScript.playerAnimator = playerAnimator; 
+                    pickUpScript.playerAnimator = playerAnimator;
                     Debug.Log("Animator-ul Player a fost setat.");
                 }
                 else
@@ -152,8 +164,16 @@ public class PlantScript : MonoBehaviour
             return;
         }
 
+        // Verif daca planta trebuie să fie udata doar in stadiul 1
+        if (currentStage == 0 && !selectedPlantData.isWatered)
+        {
+            Debug.LogWarning($"Planta {selectedPlantData.plantName} nu poate avansa de la stadiul 1 deoarece nu este stropita/udata.");
+            return;
+        }
+
+        // ++ stadiul de crestere
         currentStage++;
-        Debug.Log($"Toate plantele avanseaza la stadiul {currentStage}.");
+        Debug.Log($"Planta {selectedPlantData.plantName} avanseaza la stadiul {currentStage}.");
 
         List<GameObject> newPlantedPlants = new List<GameObject>();
 
@@ -165,48 +185,73 @@ public class PlantScript : MonoBehaviour
             {
                 Vector3 position = currentPlant.transform.position;
                 Quaternion rotation = currentPlant.transform.rotation;
-                
-                // Trebuie sa salvam PlayerAnimator ca sa poata fi transferat catre toate stagiile de crestere
-                PickUpScript PickUpScript1 = currentPlant.GetComponent<PickUpScript>();
-                Animator playerAnimatorRef = PickUpScript1 != null ? PickUpScript1.playerAnimator : null;
 
-                // Distrugerea stagiului curent
+                // Save ref Animator-ului si a cubului asociat
+                PickUpScript pickUpScript = currentPlant.GetComponent<PickUpScript>();
+                Animator playerAnimatorRef = pickUpScript != null ? pickUpScript.playerAnimator : null;
+                StCubes associatedCubeRef = pickUpScript != null ? pickUpScript.associatedCube : null;
+
+                // Distrugem planta curenta
                 Destroy(currentPlant);
 
-                // Instantiem stadiu urmator 
+                // Instantiem planta noului stadiu
                 GameObject newPlant = Instantiate(selectedPlantData.growthStages[currentStage], position, rotation);
                 newPlantedPlants.Add(newPlant);
 
-                // Box colider pt stagii
+                // Setam noul stadiu ca copil al cubului // practic sa avem legumele plantate mereu ca copii ai cuburilor
+                // pt organizare
+                if (associatedCubeRef != null)
+                {
+                    newPlant.transform.SetParent(associatedCubeRef.transform);
+                  
+                }
+
+                // Configuram box colider pt interactiunea cu legumele (sa le putem recolta de ex)
                 BoxCollider boxCollider = newPlant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
 
                 PickUpScript newPickUpScript = newPlant.AddComponent<PickUpScript>();
 
-                if(playerAnimatorRef != null)
+                // Transf ref catre noul prefab al legumei
+                if (playerAnimatorRef != null)
                 {
                     newPickUpScript.playerAnimator = playerAnimatorRef;
-                    Debug.Log("PlayerAnimator a fost adaugat catre plantele din stadiu urmator....");
+                    Debug.Log("Animatorul player-ului a fost transferat.");
                 }
-                else
+
+                if (associatedCubeRef != null)
                 {
-                    Debug.LogWarning("PlayerAnimator nu a fost gasit in stadiu urmator...");
+                    newPickUpScript.associatedCube = associatedCubeRef;
                 }
 
                 Debug.Log($"Planta de la pozitia {i} a crescut la stadiul {currentStage}.");
             }
             else
             {
-                Debug.LogWarning($"Planta de la pozitia {i} lipseste sau a fost distrusa.");
+                Debug.LogWarning($"Planta de la pozitia {i} lipseste sau a fost destroyed.");
             }
         }
 
+        // Update lista de plante
         plantedPlants = newPlantedPlants;
     }
 
     public bool IsReadyToHarvest(GameObject plant)
     {
         return selectedPlantData != null && currentStage == selectedPlantData.growthStages.Length - 1;
+    }
+
+    void WaterPlants()
+    {
+        if (selectedPlantData != null && !selectedPlantData.isWatered)
+        {
+            selectedPlantData.isWatered = true;
+            Debug.Log($"Planta {selectedPlantData.plantName} a fost udata!");
+        }
+        else
+        {
+            Debug.Log("Leguma e deja udata... sau nu mai exista legume pe care sa le uzi");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

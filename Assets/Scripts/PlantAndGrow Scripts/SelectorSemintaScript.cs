@@ -67,7 +67,7 @@ public class SeedSelector : MonoBehaviour
             else if (slot.slotImage.texture == null)
             {
                 slot.SetItem(plantData.seedTexture, 12); // Ad un stack de 12 seminte intr-un slot gol
-                Debug.Log($"Seminte de {plantData.plantName} adăugate intr-un slot nou.");
+                Debug.Log($"Seminte de {plantData.plantName} adaugate intr-un slot nou.");
                 return;
             }
         }

@@ -8,8 +8,10 @@ public class PlantData : ScriptableObject
     public Texture seedTexture;
     public GameObject[] growthStages; // cele 3 stagii de crestere
 
-    //semintele
-
+    // semintele
     public string seedName;
+
+    // stropire plante
+    public bool isWatered = false;
     
 }
