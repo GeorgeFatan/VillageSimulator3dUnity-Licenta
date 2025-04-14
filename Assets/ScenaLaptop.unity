@@ -7477,13 +7477,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209519808}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6693120356666632593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!1 &1243738753
 GameObject:
   m_ObjectHideFlags: 0
@@ -28182,12 +28182,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1209519809}
   - {fileID: 3749811379101598194}
   - {fileID: 3396566933081450171}
   - {fileID: 4114525542730126920}
   - {fileID: 3102951292313968644}
   - {fileID: 8038615823375358500}
-  - {fileID: 1209519809}
   m_Father: {fileID: 2803318977903823683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6703388604927608902
@@ -32158,6 +32158,7 @@ GameObject:
   - component: {fileID: 8132589697677343704}
   - component: {fileID: 8132589697677343720}
   - component: {fileID: 8132589697677343721}
+  - component: {fileID: 8132589697677343722}
   m_Layer: 0
   m_Name: Galeata
   m_TagString: Untagged
@@ -32174,7 +32175,7 @@ Transform:
   m_GameObject: {fileID: 8132589697677343718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 511.3087, y: -0.0000076293945, z: 303.4534}
+  m_LocalPosition: {x: 511.3087, y: 0.002, z: 303.4534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32193,8 +32194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f32288f5bea6334995b31b451ed1fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galeataPrefab: {fileID: 8132589697677343718}
+  toolData: {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
   equipPoint: {fileID: 1209519809}
+  equippedTool: {fileID: 0}
 --- !u!65 &8132589697677343721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32216,6 +32218,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8132589697677343722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132589697677343718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97120eb5d8135d4799b1ac4e1304ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolData: {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
 --- !u!4 &8133162693930437826
 Transform:
   m_ObjectHideFlags: 0

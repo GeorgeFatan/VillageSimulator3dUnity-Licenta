@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class EquipObjectToHand : MonoBehaviour
 {
-    public GameObject galeataPrefab;
+    public ToolData toolData; // ref la toolData
     public Transform equipPoint;
+    public GameObject equippedTool; // ref la unealta echipata
 
     private bool isPlayerNearby = false;
-    private GameObject equippedGaleata;
+    private InventorySystem inventory; // ref la inventory system
+
+    void Start()
+    {
+        inventory = FindObjectOfType<InventorySystem>();
+    }
 
 
     private void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Apăsăm pe E pentru echipare
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Apasam pe E pentru echipare
         {
-            EquipGaleata();
+            EquipTool();
+        }
+        if(equippedTool != null && Input.GetKeyDown(KeyCode.Q)) // Apasam pe Q pentru a lasa jos tool-ul 
+        {
+            DropTool();
+
         }
     }
 
@@ -31,21 +42,26 @@ public class EquipObjectToHand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
-            EquipGaleata();
+            isPlayerNearby = false;
         }
     }
 
-    void EquipGaleata()
+    void EquipTool()
     {
-        if(equippedGaleata == null)
+        if(equippedTool == null)
         {
             // instantiem galeata la pct definit de noi equip point
 
-            equippedGaleata = Instantiate(galeataPrefab, equipPoint.position, equipPoint.rotation);
-            equippedGaleata.transform.SetParent(equipPoint);
-            Debug.Log("Galeata a fost echipata...");
+            equippedTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
+            equippedTool.transform.SetParent(equipPoint);
+            Debug.Log($"Unealta de tip {toolData.toolName} a fost echipata...");
+
+            if(inventory != null)
+            {
+                inventory.AddToolToSlot(toolData);
+            }
 
             gameObject.SetActive(false);
         }
@@ -56,5 +72,22 @@ public class EquipObjectToHand : MonoBehaviour
         }
     }
 
+    void DropTool()
+    {
+        if(equippedTool != null)
+        {
+            equippedTool.transform.SetParent(null);
+
+            if(inventory != null)
+            {
+                inventory.RemoveToolFromSlot(toolData);
+            }
+
+            Instantiate(toolData.toolPrefab, equipPoint.position, Quaternion.identity);
+            Debug.Log($"{toolData.toolName} a fost pusa jos!");
+
+            equippedTool = null;
+        }
+    }
 
 }

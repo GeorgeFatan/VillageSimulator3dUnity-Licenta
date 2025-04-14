@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15df17080298764fa42072418181eb6, type: 3}
+  m_Name: GaleataToolData
+  m_EditorClassIdentifier: 
+  toolName: Galeata
+  toolTexture: {fileID: 2800000, guid: bf3fcbc924dd1404e850c7ed22945452, type: 3}
+  toolPrefab: {fileID: 1030972254, guid: abc00000000005349303275364452536, type: 3}
+  toolDescription: Galeata folosita pentru a uda plantele
