@@ -7,29 +7,42 @@ public class EquipObjectToHand : MonoBehaviour
     public ToolData toolData; // ref la toolData
     public Transform equipPoint;
     public GameObject equippedTool; // ref la unealta echipata
-
     private bool isPlayerNearby = false;
     private InventorySystem inventory; // ref la inventory system
+
+
+    // sper sa mearga
+    private bool coolDownTaste = false;
+    private float coolDownTasteTime = 1.0f;
+
 
     void Start()
     {
         inventory = FindObjectOfType<InventorySystem>();
     }
 
-
-    private void Update()
+    void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Apasam pe E pentru echipare
-        {
-            EquipTool();
-        }
-        if(equippedTool != null && Input.GetKeyDown(KeyCode.Q)) // Apasam pe Q pentru a lasa jos tool-ul 
-        {
-            DropTool();
+       
+            if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !coolDownTaste)
+            {
+                EquipTool();
+                coolDownTaste = true;
+                Invoke(nameof(ResetCooldown), coolDownTasteTime);
+            }
 
-        }
+            if (equippedTool != null && Input.GetKeyDown(KeyCode.E) && !coolDownTaste)
+            {
+                // Daca pun tasta E , intra in DropTool. daca las orice alta tasta.. NU
+                DropTool();
+            }
+        
     }
 
+    void ResetCooldown()
+    {
+        coolDownTaste = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -50,44 +63,54 @@ public class EquipObjectToHand : MonoBehaviour
 
     void EquipTool()
     {
-        if(equippedTool == null)
+        if (equippedTool == null)
         {
-            // instantiem galeata la pct definit de noi equip point
-
             equippedTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
-            equippedTool.transform.SetParent(equipPoint);
-            Debug.Log($"Unealta de tip {toolData.toolName} a fost echipata...");
+            equippedTool.transform.SetParent(equipPoint); // Atașăm unealta la punctul de echipare
+            Debug.Log($"Unealta de tip {toolData.toolName} a fost echipată!");
 
-            if(inventory != null)
+            if (inventory != null)
             {
-                inventory.AddToolToSlot(toolData);
+                inventory.AddToolToSlot(toolData); // Adăugăm unealta în inventar
+                Debug.Log($"Unealta {toolData.toolName} a fost adăugată în inventar.");
             }
 
-            gameObject.SetActive(false);
-        }
+            // Actualizează ToolData pentru noua instanță (dacă e necesar)
+            toolData.toolPrefab = equippedTool; // Asociem clona ca prefab activ
 
+            gameObject.SetActive(false); // Dezactivăm obiectul original
+        }
         else
         {
-            Debug.Log("Galeata este deja echipata");
+            Debug.Log("Unealta este deja echipată.");
         }
     }
 
     void DropTool()
     {
-        if(equippedTool != null)
+        if (equippedTool != null)
         {
-            equippedTool.transform.SetParent(null);
+            // Determinăm poziția de drop
+            Vector3 dropPosition = transform.position;
+            dropPosition.y -= 2f;
 
-            if(inventory != null)
+            // Instanțiază unealta pe jos
+            Instantiate(equippedTool, dropPosition, Quaternion.identity);
+            Debug.Log($"Unealta {toolData.toolName} a fost pusă jos!");
+
+            // Eliminăm unealta din inventar
+            if (inventory != null)
             {
                 inventory.RemoveToolFromSlot(toolData);
+                Debug.Log($"Unealta {toolData.toolName} a fost eliminată din inventar.");
             }
 
-            Instantiate(toolData.toolPrefab, equipPoint.position, Quaternion.identity);
-            Debug.Log($"{toolData.toolName} a fost pusa jos!");
-
-            equippedTool = null;
+            Destroy(equippedTool); // Elimină instanța echipată
+            equippedTool = null;  // Resetăm referința
+        }
+        else
+        {
+            Debug.LogWarning("Nu ai nicio unealtă echipată pentru a o da jos!");
         }
     }
-
 }
