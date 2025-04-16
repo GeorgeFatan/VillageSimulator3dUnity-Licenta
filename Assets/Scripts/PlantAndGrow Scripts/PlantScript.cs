@@ -242,10 +242,25 @@ public class PlantScript : MonoBehaviour
     }
 
     void WaterPlants()
-    {
+    { 
+        // ref la StBucket
+        StBucket equippedBucket = FindObjectOfType<StBucket>();
+        if (equippedBucket != null)
+        {
+            Debug.LogWarning("Nu ai o galeata echipata pentru a uda plantele..!!!");
+            return;
+        }
+
+        if (!equippedBucket.isFull)
+        {
+            Debug.Log("Galeata este goala.. umple galeata inainte de a uda plantele...");
+            return;
+        }
+
         if (selectedPlantData != null && !selectedPlantData.isWatered)
         {
             selectedPlantData.isWatered = true;
+            equippedBucket.GolireGaleata(); // golim galeata dupa ce udam..
             Debug.Log($"Planta {selectedPlantData.plantName} a fost udata!");
         }
         else

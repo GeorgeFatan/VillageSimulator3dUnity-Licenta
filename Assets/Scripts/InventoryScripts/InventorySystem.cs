@@ -112,4 +112,17 @@ public class InventorySystem : MonoBehaviour
         }
         return false;
     }
+
+    public bool ContainsTool(ToolData toolData)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            // Verificam daca textura din slot este aceeasi cu textura uneltei
+            if (slot.slotImage.texture == toolData.toolTexture)
+            {
+                return true; // Unealta exista in inventar
+            }
+        }
+        return false; // Unealta nu exista in inventar
+    }
 }

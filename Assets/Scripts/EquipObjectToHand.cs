@@ -1,42 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class EquipObjectToHand : MonoBehaviour
 {
-    public ToolData toolData; // ref la toolData
-    public Transform equipPoint;
-    public GameObject equippedTool; // ref la unealta echipata
-    private bool isPlayerNearby = false;
-    private InventorySystem inventory; // ref la inventory system
+    public ToolData toolData; // Referinta la ToolData
+    public Transform equipPoint; // Punctul de echipare
+    public Transform playerTransform; // Referinta la pozitia playerului
+    private InventorySystem inventory; // Referinta la sistemul de inventar
 
-
-    // sper sa mearga
+    private List<GameObject> toolsOnTerrain = new List<GameObject>(); // Lista pentru galetile puse jos
+    private bool isPlayerNearby = false; // Trigger pentru interactiune
     private bool coolDownTaste = false;
     private float coolDownTasteTime = 1.0f;
 
-
     void Start()
     {
-        inventory = FindObjectOfType<InventorySystem>();
+        inventory = FindObjectOfType<InventorySystem>(); // Gasim inventarul automat
     }
 
     void Update()
     {
-       
-            if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !coolDownTaste)
-            {
-                EquipTool();
-                coolDownTaste = true;
-                Invoke(nameof(ResetCooldown), coolDownTasteTime);
-            }
+        // Interactam cu galeata principala pentru a genera o clona
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !coolDownTaste)
+        {
+            EquipTool();
+            coolDownTaste = true;
+            Invoke(nameof(ResetCooldown), coolDownTasteTime);
+        }
 
-            if (equippedTool != null && Input.GetKeyDown(KeyCode.E) && !coolDownTaste)
-            {
-                // Daca pun tasta E , intra in DropTool. daca las orice alta tasta.. NU
-                DropTool();
-            }
-        
+        // Punem jos ultima galeata echipata daca apasam Q
+        if (Input.GetKeyDown(KeyCode.Q) && !coolDownTaste)
+        {
+            DropTool();
+            coolDownTaste = true;
+            Invoke(nameof(ResetCooldown), coolDownTasteTime);
+        }
     }
 
     void ResetCooldown()
@@ -46,15 +47,17 @@ public class EquipObjectToHand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Playerul intra in triggerul galetii principale
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
-            Debug.Log("Apasa pe E pentru a lua galeata de jos..");
+            Debug.Log("Apasa pe E pentru a lua o galeata...");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        // Playerul iese din trigger
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
@@ -63,54 +66,59 @@ public class EquipObjectToHand : MonoBehaviour
 
     void EquipTool()
     {
-        if (equippedTool == null)
+        // Generam o clona noua din galeata principala
+        GameObject newTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
+        newTool.transform.SetParent(equipPoint); // Atasam galeata la punctul de echipare
+
+        Debug.Log($"Galeata clonata de tip {toolData.toolName} a fost echipata!");
+
+        // Adaugam scriptul EquippedTool pe unealta clonata
+        EquippedTool handlerEquippedTool = newTool.AddComponent<EquippedTool>();
+        handlerEquippedTool.Initialize(toolData, equipPoint, playerTransform, inventory);
+
+        // Script pentru starea galetii goala sau plina
+        StBucket bucketScript = newTool.AddComponent<StBucket>();
+        Debug.Log("Scriptul Bucket a fost atasat automat galetii clonate.");
+
+        // Adaugam un collider pentru detectarea obiectului clonat
+        BoxCollider boxCollider = newTool.AddComponent<BoxCollider>();
+        boxCollider.isTrigger = true;
+        boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+
+        Debug.Log("Collider-ul trigger a fost configurat pentru galeata clonata.");
+
+        // Adaugam galeata in inventar
+        if (inventory != null)
         {
-            equippedTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
-            equippedTool.transform.SetParent(equipPoint); // Atașăm unealta la punctul de echipare
-            Debug.Log($"Unealta de tip {toolData.toolName} a fost echipată!");
-
-            if (inventory != null)
-            {
-                inventory.AddToolToSlot(toolData); // Adăugăm unealta în inventar
-                Debug.Log($"Unealta {toolData.toolName} a fost adăugată în inventar.");
-            }
-
-            // Actualizează ToolData pentru noua instanță (dacă e necesar)
-            toolData.toolPrefab = equippedTool; // Asociem clona ca prefab activ
-
-            gameObject.SetActive(false); // Dezactivăm obiectul original
-        }
-        else
-        {
-            Debug.Log("Unealta este deja echipată.");
+            inventory.AddToolToSlot(toolData);
+            Debug.Log($"Unealta de tipul {toolData.toolName} a fost adaugata in inventar.");
         }
     }
 
     void DropTool()
     {
-        if (equippedTool != null)
+        // Verificam daca exista o galeata echipata
+        if (equipPoint.childCount > 0)
         {
-            // Determinăm poziția de drop
-            Vector3 dropPosition = transform.position;
-            dropPosition.y -= 2f;
+            GameObject toolToDrop = equipPoint.GetChild(0).gameObject; // Ultima galeata echipata
+            toolToDrop.transform.SetParent(null); // Eliminam parent-ul
+            toolToDrop.transform.position = playerTransform.position; // Mutam pe jos la pozitia playerului
 
-            // Instanțiază unealta pe jos
-            Instantiate(equippedTool, dropPosition, Quaternion.identity);
-            Debug.Log($"Unealta {toolData.toolName} a fost pusă jos!");
+            // setam sa punem tool-ul in picioare (rotatie = 0 0 0 )
+            transform.rotation = Quaternion.Euler(0, 0, 0);
 
-            // Eliminăm unealta din inventar
+            Debug.Log($"Galeata de tip {toolData.toolName} a fost plasata pe jos la pozitia {playerTransform.position}.");
+
+            // Eliminam galeata din inventar
             if (inventory != null)
             {
                 inventory.RemoveToolFromSlot(toolData);
-                Debug.Log($"Unealta {toolData.toolName} a fost eliminată din inventar.");
+                Debug.Log($"Galeata {toolData.toolName} a fost eliminata din inventar.");
             }
-
-            Destroy(equippedTool); // Elimină instanța echipată
-            equippedTool = null;  // Resetăm referința
         }
         else
         {
-            Debug.LogWarning("Nu ai nicio unealtă echipată pentru a o da jos!");
+            Debug.LogWarning("Nu exista o galeata echipata pentru a o pune jos!");
         }
     }
 }
