@@ -242,10 +242,36 @@ public class PlantScript : MonoBehaviour
     }
 
     void WaterPlants()
-    { 
-        // ref la StBucket
-        StBucket equippedBucket = FindObjectOfType<StBucket>();
-        if (equippedBucket != null)
+    {
+        // Obținem referința la obiectul Player folosind tag-ul
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null)
+        {
+            Debug.LogError("Player-ul nu a fost gasit! Verifica daca obiectul Player are tag-ul 'Player'.");
+            return;
+        }
+
+        // Căutăm "EquipPoint" în toată ierarhia obiectului Player
+        Transform equipPoint = null;
+        foreach (Transform child in playerObj.GetComponentsInChildren<Transform>())
+        {
+            if (child.name == "EquipPoint")
+            {
+                equipPoint = child;
+                break;
+            }
+        }
+
+        if (equipPoint == null)
+        {
+            Debug.LogError("EquipPoint nu a fost gasit! Asigura-te ca obiectul EquipPoint exista in ierarhia Player-ului.");
+            return;
+        }
+
+        // Căutăm scriptul StBucket pe găleata echipată
+        StBucket equippedBucket = equipPoint.childCount > 0 ? equipPoint.GetChild(0).GetComponent<StBucket>() : null;
+
+        if (equippedBucket == null)
         {
             Debug.LogWarning("Nu ai o galeata echipata pentru a uda plantele..!!!");
             return;
@@ -259,8 +285,8 @@ public class PlantScript : MonoBehaviour
 
         if (selectedPlantData != null && !selectedPlantData.isWatered)
         {
-            selectedPlantData.isWatered = true;
-            equippedBucket.GolireGaleata(); // golim galeata dupa ce udam..
+            selectedPlantData.isWatered = true; // Udăm planta
+            equippedBucket.GolireGaleata(); // Golim găleata după udare
             Debug.Log($"Planta {selectedPlantData.plantName} a fost udata!");
         }
         else

@@ -36,7 +36,7 @@ public class EquippedTool : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
-            Debug.Log($"Apasa pe tasta e pentru a echipa unealta de tip {toolData.name}");
+           
         }
     }
     private void OnTriggerExit(Collider other)
@@ -67,6 +67,7 @@ public class EquippedTool : MonoBehaviour
         }
         //dezactivam colideru ???
         GetComponent<Collider>().enabled = false;
+        
     }
 
     void DropTool()
