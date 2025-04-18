@@ -29,71 +29,61 @@ public class InventorySystem : MonoBehaviour
     {
         if (index >= 0 && index < inventorySlots.Count)
         {
-            currentSlot = index; // Actualizăm slotul selectat
+            currentSlot = index; // Actualizam slotul 
             Debug.Log($"Slot-ul {index + 1} a fost selectat.");
 
-            // Verificăm dacă există un tool echipat în inventar
-            if (equippedTool != null)
+            // Verificam daca exista un tool echipat in inventar
+            if (equippedTool != null)   
             {
                 StBucket bucketScript = equippedTool.GetComponent<StBucket>();
                 if (bucketScript != null)
                 {
-                    Debug.Log($"Slot asociat găleții: {bucketScript.assignedSlot}");
-                    Debug.Log($"Slotul selectat: {currentSlot}");
-
-                    // Activăm sau dezactivăm găleata echipată
-                    if (bucketScript.assignedSlot == currentSlot)
+                    if(bucketScript.assignedSlot != -1)
                     {
-                        equippedTool.SetActive(true); // Activăm găleata echipată
-                        Debug.Log($"Galeata echipată este activată pe slotul {currentSlot + 1}.");
+                        Debug.Log($"Slot asociat galetii: {bucketScript.assignedSlot}");
+                        Debug.Log($"Slotul selectat: {currentSlot}");
+                        // Activăm sau dezactivăm găleata echipată
+                        if (bucketScript.assignedSlot == currentSlot)
+                        {
+                            equippedTool.SetActive(true); // Activăm găleata echipată
+                            Debug.Log($"Galeata echipată este activată pe slotul {currentSlot + 1}.");
+                        }
+                        else
+                        {
+                            equippedTool.SetActive(false); // Dezactivăm găleata echipată
+                            Debug.Log($"Galeata echipată nu este pe slotul {currentSlot + 1}. A fost dezactivată.");
+                        }
                     }
                     else
                     {
-                        equippedTool.SetActive(false); // Dezactivăm găleata echipată
-                        Debug.Log($"Galeata echipată nu este pe slotul {currentSlot + 1}. A fost dezactivată.");
+                        Debug.LogWarning("Scriptul StBucket lipsește pe tool-ul echipat!");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning("Scriptul StBucket lipsește pe tool-ul echipat!");
+                    Debug.Log("Nu există niciun tool echipat. Obiectele din scenă nu sunt afectate.");
                 }
             }
+
             else
             {
-                Debug.Log("Nu există niciun tool echipat. Obiectele din scenă nu sunt afectate.");
+                Debug.LogWarning($"Indexul slotului selectat ({index}) este invalid!");
             }
         }
-        else
-        {
-            Debug.LogWarning($"Indexul slotului selectat ({index}) este invalid!");
-        }
+           
     }
 
-    public void EquipTool(GameObject toolPrefab, int slotID)
+    public int GetFirstAvailbleSlot()
     {
-        if (equipPoint == null)
+        for(int i = 0; i<inventorySlots.Count; i++)
         {
-            Debug.LogError("EquipPoint nu este configurat! Asociază-l în Inspector.");
-            return;
+            if (inventorySlots[i].slotImage.texture == null)
+            {
+                return i; // returnam index pt primu slot liber
+            }
         }
-
-        // Instanțierea găleții (echipare)
-        GameObject newTool = Instantiate(toolPrefab, equipPoint.position, equipPoint.rotation);
-        newTool.transform.SetParent(equipPoint);
-
-        equippedTool = newTool; // Actualizăm tool-ul echipat
-        Debug.Log($"Tool echipat: {equippedTool.name}");
-
-        StBucket bucketScript = equippedTool.GetComponent<StBucket>();
-        if (bucketScript != null)
-        {
-            bucketScript.assignedSlot = slotID; // Asociem slotul curent
-            Debug.Log($"Galeata a fost asociată cu slotul {slotID + 1}.");
-        }
-        else
-        {
-            Debug.LogWarning("Tool-ul echipat nu are un script StBucket atașat!");
-        }
+        Debug.LogWarning("Nu exista slot-uri libere.. inventarul este plin..");
+        return -1;
     }
 
     public void AddItemToSlot(PlantData plantData)
