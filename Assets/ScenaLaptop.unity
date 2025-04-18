@@ -9041,6 +9041,9 @@ MonoBehaviour:
     itemCountText: {fileID: 1170132314}
     itemCount: 0
   maxItemsPerSlot: 12
+  currentSlot: 0
+  equippedTool: {fileID: 0}
+  equipPoint: {fileID: 1209519809}
 --- !u!1 &1550082862
 GameObject:
   m_ObjectHideFlags: 0

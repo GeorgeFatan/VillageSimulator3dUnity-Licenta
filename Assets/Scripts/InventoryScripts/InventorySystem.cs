@@ -5,8 +5,97 @@ public class InventorySystem : MonoBehaviour
 {
     public List<InventorySlot> inventorySlots; // Lista sloturilor de inventar
     public int maxItemsPerSlot = 12; // Nr maxim de iteme per slot
+    public int currentSlot = 0;
+    public GameObject equippedTool;
+    public Transform equipPoint;
 
-  
+    void Update()
+    {
+        HandleSlotSelection(); // Gestionăm schimbarea sloturilor
+    }
+
+
+
+    void HandleSlotSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectSlot(0); } // Slot 1
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectSlot(1); } // Slot 2
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectSlot(2); } // Slot 3
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); } // Slot 4
+    }
+
+
+    void SelectSlot(int index)
+    {
+        if (index >= 0 && index < inventorySlots.Count)
+        {
+            currentSlot = index; // Actualizăm slotul selectat
+            Debug.Log($"Slot-ul {index + 1} a fost selectat.");
+
+            // Verificăm dacă există un tool echipat în inventar
+            if (equippedTool != null)
+            {
+                StBucket bucketScript = equippedTool.GetComponent<StBucket>();
+                if (bucketScript != null)
+                {
+                    Debug.Log($"Slot asociat găleții: {bucketScript.assignedSlot}");
+                    Debug.Log($"Slotul selectat: {currentSlot}");
+
+                    // Activăm sau dezactivăm găleata echipată
+                    if (bucketScript.assignedSlot == currentSlot)
+                    {
+                        equippedTool.SetActive(true); // Activăm găleata echipată
+                        Debug.Log($"Galeata echipată este activată pe slotul {currentSlot + 1}.");
+                    }
+                    else
+                    {
+                        equippedTool.SetActive(false); // Dezactivăm găleata echipată
+                        Debug.Log($"Galeata echipată nu este pe slotul {currentSlot + 1}. A fost dezactivată.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Scriptul StBucket lipsește pe tool-ul echipat!");
+                }
+            }
+            else
+            {
+                Debug.Log("Nu există niciun tool echipat. Obiectele din scenă nu sunt afectate.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Indexul slotului selectat ({index}) este invalid!");
+        }
+    }
+
+    public void EquipTool(GameObject toolPrefab, int slotID)
+    {
+        if (equipPoint == null)
+        {
+            Debug.LogError("EquipPoint nu este configurat! Asociază-l în Inspector.");
+            return;
+        }
+
+        // Instanțierea găleții (echipare)
+        GameObject newTool = Instantiate(toolPrefab, equipPoint.position, equipPoint.rotation);
+        newTool.transform.SetParent(equipPoint);
+
+        equippedTool = newTool; // Actualizăm tool-ul echipat
+        Debug.Log($"Tool echipat: {equippedTool.name}");
+
+        StBucket bucketScript = equippedTool.GetComponent<StBucket>();
+        if (bucketScript != null)
+        {
+            bucketScript.assignedSlot = slotID; // Asociem slotul curent
+            Debug.Log($"Galeata a fost asociată cu slotul {slotID + 1}.");
+        }
+        else
+        {
+            Debug.LogWarning("Tool-ul echipat nu are un script StBucket atașat!");
+        }
+    }
+
     public void AddItemToSlot(PlantData plantData)
     {
         if (plantData == null || plantData.plantTexture == null)

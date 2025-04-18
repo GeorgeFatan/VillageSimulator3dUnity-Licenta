@@ -70,6 +70,7 @@ public class EquipObjectToHand : MonoBehaviour
         GameObject newTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
         newTool.transform.SetParent(equipPoint); // Atasam galeata la punctul de echipare
 
+
         Debug.Log($"Galeata clonata de tip {toolData.toolName} a fost echipata!");
 
         // Adaugam scriptul EquippedTool pe unealta clonata
@@ -87,11 +88,17 @@ public class EquipObjectToHand : MonoBehaviour
 
         Debug.Log("Collider-ul trigger a fost configurat pentru galeata clonata.");
 
-        // Adaugam galeata in inventar
+        // Adaugam tool-ul in inventar
         if (inventory != null)
         {
             inventory.AddToolToSlot(toolData);
             Debug.Log($"Unealta de tipul {toolData.toolName} a fost adaugata in inventar.");
+        }
+
+        //adaugam tool-ul la slot-ul din inventar. (practic la EquippedTool ca sa putem dezactiva activa cand apasam pe slot-uri diferite)
+        if(inventory != null)
+        {
+            inventory.equippedTool = newTool;
         }
     }
 

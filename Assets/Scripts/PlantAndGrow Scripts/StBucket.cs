@@ -5,7 +5,7 @@ using UnityEngine;
 public class StBucket : MonoBehaviour
 {
     public bool isFull = false;
-
+    public int assignedSlot;
     public void UmplereGaleata()
     { 
         isFull = true;
