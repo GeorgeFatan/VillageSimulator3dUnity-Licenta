@@ -7,6 +7,7 @@ public class PlantData : ScriptableObject
     public Texture plantTexture;
     public Texture seedTexture;
     public GameObject[] growthStages; // cele 3 stagii de crestere
+    public int plantPrice;
 
     // semintele
     public string seedName;

@@ -8,21 +8,37 @@ public class InventorySlot
     public Text itemCountText; // Textul care afiseaza numarul de obiecte
     private Texture itemTexture; 
     public int itemCount = 0; // Nr curent de obiecte în slot
-
-    // Metodata pentru setarea unui item
-    public void SetItem(Texture texture, int count)
+    public PlantData plantData; // ref la PlantData
+    public ToolData toolData; // ref la ToolData
+    public void SetItem(Texture texture, int count, PlantData refPlant = null, ToolData refTool = null)
     {
         itemTexture = texture;
         itemCount = count;
-
-        if (slotImage != null)
+        if (refPlant != null)
         {
-            slotImage.texture = texture; // Update imaginea in UI
-            Debug.Log($"Textura {texture.name} a fost setata in slot.");
+            plantData = refPlant;
+            toolData = null;
         }
-        else
+        else if(refTool != null)
         {
-            Debug.LogError("Slot Image nu este configurat corect in Inspector!");
+            toolData = refTool;
+            plantData = null;  
+        }
+        if(slotImage != null)
+        {
+            slotImage.texture = texture; // Update la imagine din slot
+            if(refPlant != null)
+            {
+                Debug.Log($"Leguma recoltata de tipul {refPlant.plantName} a fost pusa intr-un slot liber ");
+            }
+            else if(refTool != null)
+            {
+                Debug.Log($"Unealta de tipul {refTool.toolName} a fost pusa intr-un slot liber..");
+            }
+            else
+            {
+                Debug.LogError("Slot image nu este configurat corect in Inspector..");
+            }
         }
 
         UpdateItemCountText();
@@ -55,6 +71,8 @@ public class InventorySlot
     {
         itemTexture = null; // Reset textura
         itemCount = 0; // Reset nr de iteme
+        plantData = null;
+        toolData = null;
 
         if (slotImage != null)
         {

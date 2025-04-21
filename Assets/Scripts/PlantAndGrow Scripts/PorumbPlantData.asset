@@ -19,4 +19,6 @@ MonoBehaviour:
   - {fileID: 1030971918, guid: a5f09e2480e71974fac99b31f196540a, type: 3}
   - {fileID: 1030971909, guid: 86d81be581cd3854cba200e97720aafb, type: 3}
   - {fileID: 1030971891, guid: 928514a437384414eb2077167bfafd97, type: 3}
+  plantPrice: 15
   seedName: PorumbSeed
+  isWatered: 0
