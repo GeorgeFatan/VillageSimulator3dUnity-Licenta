@@ -9019,31 +9019,48 @@ MonoBehaviour:
   - slotImage: {fileID: 991863067}
     itemCountText: {fileID: 2042884680}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 2124484180}
     itemCountText: {fileID: 147434386}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 957617683}
     itemCountText: {fileID: 520954483}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 1327699960}
     itemCountText: {fileID: 2084257931}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 1596726341}
     itemCountText: {fileID: 251116445}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 1978648561}
     itemCountText: {fileID: 711945404}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 1836579696}
     itemCountText: {fileID: 1578117627}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   - slotImage: {fileID: 842485296}
     itemCountText: {fileID: 1170132314}
     itemCount: 0
+    plantData: {fileID: 0}
+    toolData: {fileID: 0}
   maxItemsPerSlot: 12
   currentSlot: 0
   equippedTool: {fileID: 0}
   equipPoint: {fileID: 1209519809}
+  plantData: {fileID: 0}
 --- !u!1 &1550082862
 GameObject:
   m_ObjectHideFlags: 0
@@ -36699,7 +36716,7 @@ Transform:
   m_GameObject: {fileID: 8613554235765202157}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 477.63696, y: -0.000004053116, z: 292.67358}
+  m_LocalPosition: {x: 481.75, y: -0.000004053116, z: 313.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
