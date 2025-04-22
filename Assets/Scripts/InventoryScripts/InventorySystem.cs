@@ -43,26 +43,26 @@ public class InventorySystem : MonoBehaviour
                     {
                         Debug.Log($"Slot asociat galetii: {bucketScript.assignedSlot}");
                         Debug.Log($"Slotul selectat: {currentSlot}");
-                        // Activăm sau dezactivăm găleata echipată
+                        
                         if (bucketScript.assignedSlot == currentSlot)
                         {
-                            equippedTool.SetActive(true); // Activăm găleata echipată
-                            Debug.Log($"Galeata echipată este activată pe slotul {currentSlot + 1}.");
+                            equippedTool.SetActive(true); 
+                            Debug.Log($"Galeata echipata este vizibila pe slotul {currentSlot + 1}.");
                         }
                         else
                         {
-                            equippedTool.SetActive(false); // Dezactivăm găleata echipată
-                            Debug.Log($"Galeata echipată nu este pe slotul {currentSlot + 1}. A fost dezactivată.");
+                            equippedTool.SetActive(false);
+                            Debug.Log($"Galeata echipata nu este pe slotul {currentSlot + 1}. A fost ascunsa.");
                         }
                     }
                     else
                     {
-                        Debug.LogWarning("Scriptul StBucket lipsește pe tool-ul echipat!");
+                        Debug.LogWarning("Scriptul StBucket lipseste pe tool-ul echipat!");
                     }
                 }
                 else
                 {
-                    Debug.Log("Nu există niciun tool echipat. Obiectele din scenă nu sunt afectate.");
+                    Debug.Log("Nu exista niciun tool echipat.");
                 }
             }
 
