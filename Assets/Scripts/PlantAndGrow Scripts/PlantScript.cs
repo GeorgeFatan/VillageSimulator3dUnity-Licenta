@@ -156,41 +156,31 @@ public class PlantScript : MonoBehaviour
 
     void SapaCubes()
     {
-        // Ref la obiectul Player folosind tag-ul
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj == null)
-        {
-            Debug.LogError("Player-ul nu a fost gasit!");
-            return;
-        }
-
         
-        Transform equipHarletPoint = null;
-        foreach (Transform child in playerObj.GetComponentsInChildren<Transform>())
-        {
-            if (child.name == "EquipHarletPoint") // Punctul de echipare pentru Harlet
-            {
-                equipHarletPoint = child;
-                break;
-            }
-        }
+        Transform equipHarletPoint = GameObject.Find("EquipHarletPoint")?.transform;
         if (equipHarletPoint == null)
         {
-            Debug.LogError("EquipHarletPoint nu a fost gasit!");
+            Debug.LogError("EquipHarletPoint nu a fost gasit in ierarhie!");
             return;
         }
 
-        // verificam daca exista un tool de tipul harlet
+        // Verif daca exista un tool de tip Harlet echipat
         EquippedTool equippedSpade = equipHarletPoint.childCount > 0 ? equipHarletPoint.GetChild(0).GetComponent<EquippedTool>() : null;
 
         if (equippedSpade == null || equippedSpade.toolData.toolName != "Spade")
         {
-            Debug.LogWarning("Nu ai echipat un Harlet pentru a putea sapa cuburile!!!");
+            Debug.LogWarning("Nu ai echipat un Harlet pentru a putea sapa cuburile!");
             return;
         }
 
-        // Logica de identificare si modificare a cuburilor
-        Vector3 playerXZ = new Vector3(playerObj.transform.position.x, 0, playerObj.transform.position.z);
+        // cel mai apropiat cub valid sub jucător
+        if (playerTransform == null)
+        {
+            Debug.LogError("Transformul player-ului nu este setat!");
+            return;
+        }
+
+        Vector3 playerXZ = new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
         GameObject closestCube = null;
         float minDistance = Mathf.Infinity;
 
@@ -202,28 +192,33 @@ public class PlantScript : MonoBehaviour
             if (distance < 0.6f && distance < minDistance)
             {
                 StCubes soilCube = currentCube.GetComponent<StCubes>();
-                if (soilCube != null && soilCube.stareCurenta == StCubes.StareCuburi.Planted) // Verificăm starea cubului
+                if (soilCube != null && soilCube.stareCurenta == StCubes.StareCuburi.Planted)
                 {
                     closestCube = currentCube;
                     minDistance = distance;
                 }
             }
         }
-
+        
+        // efectuam saparea daca am gasit un cub valid 
         if (closestCube != null)
         {
             StCubes soilCube = closestCube.GetComponent<StCubes>();
-            if(soilCube.currentWeebOnCube != null)
+
+            // Distrugem buruienile existente 
+            if (soilCube.currentWeebOnCube != null)
             {
                 Destroy(soilCube.currentWeebOnCube);
                 soilCube.currentWeebOnCube = null;
             }
+
+            // Reset la starea de ReadyToPlant
             soilCube.ResetStare();
             Debug.Log($"Cubul {soilCube.gameObject.name} a fost sapat si este acum in starea ReadyToPlant.");
         }
         else
         {
-            Debug.LogWarning("Nu exista niciun cub valid sub player pentru a fi sapat.");
+            Debug.LogWarning("Nu exista niciun cub valid sub jucator pentru sapare.");
         }
     }
 
