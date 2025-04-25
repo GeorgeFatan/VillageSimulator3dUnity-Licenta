@@ -42,7 +42,7 @@ public class PickUpScript : MonoBehaviour
             associatedCube.ResetStare();
             Debug.Log($"Cubul {associatedCube.gameObject.name} a fost resetat la starea ReadyToPlant..");
         }
-        else 
+        else
         {
             Debug.LogError("Cubul asociat nu a fost setat!");
         }
@@ -66,7 +66,7 @@ public class PickUpScript : MonoBehaviour
                     {
                         inventory.AddItemToSlot(plantData); // Adaugam leguma intr-un slot din inventar
 
-                        ResetSoilCube(); 
+                        ResetSoilCube();
                         Destroy(gameObject);
 
                         Debug.Log($"{plantData.plantName} a fost recoltata si cubul a fost resetat!");
