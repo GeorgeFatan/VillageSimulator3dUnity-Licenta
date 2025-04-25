@@ -19,6 +19,4 @@ MonoBehaviour:
   - {fileID: 1030972080, guid: 4d446da144353d849a15441f7176febb, type: 3}
   - {fileID: 1030972062, guid: c93d93e7cb88c274e944eb3bac5c9267, type: 3}
   - {fileID: 1030972053, guid: a1abcbef1bb4633488208f687aa27de4, type: 3}
-  plantPrice: 5
   seedName: rosiiSeeds
-  isWatered: 1

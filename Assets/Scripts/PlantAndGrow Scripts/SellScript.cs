@@ -28,33 +28,26 @@ public class SellScript : MonoBehaviour
     {
         if (selectedSlotIndex >= 0 && selectedSlotIndex < inventorySystem.inventorySlots.Count)
         {
-            InventorySlot selectedSlot = inventorySystem.inventorySlots[selectedSlotIndex];
+            InventorySlot selectedSlot = inventorySystem.inventorySlots[selectedSlotIndex]; 
 
-            if (selectedSlot != null && selectedSlot.itemCount > 0)
+            if (selectedSlot != null && selectedSlot.itemCount > 0) 
             {
-                // Verificăm dacă slotul conține un obiect de tip PlantData
-                if (selectedSlot.plantData != null)
-                {
-                    int totalItems = selectedSlot.itemCount;
-                    int pretPerItem = selectedSlot.plantData.plantPrice; // Prețul din PlantData
-                    int baniCastigati = totalItems * pretPerItem;
+                int totalItems = selectedSlot.itemCount;
+                int baniCastigati = totalItems * pretPerItem;
 
-                    playerMoney += baniCastigati;
+               
+                playerMoney += baniCastigati;
 
-                    // Resetăm doar dacă este o legumă
-                    selectedSlot.ClearSlot();
+                // reset slot 
+                selectedSlot.ClearSlot();
 
-                    UpdateMoneyDisplay();
-                    Debug.Log($"Ai vândut {totalItems} {selectedSlot.plantData.plantName} pentru {baniCastigati} bani! Total bani: {playerMoney}");
-                }
-                else
-                {
-                    Debug.LogWarning("Nu poți vinde acest obiect! Doar legumele sunt acceptate.");
-                }
+                // apar bannii sus
+                UpdateMoneyDisplay();
+                Debug.Log($"Ai vandut {totalItems} legume pentru {baniCastigati} bani! Total bani: {playerMoney}");
             }
             else
             {
-                Debug.Log("Nu există legume în slotul selectat pentru a fi vândute!");
+                Debug.Log("Nu exista legume in slotul selectat pentru a fi vandute!");
             }
         }
         else

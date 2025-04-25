@@ -8,7 +8,6 @@ public class InventorySystem : MonoBehaviour
     public int currentSlot = 0;
     public GameObject equippedTool;
     public Transform equipPoint;
-    public PlantData plantData;
 
     void Update()
     {
@@ -109,7 +108,7 @@ public class InventorySystem : MonoBehaviour
         {
             if (slot.slotImage.texture == null)
             {
-                slot.SetItem(plantData.plantTexture, 1, plantData,null);
+                slot.SetItem(plantData.plantTexture, 1);
                 Debug.Log($"Item {plantData.plantName} adaugat intr-un slot nou.");
                 return;
             }
@@ -140,7 +139,7 @@ public class InventorySystem : MonoBehaviour
         {
             if (slot.slotImage.texture == null)
             {
-                slot.SetItem(toolData.toolTexture, 1, null, toolData);
+                slot.SetItem(toolData.toolTexture, 1);
                 Debug.Log($"Unealta {toolData.toolName} a fost adaugata in inventar.");
                 return;
             }
@@ -193,7 +192,7 @@ public class InventorySystem : MonoBehaviour
         return false;
     }
 
-   /* public bool ContainsTool(ToolData toolData)
+    public bool ContainsTool(ToolData toolData)
     {
         foreach (InventorySlot slot in inventorySlots)
         {
@@ -204,5 +203,5 @@ public class InventorySystem : MonoBehaviour
             }
         }
         return false; // Unealta nu exista in inventar
-    }*/
+    }
 }
