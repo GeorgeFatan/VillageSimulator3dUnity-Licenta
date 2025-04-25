@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &904883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -274,6 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &14454517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -393,6 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &20350223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -512,6 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &20629729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -717,6 +725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &59992069
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &88979927
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &88979929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1071,6 +1085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &100901038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1276,6 +1292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &112297609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &112297611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1428,6 +1448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &119976806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1547,6 +1569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &129454201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1666,6 +1690,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &137290208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1973,6 +1999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &147434384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &151928051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2204,6 +2234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &163419986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2543,6 +2575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &179706586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &187577734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &187577736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2908,6 +2946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &210561660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3113,6 +3153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &219054323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &241321213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,6 +3395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!64 &243594048
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3601,6 +3647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &255164628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3806,6 +3854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &349913516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,6 +3975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &366009091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,6 +4010,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &366009093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4077,6 +4131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &366173304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4196,6 +4252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &366224622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4315,6 +4373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &382486881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4520,6 +4580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &426543092
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,6 +4615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &426543094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4758,6 +4822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &467783164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,6 +4943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &493603770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4910,6 +4978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &493603772
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5115,6 +5185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &520954481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,6 +5424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &551683210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5471,6 +5545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &552972402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5724,6 +5800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &571155616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5977,6 +6055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &593525321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6096,6 +6176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &597557466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6215,6 +6297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &601296983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6334,6 +6418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &620864392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6671,6 +6757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &683542305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6704,6 +6792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &683542307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6823,6 +6913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &688559765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6942,6 +7034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &689016125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7045,7 +7139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &699063276
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7074,7 +7168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699063275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e9d6e82d0e9c77438cc65d04d116f29, type: 3}
   m_Name: 
@@ -7519,6 +7613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &736832558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7638,6 +7734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &754099326
 GameObject:
   m_ObjectHideFlags: 0
@@ -7757,6 +7855,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &758371869
 GameObject:
   m_ObjectHideFlags: 0
@@ -7876,6 +7976,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &779364581
 GameObject:
   m_ObjectHideFlags: 0
@@ -7995,6 +8097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &818282501
 GameObject:
   m_ObjectHideFlags: 0
@@ -8028,6 +8132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &818282503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8233,6 +8339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &842485294
 GameObject:
   m_ObjectHideFlags: 0
@@ -8424,6 +8532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &871071959
 GameObject:
   m_ObjectHideFlags: 0
@@ -8457,6 +8567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &871071961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9197,6 +9309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &991863065
 GameObject:
   m_ObjectHideFlags: 0
@@ -9578,6 +9692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1039739906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9783,6 +9899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1046851940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9918,6 +10036,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1064946546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10037,6 +10157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1097645110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10242,6 +10364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1124930486
 GameObject:
   m_ObjectHideFlags: 0
@@ -10275,6 +10399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1124930488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10480,6 +10606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1129969893
 GameObject:
   m_ObjectHideFlags: 0
@@ -10581,6 +10709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1141437760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10786,6 +10916,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1156808045
 GameObject:
   m_ObjectHideFlags: 0
@@ -10905,6 +11037,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1170132312
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,6 +11289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1173786904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11429,6 +11565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1190936092
 GameObject:
   m_ObjectHideFlags: 0
@@ -11462,6 +11600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1190936094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11667,6 +11807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1209519808
 GameObject:
   m_ObjectHideFlags: 0
@@ -11731,6 +11873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1229194508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11850,6 +11994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1243738755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11969,6 +12115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1272749087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12088,6 +12236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1285358588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12451,6 +12601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1299519028
 GameObject:
   m_ObjectHideFlags: 0
@@ -12570,6 +12722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1300608640
 GameObject:
   m_ObjectHideFlags: 0
@@ -12603,6 +12757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1300608642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12871,6 +13027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1341780222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13076,6 +13234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1425504502
 GameObject:
   m_ObjectHideFlags: 0
@@ -13254,6 +13414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1447507606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13408,6 +13570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1516230019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13765,6 +13929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1572233693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14124,6 +14290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1598927949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14243,6 +14411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1601777831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14362,6 +14532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1607897240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14567,6 +14739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1610475766
 GameObject:
   m_ObjectHideFlags: 0
@@ -15085,6 +15259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1649779584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15204,6 +15380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1662026524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15323,6 +15501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1667833447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15714,6 +15894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1683544257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16128,6 +16310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1751765363
 GameObject:
   m_ObjectHideFlags: 0
@@ -16247,6 +16431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1774561710
 GameObject:
   m_ObjectHideFlags: 0
@@ -16280,6 +16466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1774561712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16399,6 +16587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1787819935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16518,6 +16708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1796974040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16637,6 +16829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1804209812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16756,6 +16950,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1828375755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16947,6 +17143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1837776372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17066,6 +17264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1843193577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17185,6 +17385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1848797664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17381,6 +17583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1854384878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17586,6 +17790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1874412698
 GameObject:
   m_ObjectHideFlags: 0
@@ -17619,6 +17825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1874412700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17738,6 +17946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1891954025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17934,6 +18144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1895021046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18139,6 +18351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1918240540
 GameObject:
   m_ObjectHideFlags: 0
@@ -18242,6 +18456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1926783387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18361,6 +18577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1955852982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18566,6 +18784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1960655345
 GameObject:
   m_ObjectHideFlags: 0
@@ -18787,6 +19007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &1978648559
 GameObject:
   m_ObjectHideFlags: 0
@@ -18892,6 +19114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1988416587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19011,6 +19235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &1992462091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19096,6 +19322,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1610475767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1999332279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999332280}
+  m_Layer: 0
+  m_Name: EquipHarletPoint
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1999332280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999332279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6693120356666632593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2042884679
 GameObject:
@@ -19295,6 +19552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
+  currentWeebOnCube: {fileID: 0}
 --- !u!1 &2052201558
 GameObject:
   m_ObjectHideFlags: 0
@@ -19328,6 +19587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2052201560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19631,6 +19892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2101326978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19750,6 +20013,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2113669696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19869,6 +20134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2116078364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19988,6 +20255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2122564463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20179,6 +20448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stareCurenta: 2
+  weedPrefab: {fileID: 0}
+  currentWeebOnCube: {fileID: 0}
 --- !u!65 &2126175749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21643,6 +21914,8 @@ GameObject:
   - component: {fileID: 511878115655594277}
   - component: {fileID: 511878115655594274}
   - component: {fileID: 511878115655594275}
+  - component: {fileID: 511878115655594278}
+  - component: {fileID: 511878115655594279}
   m_Layer: 0
   m_Name: sapa
   m_TagString: Untagged
@@ -21658,13 +21931,49 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511878115655594276}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 489.57944, y: 0.42296618, z: 317.395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &511878115655594278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511878115655594276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59133b6c8bd45c6479a1854f2684a7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolData: {fileID: 11400000, guid: eac5e8afa16bdc54e9915ac31bbc0a80, type: 2}
+  equipHarletPoint: {fileID: 1999332280}
+  playerTransform: {fileID: 5853977223718054719}
+--- !u!65 &511878115655594279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511878115655594276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32, y: 1.34, z: 0.32}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &512122151505679539
 Transform:
   m_ObjectHideFlags: 0
@@ -38673,6 +38982,7 @@ Transform:
   - {fileID: 4114525542730126920}
   - {fileID: 3102951292313968644}
   - {fileID: 8038615823375358500}
+  - {fileID: 1999332280}
   m_Father: {fileID: 2803318977903823683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6703388604927608902

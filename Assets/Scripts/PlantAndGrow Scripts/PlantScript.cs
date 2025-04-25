@@ -14,7 +14,7 @@ public class PlantScript : MonoBehaviour
     public Animator playerAnimator;
     private bool isAnimating = false;
     public bool isPlayerInPlantingZone = false;
-    
+
     private PlantData selectedPlantData;
     private InventorySystem inventorySystem;
 
@@ -41,6 +41,12 @@ public class PlantScript : MonoBehaviour
                 Debug.LogError("Player-ul nu a fost gasit! Asigura-te ca are tag-ul 'Player'.");
             }
         }
+         // initializam lista cu cuburi
+        foreach (GameObject cube in GameObject.FindGameObjectsWithTag("SoilCube"))
+        {
+            soilCubes.Add(cube);
+        }
+
     }
 
     void Update()
@@ -66,8 +72,8 @@ public class PlantScript : MonoBehaviour
                 isAnimating = true;
                 PlayPlantingAnimation();
                 StartCoroutine(WaitForAnimation());
-               /* PlantOnCube();
-                inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);*/
+                /* PlantOnCube();
+                 inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);*/
             }
             else
             {
@@ -86,6 +92,13 @@ public class PlantScript : MonoBehaviour
             lastDaysPassed = timeController.daysPassed;
             AdvanceGrowthStage();
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            SapaCubes();
+            PlayDiggingAnimation();
+
+        }
     }
 
     // Corutina = multitasking = permite suspendarea si reluarea executiei.
@@ -96,7 +109,7 @@ public class PlantScript : MonoBehaviour
         PlantOnCube(); // Plasam prefabu dupa terminarea animatiei
         inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);
 
-        isAnimating=false;
+        isAnimating = false;
 
     }
 
@@ -125,6 +138,92 @@ public class PlantScript : MonoBehaviour
         else
         {
             Debug.LogWarning("Animatorul nu este setat!");
+        }
+    }
+
+    void PlayDiggingAnimation()
+    {
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("Digging");
+            Debug.Log("Animatia de sapat a fost declansata.");
+        }
+        else
+        {
+            Debug.LogWarning("Animatorul nu este setat!");
+        }
+    }
+
+    void SapaCubes()
+    {
+        // Ref la obiectul Player folosind tag-ul
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null)
+        {
+            Debug.LogError("Player-ul nu a fost gasit!");
+            return;
+        }
+
+        
+        Transform equipHarletPoint = null;
+        foreach (Transform child in playerObj.GetComponentsInChildren<Transform>())
+        {
+            if (child.name == "EquipHarletPoint") // Punctul de echipare pentru Harlet
+            {
+                equipHarletPoint = child;
+                break;
+            }
+        }
+        if (equipHarletPoint == null)
+        {
+            Debug.LogError("EquipHarletPoint nu a fost gasit!");
+            return;
+        }
+
+        // verificam daca exista un tool de tipul harlet
+        EquippedTool equippedSpade = equipHarletPoint.childCount > 0 ? equipHarletPoint.GetChild(0).GetComponent<EquippedTool>() : null;
+
+        if (equippedSpade == null || equippedSpade.toolData.toolName != "Spade")
+        {
+            Debug.LogWarning("Nu ai echipat un Harlet pentru a putea sapa cuburile!!!");
+            return;
+        }
+
+        // Logica de identificare si modificare a cuburilor
+        Vector3 playerXZ = new Vector3(playerObj.transform.position.x, 0, playerObj.transform.position.z);
+        GameObject closestCube = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject currentCube in soilCubes)
+        {
+            Vector3 cubeXZ = new Vector3(currentCube.transform.position.x, 0, currentCube.transform.position.z);
+            float distance = Vector3.Distance(playerXZ, cubeXZ);
+
+            if (distance < 0.6f && distance < minDistance)
+            {
+                StCubes soilCube = currentCube.GetComponent<StCubes>();
+                if (soilCube != null && soilCube.stareCurenta == StCubes.StareCuburi.Planted) // Verificăm starea cubului
+                {
+                    closestCube = currentCube;
+                    minDistance = distance;
+                }
+            }
+        }
+
+        if (closestCube != null)
+        {
+            StCubes soilCube = closestCube.GetComponent<StCubes>();
+            if(soilCube.currentWeebOnCube != null)
+            {
+                Destroy(soilCube.currentWeebOnCube);
+                soilCube.currentWeebOnCube = null;
+            }
+            soilCube.ResetStare();
+            Debug.Log($"Cubul {soilCube.gameObject.name} a fost sapat si este acum in starea ReadyToPlant.");
+        }
+        else
+        {
+            Debug.LogWarning("Nu exista niciun cub valid sub player pentru a fi sapat.");
         }
     }
 
@@ -261,28 +360,10 @@ public class PlantScript : MonoBehaviour
 
     void WaterPlants()
     {
-        // Obținem referința la obiectul Player folosind tag-ul
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj == null)
+        Transform equipPoint = GameObject.Find("EquipPoint")?.transform;
+        if(equipPoint == null)
         {
-            Debug.LogError("Player-ul nu a fost gasit! Verifica daca obiectul Player are tag-ul 'Player'.");
-            return;
-        }
-
-        // Căutăm "EquipPoint" în toată ierarhia obiectului Player
-        Transform equipPoint = null;
-        foreach (Transform child in playerObj.GetComponentsInChildren<Transform>())
-        {
-            if (child.name == "EquipPoint")
-            {
-                equipPoint = child;
-                break;
-            }
-        }
-
-        if (equipPoint == null)
-        {
-            Debug.LogError("EquipPoint nu a fost gasit! Asigura-te ca obiectul EquipPoint exista in ierarhia Player-ului.");
+            Debug.LogError("EquipPoint nu a fost gasit in iarahie");
             return;
         }
 

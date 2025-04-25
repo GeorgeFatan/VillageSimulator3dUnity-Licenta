@@ -2,13 +2,19 @@
 
 public class StCubes : MonoBehaviour
 {
-    public enum StareCuburi { Empty, Planted, ReadyToPlant}
+    public enum StareCuburi { Empty, Planted, ReadyToPlant, Weeds}
     public StareCuburi stareCurenta = StareCuburi.ReadyToPlant;
+    public GameObject weedPrefab; //ref la prefabu buruiana uscata
+    public GameObject currentWeebOnCube; // prefabu de buruiana care e pe un cub
     
     void Start()
     {
-        stareCurenta = StareCuburi.ReadyToPlant;
-        Debug.Log($"Cubul {gameObject.name} este pregatit pentru plantare.");
+        stareCurenta = StareCuburi.Planted;
+        if(weedPrefab != null)
+        {
+            currentWeebOnCube = Instantiate(weedPrefab,transform.position, Quaternion.identity);
+            currentWeebOnCube.transform.SetParent(transform);
+        }
     }
 
     public void ResetStare()
@@ -27,4 +33,5 @@ public class StCubes : MonoBehaviour
         stareCurenta = StareCuburi.Planted;
         Debug.Log($"Cubul {gameObject.name} este plantat.");
     }
+
 }

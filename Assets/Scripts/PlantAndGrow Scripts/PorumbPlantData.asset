@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 1030971891, guid: 928514a437384414eb2077167bfafd97, type: 3}
   plantPrice: 15
   seedName: PorumbSeed
-  isWatered: 0
+  isWatered: 1
