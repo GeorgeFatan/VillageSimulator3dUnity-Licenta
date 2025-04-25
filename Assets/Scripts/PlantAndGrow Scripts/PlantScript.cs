@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class PlantScript : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class PlantScript : MonoBehaviour
     private int lastDaysPassed = 0;
 
     public Animator playerAnimator;
+    private bool isAnimating = false;
     public bool isPlayerInPlantingZone = false;
-
+    
     private PlantData selectedPlantData;
     private InventorySystem inventorySystem;
 
@@ -43,7 +45,7 @@ public class PlantScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !isAnimating)
         {
             if (isPlayerInPlantingZone)
             {
@@ -61,9 +63,11 @@ public class PlantScript : MonoBehaviour
                     return;
                 }
 
+                isAnimating = true;
                 PlayPlantingAnimation();
-                PlantOnCube();
-                inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);
+                StartCoroutine(WaitForAnimation());
+               /* PlantOnCube();
+                inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);*/
             }
             else
             {
@@ -83,6 +87,20 @@ public class PlantScript : MonoBehaviour
             AdvanceGrowthStage();
         }
     }
+
+    // Corutina = multitasking = permite suspendarea si reluarea executiei.
+    IEnumerator WaitForAnimation()
+    {
+        float animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animationTime); // asteptam sa se termina animatia care este in desfasurare
+        PlantOnCube(); // Plasam prefabu dupa terminarea animatiei
+        inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);
+
+        isAnimating=false;
+
+    }
+
+
 
     void PlayPlantingAnimation()
     {
