@@ -6,10 +6,20 @@ using UnityEngine;
 public class SellScript : MonoBehaviour
 {
     public InventorySystem inventorySystem; 
-    public int pretPerItem = 10; 
-    private int playerMoney = 0; 
+    //public int pretPerItem = 10; 
+    public int playerMoney = 0; 
     public TextMeshProUGUI moneyText; 
-    public int selectedSlotIndex = 0;  
+    public int selectedSlotIndex = 0;
+    public static SellScript instantaBuyTerrain;
+
+    private void Awake()
+    {
+        if(instantaBuyTerrain == null)
+        {
+            instantaBuyTerrain = this;  // instanta globala (pentru a putea fi accesat in scriptu de buyTerrain)
+        }    
+    
+    }
 
     private void Update()
     {
@@ -63,7 +73,7 @@ public class SellScript : MonoBehaviour
         }
     }
 
-    void UpdateMoneyDisplay()
+   public void UpdateMoneyDisplay()
     {
         if (moneyText != null)
         {

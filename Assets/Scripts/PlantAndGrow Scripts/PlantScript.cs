@@ -41,10 +41,14 @@ public class PlantScript : MonoBehaviour
                 Debug.LogError("Player-ul nu a fost gasit! Asigura-te ca are tag-ul 'Player'.");
             }
         }
-         // initializam lista cu cuburi
-        foreach (GameObject cube in GameObject.FindGameObjectsWithTag("SoilCube"))
+        soilCubes.Clear();
+        // initializam lista cu cuburi
+        foreach (Transform child in transform)
         {
-            soilCubes.Add(cube);
+            if (child.CompareTag("SoilCube") && !soilCubes.Contains(child.gameObject)) 
+            {
+                soilCubes.Add(child.gameObject); // practic pentru fiecare teren cu plant script, avem cuburile copil ale sale.
+            }
         }
 
     }
@@ -350,7 +354,12 @@ public class PlantScript : MonoBehaviour
 
     public bool IsReadyToHarvest(GameObject plant)
     {
-        return selectedPlantData != null && currentStage == selectedPlantData.growthStages.Length - 1;
+        StCubes associatedCube = plant.GetComponent<PickUpScript>()?.associatedCube;
+
+        bool isCorrectCube = associatedCube != null && associatedCube.transform.parent == transform;
+        bool isFinalStage = selectedPlantData != null && currentStage == selectedPlantData.growthStages.Length - 1;
+
+        return isCorrectCube && isFinalStage;
     }
 
     void WaterPlants()

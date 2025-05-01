@@ -52,7 +52,7 @@ public class PickUpScript : MonoBehaviour
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E)) // Recoltam cu  tasta E
         {
-            PlantScript plantScript = FindObjectOfType<PlantScript>();
+            PlantScript plantScript = associatedCube?.GetComponentInParent<PlantScript>();
 
             // Verif daca planta este gata de recoltare
             if (plantScript != null && plantScript.IsReadyToHarvest(gameObject))
