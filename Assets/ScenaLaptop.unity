@@ -41535,7 +41535,7 @@ CharacterController:
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
-  m_Center: {x: 0.27, y: 0.93, z: 0.1}
+  m_Center: {x: 0.04, y: 0.93, z: 0.1}
 --- !u!1 &6529619573820541534
 GameObject:
   m_ObjectHideFlags: 0
@@ -46268,6 +46268,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7344056700490075952}
+  - component: {fileID: 7971516493189453197}
+  - component: {fileID: 7971516493189453196}
+  - component: {fileID: 7971516493189453195}
   m_Layer: 0
   m_Name: sura
   m_TagString: Untagged
@@ -46275,6 +46278,55 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7971516493189453195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971516493189453194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.44, y: 5.39, z: -9.91}
+  m_Center: {x: -19.64, y: 2.97, z: 44.95}
+--- !u!114 &7971516493189453196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971516493189453194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1309f9b2d8527428322b8f9bb9b190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suraInventar: {fileID: 7971516493189453197}
+  inventorySystem: {fileID: 1531333565}
+--- !u!114 &7971516493189453197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971516493189453194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84022b8fbfc9f354e9552f6cdc139131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacity: 10
+  suraSlots: []
 --- !u!4 &7980722102915232355
 Transform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Security;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
@@ -193,16 +195,88 @@ public class InventorySystem : MonoBehaviour
         return false;
     }
 
-   /* public bool ContainsTool(ToolData toolData)
+    // metode pt inventaru de la sura
+
+    public PlantData GetSelectedPlant()
     {
-        foreach (InventorySlot slot in inventorySlots)
+        InventorySlot selectedSlot = inventorySlots[currentSlot];
+        if( selectedSlot != null && selectedSlot.plantData != null )
         {
-            // Verificam daca textura din slot este aceeasi cu textura uneltei
-            if (slot.slotImage.texture == toolData.toolTexture)
+            return selectedSlot.plantData;
+        }
+        return null;
+    }
+
+    public int GetSelectedPlantCount()
+    {
+        InventorySlot selectedSlot = inventorySlots[currentSlot];
+        if(selectedSlot != null && selectedSlot.plantData != null)
+        {
+            return selectedSlot.itemCount;
+        }
+        return 0;
+    }
+
+    public void RemoveSelectedPlantSlot(int amount)
+    {
+        InventorySlot selectedSlot = inventorySlots[currentSlot];
+        if (selectedSlot != null && selectedSlot.plantData != null)
+        {
+            for(int i = 0; i < amount; i++)
             {
-                return true; // Unealta exista in inventar
+                selectedSlot.DecrementItemCount();
             }
         }
-        return false; // Unealta nu exista in inventar
-    }*/
+    }
+
+    public bool AddItemToSuraSLot(PlantData plantData, int amount)
+    {
+
+        if (plantData == null || plantData.plantTexture == null)
+        {
+            Debug.LogError("PlantData sau textura lipsesc!");
+            return false;
+        }
+
+        // Adaugam la un slot deja ocupat cu acelasi item
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (slot.slotImage.texture == plantData.plantTexture)
+            {
+                int space = maxItemsPerSlot - slot.itemCount;
+                if (space > 0)
+                {
+                    int toAdd = Mathf.Min(amount, space);
+                    for (int i = 0; i < toAdd; i++)
+                    {
+                        slot.IncrementItemCount();
+                    }
+                    amount -= toAdd;
+                    if (amount <= 0)
+                        return true;
+                }
+            }
+        }
+
+        // Cautam un slot liber pentru restul itemelor
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (slot.slotImage.texture == null)
+            {
+                int toAdd = Mathf.Min(amount, maxItemsPerSlot);
+                slot.SetItem(plantData.plantTexture, toAdd, plantData, null);
+                amount -= toAdd;
+                if (amount <= 0)
+                    return true;
+            }
+        }
+
+        if (amount > 0)
+        {
+            Debug.LogWarning("Nu exista destule sloturi libere in inventar pentru nr de iteme curent.");
+            return false;
+        }
+        return true;
+    }
+
 }
