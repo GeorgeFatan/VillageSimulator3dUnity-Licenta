@@ -15,9 +15,11 @@ public class InventorySystem : MonoBehaviour
     void Update()
     {
         HandleSlotSelection(); // Gestionăm schimbarea sloturilor
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            DiscardSeedsInventory();
+        }
     }
-
-
 
     void HandleSlotSelection()
     {
@@ -36,19 +38,19 @@ public class InventorySystem : MonoBehaviour
             Debug.Log($"Slot-ul {index + 1} a fost selectat.");
 
             // Verificam daca exista un tool echipat in inventar
-            if (equippedTool != null)   
+            if (equippedTool != null)
             {
                 StBucket bucketScript = equippedTool.GetComponent<StBucket>();
                 if (bucketScript != null)
                 {
-                    if(bucketScript.assignedSlot != -1)
+                    if (bucketScript.assignedSlot != -1)
                     {
                         Debug.Log($"Slot asociat galetii: {bucketScript.assignedSlot}");
                         Debug.Log($"Slotul selectat: {currentSlot}");
-                        
+
                         if (bucketScript.assignedSlot == currentSlot)
                         {
-                            equippedTool.SetActive(true); 
+                            equippedTool.SetActive(true);
                             Debug.Log($"Galeata echipata este vizibila pe slotul {currentSlot + 1}.");
                         }
                         else
@@ -73,12 +75,12 @@ public class InventorySystem : MonoBehaviour
                 Debug.LogWarning($"Indexul slotului selectat ({index}) este invalid!");
             }
         }
-           
+
     }
 
     public int GetFirstAvailbleSlot()
     {
-        for(int i = 0; i<inventorySlots.Count; i++)
+        for (int i = 0; i < inventorySlots.Count; i++)
         {
             if (inventorySlots[i].slotImage.texture == null)
             {
@@ -111,7 +113,7 @@ public class InventorySystem : MonoBehaviour
         {
             if (slot.slotImage.texture == null)
             {
-                slot.SetItem(plantData.plantTexture, 1, plantData,null);
+                slot.SetItem(plantData.plantTexture, 1, plantData, null);
                 Debug.Log($"Item {plantData.plantName} adaugat intr-un slot nou.");
                 return;
             }
@@ -120,7 +122,7 @@ public class InventorySystem : MonoBehaviour
         Debug.LogWarning("Inventarul este plin! Nu mai exista sloturi disponibile.");
     }
 
-   // adaugam tool/unelte in inventar // bug la drop (Q) 
+    // adaugam tool/unelte in inventar // bug la drop (Q) 
     public void AddToolToSlot(ToolData toolData)
     {
         if (toolData == null || toolData.toolTexture == null)
@@ -151,7 +153,7 @@ public class InventorySystem : MonoBehaviour
         Debug.LogWarning("Inventarul este plin! Nu mai exista sloturi disponibile.");
     }
 
-   // Remove seminte/Legume din inventar
+    // Remove dupa plantare a semintelor din inventar
     public void RemoveItemFromSlot(Texture texture)
     {
         foreach (InventorySlot slot in inventorySlots)
@@ -200,17 +202,19 @@ public class InventorySystem : MonoBehaviour
     public PlantData GetSelectedPlant()
     {
         InventorySlot selectedSlot = inventorySlots[currentSlot];
-        if( selectedSlot != null && selectedSlot.plantData != null )
+        if (selectedSlot != null && selectedSlot.plantData != null)
         {
             return selectedSlot.plantData;
         }
         return null;
     }
 
+
+    // sura inventar
     public int GetSelectedPlantCount()
     {
         InventorySlot selectedSlot = inventorySlots[currentSlot];
-        if(selectedSlot != null && selectedSlot.plantData != null)
+        if (selectedSlot != null && selectedSlot.plantData != null)
         {
             return selectedSlot.itemCount;
         }
@@ -222,7 +226,7 @@ public class InventorySystem : MonoBehaviour
         InventorySlot selectedSlot = inventorySlots[currentSlot];
         if (selectedSlot != null && selectedSlot.plantData != null)
         {
-            for(int i = 0; i < amount; i++)
+            for (int i = 0; i < amount; i++)
             {
                 selectedSlot.DecrementItemCount();
             }
@@ -277,6 +281,23 @@ public class InventorySystem : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    // Putem arunca itemele din inventar
+
+    public void DiscardSeedsInventory()
+    {
+        InventorySlot slot = inventorySlots[currentSlot];
+        if (slot != null && slot.slotImage.texture != null)
+        {
+            Debug.Log($"Itemele din slotul {currentSlot + 1} au fost aruncate.");
+            slot.ClearSlot(); 
+        }
+        else
+        {
+            Debug.Log($"Slot-ul {currentSlot + 1} nu contine iteme.");
+        }
+
     }
 
 }

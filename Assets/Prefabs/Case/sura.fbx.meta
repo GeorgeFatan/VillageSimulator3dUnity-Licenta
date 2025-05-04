@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Old_Wooden_Planks_Texture-1559
-    second: {fileID: 2800000, guid: 17ac540f1eeff31448ea723da5d14409, type: 3}
+    second: {fileID: 2800000, guid: ad4952e26c8b40d40b932019ea2b2d4b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: depositphotos_18230637-stock-photo-seamless-red-old-roof-tiles
-    second: {fileID: 2800000, guid: d951f4afc4274fb4c817805f8cda03d3, type: 3}
+    second: {fileID: 2800000, guid: 36f26fbeca68e50409f0f95f6a61ee81, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: images
-    second: {fileID: 2800000, guid: 93599ce884eb15746a9e2c453a6b2a8c, type: 3}
+    second: {fileID: 2800000, guid: 9c3fe3cd8f1b2f647947d6636d79b831, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: rustic-barn-window-fine-art-photography-fine-art-lisa-blount-photography-884987
-    second: {fileID: 2800000, guid: 0c3c8133da8bbc947a27ffab30d2acaa, type: 3}
+    second: {fileID: 2800000, guid: 87ccb95e76268cc47b006481ed27594d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: texturaGardVeche
-    second: {fileID: 2800000, guid: 605815fc913cd5b419c96d8664fe6612, type: 3}
+    second: {fileID: 2800000, guid: 3a50805d3593f9a4297f7cfa897a726f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
