@@ -8,12 +8,14 @@ public class RutaNPC : MonoBehaviour
     public Transform[] waypoints; //pct traseu
     private NavMeshAgent agent;
     private int currentWaypoint = 0;
-   
+    private Animator animator;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         MoveToNextWaypoint();
+        animator = GetComponent<Animator>();
+        animator.Play("Walking");
 
     }
 
