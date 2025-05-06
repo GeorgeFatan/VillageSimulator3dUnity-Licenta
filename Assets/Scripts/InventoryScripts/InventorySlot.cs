@@ -86,4 +86,20 @@ public class InventorySlot
 
         Debug.Log("Slot resetat!");
     }
+
+    public void TransferItemToSura(SuraInventoryScript suraInventar)
+    {
+        if (plantData != null && itemCount > 0)
+        {
+            if (suraInventar.AddPlant(plantData, itemCount))
+            {
+                ClearSlot();
+                Debug.Log($"{plantData.plantName} a fost mutat în inventarul Surii.");
+            }
+            else
+            {
+                Debug.LogWarning("Nu există spațiu în sură!");
+            }
+        }
+    }
 }

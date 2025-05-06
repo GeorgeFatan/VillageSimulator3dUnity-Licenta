@@ -29,36 +29,26 @@ public class SuraInventar : MonoBehaviour
         if (!isPlayerInTrigger) return;
 
         // Depozitarea slotului selectat din inventaru jucatorului intr-un slot liber din sura
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) // Când apăsăm F pentru depozitare
         {
-            // Leguma selectata din inventar
             PlantData selectedPlant = inventorySystem.GetSelectedPlant();
-            if (selectedPlant != null)
+            int amount = inventorySystem.GetSelectedPlantCount(); // Obținem numărul de iteme exact
+
+            if (selectedPlant != null && amount > 0)
             {
-                // Nr de bucati ale legumei respective 
-                int amount = inventorySystem.GetSelectedPlantCount();
-                if (amount > 0)
+                if (suraInventar.AddPlant(selectedPlant, amount)) // Transferăm itemele în Sură
                 {
-                    // Transferam intreg slotul catre un slot din sura
-                    if (suraInventar.AddPlant(selectedPlant, amount))
-                    {
-                        // Eliminam legumele din slotu jucatorului
-                        inventorySystem.RemoveSelectedPlantSlot(amount);
-                        Debug.Log($"Leguma a fost depozitata in sura (in numar de {amount} bucati).");
-                    }
-                    else
-                    {
-                        Debug.Log("Inventarul surii este plin!");
-                    }
+                    inventorySystem.RemoveSelectedPlantSlot(amount); // Ștergem itemele din inventarul jucătorului
+                    Debug.Log($"Leguma {selectedPlant.plantName} ({amount} bucăți) a fost depozitată în Sură.");
                 }
                 else
                 {
-                    Debug.Log("Slotul selectat nu contine nicio cantitate de legume.");
+                    Debug.Log("Inventarul Surii este plin!");
                 }
             }
             else
             {
-                Debug.Log("Nu ai o leguma selectata in inventar.");
+                Debug.Log("Nu ai legume selectate în inventar.");
             }
         }
 
