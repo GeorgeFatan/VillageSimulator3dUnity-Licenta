@@ -35,10 +35,7 @@ public class InventorySlot
             {
                 Debug.Log($"Unealta de tipul {refTool.toolName} a fost pusa intr-un slot liber..");
             }
-            else
-            {
-                Debug.LogError("Slot image nu este configurat corect in Inspector..");
-            }
+            
         }
 
         UpdateItemCountText();

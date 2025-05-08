@@ -8,13 +8,20 @@ public class TextInformativScript : MonoBehaviour
 {
     public string mesajTutorial;
     public TextMeshProUGUI mesajTutorialUI;
+    public GameObject tutorialPanel;
 
-     void OnTriggerEnter(Collider other)
+    private void Start()
+    {
+        tutorialPanel.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) //verificam daca jucatorul intra sau iese din zona colider-ului
         {
-            mesajTutorialUI.text = mesajTutorial; // afisam
-            mesajTutorialUI.gameObject.SetActive(true);
+            tutorialPanel.SetActive(true);
+            mesajTutorialUI.text = mesajTutorial; 
+           
         }
     }
 
@@ -22,7 +29,7 @@ public class TextInformativScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            mesajTutorialUI.gameObject.SetActive(false); //daca iesim din trigger, dispare mesaju de pe ecran
+            tutorialPanel.SetActive(false);
         }
     }
 }

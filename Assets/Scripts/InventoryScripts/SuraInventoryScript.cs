@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SuraInventoryScript : MonoBehaviour
 {
+    public int selectedSlotIndex = -1;
+
     [System.Serializable]
     public class SuraSlot
     {
@@ -12,7 +14,6 @@ public class SuraInventoryScript : MonoBehaviour
         public int count;
         public Text itemCountText;
         
-
         public void SetPlant(PlantData plant, int amount)
         {
             plantData = plant;
@@ -40,6 +41,18 @@ public class SuraInventoryScript : MonoBehaviour
             suraSlots[i].ClearSlot(); // Resetăm UI la start
         }
     }*/
+
+    public void SelectSlot(int index)
+    {
+        if(index >= 0 && index < suraSlots.Length && suraSlots[index].plantData != null)
+        {
+            selectedSlotIndex = index;
+        }
+        else
+        {
+            selectedSlotIndex = -1;
+        }
+    }
 
     public bool AddPlant(PlantData plant, int amount)
     {

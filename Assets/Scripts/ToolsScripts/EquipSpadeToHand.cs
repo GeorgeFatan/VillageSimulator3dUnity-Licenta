@@ -86,11 +86,6 @@ public class EquipSpadeToHand : MonoBehaviour
                 inventory.RemoveToolFromSlot(toolData);
             }
         }
-        else
-        {
-            Debug.LogWarning("Nu exista un harlet echipat in inventar pentru a-l pune jos..");
-        }
-
     }
 
     private void OnTriggerEnter(Collider other)

@@ -26,7 +26,11 @@ public class InventorySystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectSlot(0); } // Slot 1
         if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectSlot(1); } // Slot 2
         if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectSlot(2); } // Slot 3
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); } // Slot 4
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); } 
+        if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectSlot(4); }
+        if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectSlot(5); }
+        if (Input.GetKeyDown(KeyCode.Alpha7)) { SelectSlot(6); }
+        if (Input.GetKeyDown(KeyCode.Alpha8)) { SelectSlot(7); }
     }
 
 
@@ -70,10 +74,7 @@ public class InventorySystem : MonoBehaviour
                 }
             }
 
-            else
-            {
-                Debug.LogWarning($"Indexul slotului selectat ({index}) este invalid!");
-            }
+          
         }
 
     }
