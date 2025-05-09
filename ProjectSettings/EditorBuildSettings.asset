@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Meniu.unity
+    guid: 0f6451a2388fd474db1ed1aa4a7bb9ae
+  - enabled: 1
+    path: Assets/ScenaLaptop.unity
+    guid: 9ba8e728de3855e4db6cd8cda173ea5d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c022191df59473e4f927c2916a9cb14d, type: 3}
