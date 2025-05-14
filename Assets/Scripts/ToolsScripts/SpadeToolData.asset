@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolName: Spade
   toolTexture: {fileID: 2800000, guid: c9474d68fb11f7a48b03fbc8dee45b42, type: 3}
-  toolPrefab: {fileID: 1030972223, guid: abc00000000011571674619843167913, type: 3}
+  toolPrefab: {fileID: 919132149155446097, guid: f46b1dda3347ff445bb05336b82420ec, type: 3}
   toolDescription: Harlet, folosit pentru a pregatii terenul de plantare.

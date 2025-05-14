@@ -38,18 +38,18 @@ public class EquipSpadeToHand : MonoBehaviour
         newHarlet.transform.SetParent(equipHarletPoint); // attach la EquipHarletPoint din armature
 
         newHarlet.transform.localPosition = new Vector3(-0.02f, 0.07f, 0.01f);
-        newHarlet.transform.localRotation = Quaternion.Euler(24.534f, -45.742f, -24.941f);
+        newHarlet.transform.localRotation = Quaternion.Euler(24.534f, -45.742f, 180f);
 
         Debug.Log($"Unealta de tip {toolData.toolName} a fost echipata intr-un slot liber");
 
         // adaugam scriptul EquippedTool, care ne permite sa utilizam in continuare unealta dupa ce o lasam pe jos
-        EquippedTool handlerEquippedTool = newHarlet.AddComponent<EquippedTool>();
+        EquippedHarlet handlerEquippedTool = newHarlet.AddComponent<EquippedHarlet>();
         handlerEquippedTool.Initialize(toolData, equipHarletPoint, playerTransform, inventory);
 
         // adaugam collider pt game objectu harlet creat din trigger de  sapdes.
         BoxCollider boxColliderHarlet = newHarlet.AddComponent<BoxCollider>();
         boxColliderHarlet.isTrigger = true;
-        boxColliderHarlet.size = new Vector3(1.0f, 1.0f, 1.0f);
+        boxColliderHarlet.size = new Vector3(0.5f, 1f, 0.5f);
 
         // adaugam unealta in inventar
         if(inventory != null)
@@ -78,7 +78,7 @@ public class EquipSpadeToHand : MonoBehaviour
                 playerTransform.position.z
                 );
 
-            harletToDrop.transform.rotation = Quaternion.Euler(0, 0, 0);
+            harletToDrop.transform.rotation = Quaternion.Euler(90, 0, 0);
 
             // eliminam harletu din inventar
             if(inventory != null)

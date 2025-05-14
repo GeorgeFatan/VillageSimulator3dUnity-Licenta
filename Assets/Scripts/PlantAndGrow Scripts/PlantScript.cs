@@ -169,7 +169,7 @@ public class PlantScript : MonoBehaviour
         }
 
         // Verif daca exista un tool de tip Harlet echipat
-        EquippedTool equippedSpade = equipHarletPoint.childCount > 0 ? equipHarletPoint.GetChild(0).GetComponent<EquippedTool>() : null;
+        EquippedHarlet equippedSpade = equipHarletPoint.childCount > 0 ? equipHarletPoint.GetChild(0).GetComponent<EquippedHarlet>() : null;
 
         if (equippedSpade == null || equippedSpade.toolData.toolName != "Spade")
         {
