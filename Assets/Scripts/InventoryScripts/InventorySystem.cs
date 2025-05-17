@@ -34,7 +34,7 @@ public class InventorySystem : MonoBehaviour
     }
 
 
-    void SelectSlot(int index)
+    public void SelectSlot(int index)
     {
         if (index >= 0 && index < inventorySlots.Count)
         {

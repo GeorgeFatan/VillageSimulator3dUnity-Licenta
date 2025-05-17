@@ -13,7 +13,7 @@ public class TimeController : MonoBehaviour
     private float startHour;
 
     [SerializeField]
-    private TextMeshProUGUI timeText;
+    public TextMeshProUGUI timeText;
 
     [SerializeField]
     private Light sunLight;
@@ -42,7 +42,7 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
-    private DateTime currentTime;
+    public DateTime currentTime;
 
     private TimeSpan sunriseTime;
 

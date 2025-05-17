@@ -18101,6 +18101,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 699063278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365696303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365696305}
+  - component: {fileID: 1365696304}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1365696304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365696303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7063462a02a78ae4486d56aa02722e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArmature: {fileID: 6518487569490080133}
+  timeController: {fileID: 1580652890}
+  sunLight: {fileID: 203772462}
+  moonLight: {fileID: 538857185}
+  inventorySystem: {fileID: 1531333565}
+  availablePlants:
+  - {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
+  - {fileID: 11400000, guid: 1c258cfba2a08ac4fa171c3545328763, type: 2}
+  - {fileID: 11400000, guid: 63816c16a5b8d764f86c36bb3746f590, type: 2}
+  availableTools:
+  - {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
+  - {fileID: 11400000, guid: eac5e8afa16bdc54e9915ac31bbc0a80, type: 2}
+--- !u!4 &1365696305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365696303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 495.81583, y: 1.369262, z: 300.12265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369724942
 GameObject:
   m_ObjectHideFlags: 0
@@ -49798,7 +49854,7 @@ Transform:
   m_GameObject: {fileID: 4061723377729266784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 490.62, y: 0, z: 307.163}
+  m_LocalPosition: {x: 491, y: 0, z: 306.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65616,3 +65672,4 @@ SceneRoots:
   - {fileID: 543450653307474521}
   - {fileID: 1483394278}
   - {fileID: 140318317}
+  - {fileID: 1365696305}
