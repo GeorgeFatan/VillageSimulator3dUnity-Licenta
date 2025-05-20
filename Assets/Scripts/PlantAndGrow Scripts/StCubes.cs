@@ -5,7 +5,8 @@ using UnityEngine;
 public class StCubes : MonoBehaviour
 {
     public enum StareCuburi { Empty, Planted, ReadyToPlant, Weeds}
-    public StareCuburi stareCurenta = StareCuburi.ReadyToPlant;
+    public StareCuburi stareCurenta = StareCuburi.Weeds;
+
     public GameObject weedPrefab; //ref la prefabu buruiana uscata
     public GameObject currentWeebOnCube; // prefabu de buruiana care e pe un cub
     
@@ -36,18 +37,4 @@ public class StCubes : MonoBehaviour
         Debug.Log($"Cubul {gameObject.name} este plantat.");
     }
 
- /*   // obtinem starea cuburilor ca string
-    public string GetStateString()
-    {
-        return stareCurenta.ToString();
-    }
-
-    // metoda pt a seta starea din string
-    public void SetStateFromString(string stare)
-    {
-        if(Enum.TryParse<StareCuburi>(stare, out StareCuburi newStare))
-        {
-            stareCurenta = newStare;
-        }
-    }*/
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class PlantScript : MonoBehaviour
 {
@@ -398,6 +399,7 @@ public class PlantScript : MonoBehaviour
         }
     }
 
+  
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -26,21 +26,21 @@ public class SuraInventoryScript : MonoBehaviour
         {
             plantData = null;
             count = 0;
-            slotImage.texture = null;
-            itemCountText.text = null;
+            if (slotImage != null) slotImage.texture = null;
+            if (itemCountText != null) itemCountText.text = "";
         }
     }
 
     public SuraSlot[] suraSlots; // Direct legat de UI
     public int capacity = 8; // Nr de sloturi
 
-  /*  private void Awake()
+    private void Awake()
     {
         for (int i = 0; i < suraSlots.Length; i++)
         {
             suraSlots[i].ClearSlot(); // Resetăm UI la start
         }
-    }*/
+    }
 
     public void SelectSlot(int index)
     {

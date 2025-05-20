@@ -2,6 +2,7 @@
 using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -21,11 +22,8 @@ public class SaveSystem : MonoBehaviour
     private List<PlantData> availablePlants; // Lista de PlantData
     [SerializeField]
     private List<ToolData> availableTools;   // Lista de ToolData
-   
-    // cube state //
-    
-    // player money //
-
+   /* [SerializeField]
+    private List<StCubes> soilCubesToSave; // Lista manuala de cuburi din Inspector*/
 
 
     private CharacterController characterController; // Ref la CharacterController
@@ -36,6 +34,8 @@ public class SaveSystem : MonoBehaviour
         // Setem calea fisierului json
         savePath = Application.persistentDataPath + "/saveGame.json";
         Debug.Log("Jocul a fost salvat la ruta: " + savePath);
+
+        characterController = playerArmature.GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -144,7 +144,8 @@ public class SaveSystem : MonoBehaviour
             moonRotation = moonLight.transform.rotation,
             inventorySlots = savedSlots,
             currentSlot = inventorySystem.currentSlot,
-            suraInventorySlots = savedSuraSlots
+            suraInventorySlots = savedSuraSlots,
+            playerMoney = SellScript.instantaBuyTerrain.playerMoney
             /*cubeStates = cubeStates*/
         };
 
@@ -152,7 +153,7 @@ public class SaveSystem : MonoBehaviour
         File.WriteAllText(savePath, json);
         Debug.Log("Joc Salvat! Pozitia Jucatorului este: " + gameState.playerPosition + ", Zile trecute: " + gameState.daysPassed +
             ", Ora: " + gameState.currentHour + ", Player Inventory slots saved: " + gameState.inventorySlots.Count + ", Sura Slots: " + 
-            gameState.suraInventorySlots.Count);
+            gameState.suraInventorySlots.Count + ", Player money saved: " + gameState.playerMoney);
     }
 
     public void LoadGame()
@@ -173,13 +174,10 @@ public class SaveSystem : MonoBehaviour
             {
                 characterController.enabled = false;
             }
-            else
-            {
-                Debug.LogWarning("CharacterController is null during load, forcing position.");
-            }
-
+          
             playerArmature.transform.position = gameState.playerPosition;
             playerArmature.transform.rotation = gameState.playerRotation;
+
             timeController.daysPassed = gameState.daysPassed;
             timeController.currentTime = DateTime.Today.AddHours((double)gameState.currentHour);
             if (timeController.timeText != null)
@@ -238,11 +236,6 @@ public class SaveSystem : MonoBehaviour
             inventorySystem.currentSlot = gameState.currentSlot;
             inventorySystem.SelectSlot(gameState.currentSlot);
 
-            if (characterController != null)
-            {
-                characterController.enabled = true;
-            }
-
             // restauram inventarul surii 
             for(int i = 0; i < suraInventoryScript.suraSlots.Length && i < gameState.suraInventorySlots.Count; i++)
             {
@@ -267,30 +260,46 @@ public class SaveSystem : MonoBehaviour
             }
 
             // restauram starea cuburilor din momentul salvarii
-           /* StCubes[] allCubes = FindObjectsOfType<StCubes>();
-            foreach (SavedCubeState savedCube in gameState.cubeStates)
-            {
-                StCubes cube = Array.Find(allCubes, c => c.gameObject.name == savedCube.cubeName);
-                if (cube != null)
-                {
-                    cube.SetStateFromString(savedCube.currentState);
-                    Debug.Log($"Restauram starea pentru cub {savedCube.cubeName}: {savedCube.currentState}");
-                }
-                else
-                {
-                    Debug.LogWarning($"Cubul {savedCube.cubeName} nu a fost gasit la incarcare.");
-                }
-            }*/
+            /* StCubes[] allCubes = FindObjectsOfType<StCubes>();
+             foreach (SavedCubeState savedCube in gameState.cubeStates)
+             {
+                 StCubes cube = Array.Find(allCubes, c => c.gameObject.name == savedCube.cubeName);
+                 if (cube != null)
+                 {
+                     cube.SetStateFromString(savedCube.currentState);
+                     Debug.Log($"Restauram starea pentru cub {savedCube.cubeName}: {savedCube.currentState}");
+                 }
+                 else
+                 {
+                     Debug.LogWarning($"Cubul {savedCube.cubeName} nu a fost gasit la incarcare.");
+                 }
+             }*/
+
+          StartCoroutine(ReenableCharacterController());
+
+            // restauram banii dupa load
+            SellScript.instantaBuyTerrain.playerMoney = gameState.playerMoney;
+            SellScript.instantaBuyTerrain.UpdateMoneyDisplay();
 
 
             Debug.Log("Game Loaded! PlayerPosition: " + gameState.playerPosition + ", Current Position: " + playerArmature.transform.position +
                       ", Zile trecute: " + timeController.daysPassed + ", Ora: " + timeController.currentTime.ToString("HH:mm") +
-                      ", Soare Position: " + sunLight.transform.position + ", Luna Position: " + moonLight.transform.position +
-                      ", inventar jucator: " + gameState.inventorySlots.Count + ", inventarul surii dupa load: " + gameState.suraInventorySlots.Count);
+                      ", Soare Position: "  + ", inventar jucator: " + gameState.inventorySlots.Count + ", inventarul surii dupa load: " + gameState.suraInventorySlots.Count
+                      + ", Player Money acum: " + gameState.playerMoney);
         }
         else
         {
             Debug.LogWarning("No save file found..");
+        }
+    }
+
+
+    private IEnumerator ReenableCharacterController()
+    {
+        yield return new WaitForEndOfFrame(); // ast un cadru
+        if (characterController != null)
+        {
+            characterController.enabled = true;
         }
     }
 
