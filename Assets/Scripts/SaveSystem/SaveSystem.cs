@@ -16,6 +16,8 @@ public class SaveSystem : MonoBehaviour
     [SerializeField]
     private InventorySystem inventorySystem; // ref la inventarul jucatorului
     [SerializeField]
+    private SuraInventoryScript suraInventoryScript; // ref la inventaru surii
+    [SerializeField]
     private List<PlantData> availablePlants; // Lista de PlantData
     [SerializeField]
     private List<ToolData> availableTools;   // Lista de ToolData
@@ -65,6 +67,12 @@ public class SaveSystem : MonoBehaviour
             return;
         }
 
+        // sura inventory system
+        if (suraInventoryScript == null)
+        {
+            Debug.LogError("SuraInventorySystem not assigend! erroare.");
+        }
+
         // Setem calea fisierului json
         savePath = Application.persistentDataPath + "/saveGame.json";
         Debug.Log("Jocul a fost salvat la ruta: " + savePath);
@@ -87,7 +95,8 @@ public class SaveSystem : MonoBehaviour
 
     public void SaveGame()
     {
-        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null)
+        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null ||
+            suraInventoryScript == null)
         {
             Debug.LogError("Una sau mai multe referinte is null.");
             return;
@@ -124,6 +133,31 @@ public class SaveSystem : MonoBehaviour
             savedSlots.Add(savedSlot);
         }
 
+        // cream lista cu sloturile salvate
+        List<SavedSuraSlots> savedSuraSlots = new List<SavedSuraSlots>();
+        for (int i = 0; i < suraInventoryScript.suraSlots.Length; i++)
+        {
+            SuraInventoryScript.SuraSlot slot = suraInventoryScript.suraSlots[i];
+            SavedSuraSlots savedSuraSlot = new SavedSuraSlots();
+
+            if (slot.plantData != null)
+            {
+                savedSuraSlot.itemType = "plant";
+                savedSuraSlot.itemName = slot.plantData.plantName;
+                savedSuraSlot.itemCount = slot.count;
+                Debug.Log($"Saving slot {i}: plant '{savedSuraSlot.itemName}' with count {savedSuraSlot.itemCount}");
+            }
+            else
+            {
+                savedSuraSlot.itemType = "none";
+                savedSuraSlot.itemName = "";
+                savedSuraSlot.itemCount = 0;
+                Debug.Log($"Saving slot {i}: empty");
+            }
+            savedSuraSlots.Add(savedSuraSlot);
+        }
+
+
         // Creem un obiect de tip gameState cu pozitia si rotatia lui PlayerArmature
         GameState gameState = new GameState
         {
@@ -136,18 +170,21 @@ public class SaveSystem : MonoBehaviour
             moonPosition = moonLight.transform.position,
             moonRotation = moonLight.transform.rotation,
             inventorySlots = savedSlots,
-            currentSlot = inventorySystem.currentSlot
+            currentSlot = inventorySystem.currentSlot,
+            suraInventorySlots = savedSuraSlots
         };
 
         string json = JsonUtility.ToJson(gameState, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Joc Salvat! Pozitia Jucatorului este: " + gameState.playerPosition + ", Zile trecute: " + gameState.daysPassed +
-            ", Ora: " + gameState.currentHour + ", Player Inventory slots saved: " + gameState.inventorySlots.Count);
+            ", Ora: " + gameState.currentHour + ", Player Inventory slots saved: " + gameState.inventorySlots.Count + ", Sura Slots: " + 
+            gameState.suraInventorySlots.Count);
     }
 
     public void LoadGame()
     {
-        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null)
+        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null
+            || suraInventoryScript == null)
         {
             Debug.LogError("Cannot load: one or more references are null.");
             return;
@@ -232,10 +269,33 @@ public class SaveSystem : MonoBehaviour
                 characterController.enabled = true;
             }
 
+            // restauram inventarul surii 
+            for(int i = 0; i < suraInventoryScript.suraSlots.Length && i < gameState.suraInventorySlots.Count; i++)
+            {
+                SuraInventoryScript.SuraSlot slot = suraInventoryScript.suraSlots[i];
+                SavedSuraSlots savedSuraSlot = gameState.suraInventorySlots[i];
+
+                // golim sloturile inainte
+                slot.ClearSlot();
+
+                if(savedSuraSlot.itemType == "plant")
+                {
+                    PlantData plantData = FindPlantByName(savedSuraSlot.itemName);
+                    if(plantData != null)
+                    {
+                        slot.SetPlant(plantData, savedSuraSlot.itemCount);
+                    }
+                }
+                else
+                {
+                    Debug.Log($"Sloturile inventarului surii {i} sunt goale.");
+                }
+            }
+
             Debug.Log("Game Loaded! PlayerPosition: " + gameState.playerPosition + ", Current Position: " + playerArmature.transform.position +
                       ", Zile trecute: " + timeController.daysPassed + ", Ora: " + timeController.currentTime.ToString("HH:mm") +
                       ", Soare Position: " + sunLight.transform.position + ", Luna Position: " + moonLight.transform.position +
-                      ", inventar jucator: " + gameState.inventorySlots.Count);
+                      ", inventar jucator: " + gameState.inventorySlots.Count + ", inventarul surii dupa load: " + gameState.suraInventorySlots.Count);
         }
         else
         {

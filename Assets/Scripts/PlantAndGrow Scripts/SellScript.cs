@@ -81,6 +81,12 @@ public class SellScript : MonoBehaviour
         }
     }
 
+    public void SetMoney(int moneyAfterLoad)
+    {
+        playerMoney = moneyAfterLoad;
+        moneyText.text = ($"Bani dupa Load: {moneyAfterLoad}");
+    }
+
    void HandleSlotSelection()
     {
           // apasam pe 1 , 2 ,3 ,4 ,5 ,6 ,7 , 8 pt a selecta slotu   

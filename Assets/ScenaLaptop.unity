@@ -18135,6 +18135,7 @@ MonoBehaviour:
   sunLight: {fileID: 203772462}
   moonLight: {fileID: 538857185}
   inventorySystem: {fileID: 1531333565}
+  suraInventoryScript: {fileID: 1260035982}
   availablePlants:
   - {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
   - {fileID: 11400000, guid: 1c258cfba2a08ac4fa171c3545328763, type: 2}
