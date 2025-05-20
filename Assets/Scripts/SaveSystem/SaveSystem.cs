@@ -21,58 +21,18 @@ public class SaveSystem : MonoBehaviour
     private List<PlantData> availablePlants; // Lista de PlantData
     [SerializeField]
     private List<ToolData> availableTools;   // Lista de ToolData
+   
+    // cube state //
+    
+    // player money //
+
+
 
     private CharacterController characterController; // Ref la CharacterController
     private string savePath;
 
     private void Awake()
     {
-        // Verificam daca player armature a fost adaugata in inspector
-        if (playerArmature == null)
-        {
-            Debug.LogError("PlayerArmature nu a fost asignata");
-            return;
-        }
-
-        // CharacterController-ul de pe PlayerArmature
-        characterController = playerArmature.GetComponent<CharacterController>();
-        if (characterController == null)
-        {
-            Debug.LogWarning("CharacterController nu a fost gasit.");
-        }
-
-        // time controller
-        if (timeController == null)
-        {
-            Debug.LogError("TimeController not assigned! Please drag the TimeController GameObject (with TimeController script) into the Inspector.");
-            return;
-        }
-
-        if (sunLight == null)
-        {
-            Debug.LogError("SunLight not assigned! Please drag the Sun Light into the Inspector.");
-            return;
-        }
-
-        if (moonLight == null)
-        {
-            Debug.LogError("MoonLight not assigned! Please drag the Moon Light into the Inspector.");
-            return;
-        }
-
-        // inventory system save
-        if (inventorySystem == null)
-        {
-            Debug.LogError("InventorySystem not assigned! Please drag the InventorySystem GameObject into the Inspector.");
-            return;
-        }
-
-        // sura inventory system
-        if (suraInventoryScript == null)
-        {
-            Debug.LogError("SuraInventorySystem not assigend! erroare.");
-        }
-
         // Setem calea fisierului json
         savePath = Application.persistentDataPath + "/saveGame.json";
         Debug.Log("Jocul a fost salvat la ruta: " + savePath);
@@ -157,6 +117,19 @@ public class SaveSystem : MonoBehaviour
             savedSuraSlots.Add(savedSuraSlot);
         }
 
+        // salvam starea tuturor cuburilor cu StCubes
+     /*   List<SavedCubeState> cubeStates = new List<SavedCubeState>();
+        StCubes[] allCubes = FindObjectsOfType<StCubes>();
+        foreach (StCubes cube in allCubes)
+        {
+            SavedCubeState cubeState = new SavedCubeState
+            {
+                cubeName = cube.gameObject.name,
+                currentState = cube.GetStateString()
+            };
+            cubeStates.Add(cubeState);
+            Debug.Log($"starea pentru cub {cubeState.cubeName}: {cubeState.currentState} a fost salvata");
+        }*/
 
         // Creem un obiect de tip gameState cu pozitia si rotatia lui PlayerArmature
         GameState gameState = new GameState
@@ -172,6 +145,7 @@ public class SaveSystem : MonoBehaviour
             inventorySlots = savedSlots,
             currentSlot = inventorySystem.currentSlot,
             suraInventorySlots = savedSuraSlots
+            /*cubeStates = cubeStates*/
         };
 
         string json = JsonUtility.ToJson(gameState, true);
@@ -291,6 +265,23 @@ public class SaveSystem : MonoBehaviour
                     Debug.Log($"Sloturile inventarului surii {i} sunt goale.");
                 }
             }
+
+            // restauram starea cuburilor din momentul salvarii
+           /* StCubes[] allCubes = FindObjectsOfType<StCubes>();
+            foreach (SavedCubeState savedCube in gameState.cubeStates)
+            {
+                StCubes cube = Array.Find(allCubes, c => c.gameObject.name == savedCube.cubeName);
+                if (cube != null)
+                {
+                    cube.SetStateFromString(savedCube.currentState);
+                    Debug.Log($"Restauram starea pentru cub {savedCube.cubeName}: {savedCube.currentState}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Cubul {savedCube.cubeName} nu a fost gasit la incarcare.");
+                }
+            }*/
+
 
             Debug.Log("Game Loaded! PlayerPosition: " + gameState.playerPosition + ", Current Position: " + playerArmature.transform.position +
                       ", Zile trecute: " + timeController.daysPassed + ", Ora: " + timeController.currentTime.ToString("HH:mm") +

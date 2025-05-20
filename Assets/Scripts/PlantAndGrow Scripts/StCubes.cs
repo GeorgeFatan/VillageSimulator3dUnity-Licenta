@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Reflection;
+using UnityEngine;
 
 public class StCubes : MonoBehaviour
 {
@@ -34,4 +36,18 @@ public class StCubes : MonoBehaviour
         Debug.Log($"Cubul {gameObject.name} este plantat.");
     }
 
+ /*   // obtinem starea cuburilor ca string
+    public string GetStateString()
+    {
+        return stareCurenta.ToString();
+    }
+
+    // metoda pt a seta starea din string
+    public void SetStateFromString(string stare)
+    {
+        if(Enum.TryParse<StareCuburi>(stare, out StareCuburi newStare))
+        {
+            stareCurenta = newStare;
+        }
+    }*/
 }

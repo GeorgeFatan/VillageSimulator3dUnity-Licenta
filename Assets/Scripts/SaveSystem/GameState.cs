@@ -19,8 +19,8 @@ public class GameState
     public List<SavedInventorySlot> inventorySlots; // lista sloturilor
     public int currentSlot;
     public List<SavedSuraSlots> suraInventorySlots; // lista cu sloturile surii
-
-
+    // starea cuburilor 
+    //public List<SavedCubeState> cubeStates; // lista pentru starea cuburilor 
 }
 
 [System.Serializable]
@@ -38,5 +38,14 @@ public class SavedSuraSlots
     public string itemName;
     public int itemCount;
 }
- 
+
+
+/*[System.Serializable]
+public class SavedCubeState
+{
+    public string cubeName; // numele cubului
+    public string currentState; // Starea curenta a cuburilor
+    public bool hasWeed;  // cubu are buruiana?
+}
+*/
 
