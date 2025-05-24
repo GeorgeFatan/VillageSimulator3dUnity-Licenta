@@ -20,9 +20,15 @@ public class GameState
     public int currentSlot;
     public List<SavedSuraSlots> suraInventorySlots; // lista cu sloturile surii
     public int playerMoney; // banii 
-    // starea cuburilor 
-   //public List<SoilCubeData> soilCubesData = new List<SoilCubeData>();
-   
+    public List<SoilCubeData> soilCubesData;
+
+    // npc armature
+    public Vector3 npcPositionM; // pt Brian NPC
+    public Quaternion npcRotationM;
+    public Vector3 npcPositionF; // pt Megan NPC
+    public Quaternion npcRotationF;
+
+
 }
 
 [System.Serializable]
@@ -53,6 +59,11 @@ public class SavedCubeState
 [System.Serializable]
 public class SoilCubeData
 {
-   
+    public string cubeName;
+    public string currentState;
+    public bool hasWeed;
+    public string plantName;
+    public int plantStage;
+    public bool isWatered;
 }
 

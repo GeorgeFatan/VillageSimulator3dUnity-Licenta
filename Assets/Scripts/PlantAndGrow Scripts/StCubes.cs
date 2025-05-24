@@ -9,6 +9,10 @@ public class StCubes : MonoBehaviour
 
     public GameObject weedPrefab; //ref la prefabu buruiana uscata
     public GameObject currentWeebOnCube; // prefabu de buruiana care e pe un cub
+    public PlantData currentPlantData; // planta curenta pe cub
+    public int currentStage; // stagiu curent de crestere 
+    public GameObject currentPlantInstance; // ref la instanta plantei 
+    public bool isWatered; // starea udarii pentru leguma
     
     void Start()
     {
@@ -23,6 +27,14 @@ public class StCubes : MonoBehaviour
     public void ResetStare()
     {
         stareCurenta = StareCuburi.ReadyToPlant;
+        currentPlantData = null;
+        currentStage = 0;
+        isWatered = false;
+        if(currentPlantData != null)
+        {
+            Destroy(currentPlantInstance);
+            currentPlantInstance = null;
+        }
         Debug.Log($"Cubul {gameObject.name} a fost resetat la starea ReadyToPlant.");
     }
 
@@ -31,10 +43,19 @@ public class StCubes : MonoBehaviour
         return stareCurenta == StareCuburi.ReadyToPlant;
     }
 
-    public void Planted()
+    public void Planted(PlantData plantData, int stage, GameObject plantInstance)
     {
         stareCurenta = StareCuburi.Planted;
+        currentPlantData = plantData;
+        currentStage = stage;
+        currentPlantInstance = plantInstance;
+        isWatered = false; // initial planta nu e udata.
         Debug.Log($"Cubul {gameObject.name} este plantat.");
+    }
+
+    public void WaterPlant()
+    {
+        isWatered = true;
     }
 
 }

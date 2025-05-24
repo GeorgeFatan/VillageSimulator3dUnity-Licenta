@@ -9,6 +9,10 @@ public class SaveSystem : MonoBehaviour
     [SerializeField]
     private GameObject playerArmature; // Ref PlayerArmature
     [SerializeField]
+    private GameObject npcArmatureBrian; // ref la npc armature brian
+    [SerializeField]
+    private GameObject npcArmatureMegan; // ref la npc armature megan
+    [SerializeField]
     private TimeController timeController;
     [SerializeField]
     private Light sunLight; // ref la soare
@@ -22,16 +26,12 @@ public class SaveSystem : MonoBehaviour
     private List<PlantData> availablePlants; // Lista de PlantData
     [SerializeField]
     private List<ToolData> availableTools;   // Lista de ToolData
-   /* [SerializeField]
-    private List<StCubes> soilCubesToSave; // Lista manuala de cuburi din Inspector*/
-
-
     private CharacterController characterController; // Ref la CharacterController
+
     private string savePath;
 
     private void Awake()
     {
-        // Setem calea fisierului json
         savePath = Application.persistentDataPath + "/saveGame.json";
         Debug.Log("Jocul a fost salvat la ruta: " + savePath);
 
@@ -42,13 +42,13 @@ public class SaveSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            Debug.Log("Save key (0) pressed.");
+            
             SaveGame();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            Debug.Log("Load key (9) pressed.");
+           
             LoadGame();
         }
     }
@@ -56,13 +56,14 @@ public class SaveSystem : MonoBehaviour
     public void SaveGame()
     {
         if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null ||
-            suraInventoryScript == null)
+            suraInventoryScript == null || npcArmatureBrian == null || npcArmatureMegan == null)
         {
             Debug.LogError("Una sau mai multe referinte is null.");
             return;
         }
 
-        // cream lista cu sloturile salvate
+        // inventar jucator
+
         List<SavedInventorySlot> savedSlots = new List<SavedInventorySlot>();
         for (int i = 0; i < inventorySystem.inventorySlots.Count; i++)
         {
@@ -93,7 +94,8 @@ public class SaveSystem : MonoBehaviour
             savedSlots.Add(savedSlot);
         }
 
-        // cream lista cu sloturile salvate
+        // sura slots
+
         List<SavedSuraSlots> savedSuraSlots = new List<SavedSuraSlots>();
         for (int i = 0; i < suraInventoryScript.suraSlots.Length; i++)
         {
@@ -105,37 +107,46 @@ public class SaveSystem : MonoBehaviour
                 savedSuraSlot.itemType = "plant";
                 savedSuraSlot.itemName = slot.plantData.plantName;
                 savedSuraSlot.itemCount = slot.count;
-                Debug.Log($"Saving slot {i}: plant '{savedSuraSlot.itemName}' with count {savedSuraSlot.itemCount}");
+                Debug.Log($"Saving sura slot {i}: plant '{savedSuraSlot.itemName}' with count {savedSuraSlot.itemCount}");
             }
             else
             {
                 savedSuraSlot.itemType = "none";
                 savedSuraSlot.itemName = "";
                 savedSuraSlot.itemCount = 0;
-                Debug.Log($"Saving slot {i}: empty");
+                Debug.Log($"Saving sura slot {i}: empty");
             }
             savedSuraSlots.Add(savedSuraSlot);
         }
 
-        // salvam starea tuturor cuburilor cu StCubes
-     /*   List<SavedCubeState> cubeStates = new List<SavedCubeState>();
-        StCubes[] allCubes = FindObjectsOfType<StCubes>();
-        foreach (StCubes cube in allCubes)
+
+        // cuburi terenuri 
+
+        List<SoilCubeData> soilCubesData = new List<SoilCubeData>();
+        StCubes[] allSoilCubes = FindObjectsOfType<StCubes>();
+        foreach (StCubes cube in allSoilCubes)
         {
-            SavedCubeState cubeState = new SavedCubeState
+            SoilCubeData cubeData = new SoilCubeData
             {
                 cubeName = cube.gameObject.name,
-                currentState = cube.GetStateString()
+                currentState = cube.stareCurenta.ToString(),
+                hasWeed = cube.currentWeebOnCube != null,
+                plantName = cube.currentPlantData != null ? cube.currentPlantData.plantName : "",
+                plantStage = cube.currentStage,
+                isWatered = cube.isWatered
             };
-            cubeStates.Add(cubeState);
-            Debug.Log($"starea pentru cub {cubeState.cubeName}: {cubeState.currentState} a fost salvata");
-        }*/
+            soilCubesData.Add(cubeData);
+            Debug.Log($"Saving cube {cubeData.cubeName}: state {cubeData.currentState}, hasWeed {cubeData.hasWeed}, plant {cubeData.plantName}, stage {cubeData.plantStage}, isWatered {cubeData.isWatered}");
+        }
 
-        // Creem un obiect de tip gameState cu pozitia si rotatia lui PlayerArmature
         GameState gameState = new GameState
         {
-            playerPosition = playerArmature.transform.position,
+            playerPosition = playerArmature.transform.position, // Player Armature
             playerRotation = playerArmature.transform.rotation,
+            npcPositionM = npcArmatureBrian.transform.position, // Brian Armature
+            npcRotationM = npcArmatureBrian.transform.rotation,
+            npcPositionF = npcArmatureMegan.transform.position, // Megan armature
+            npcRotationF = npcArmatureMegan.transform.rotation,
             daysPassed = timeController.daysPassed,
             currentHour = (float)timeController.currentTime.Hour + (float)timeController.currentTime.Minute / 60.0f,
             sunPosition = sunLight.transform.position,
@@ -145,23 +156,24 @@ public class SaveSystem : MonoBehaviour
             inventorySlots = savedSlots,
             currentSlot = inventorySystem.currentSlot,
             suraInventorySlots = savedSuraSlots,
-            playerMoney = SellScript.instantaBuyTerrain.playerMoney
-            /*cubeStates = cubeStates*/
+            playerMoney = SellScript.instantaBuyTerrain.playerMoney,
+            soilCubesData = soilCubesData
         };
 
         string json = JsonUtility.ToJson(gameState, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Joc Salvat! Pozitia Jucatorului este: " + gameState.playerPosition + ", Zile trecute: " + gameState.daysPassed +
-            ", Ora: " + gameState.currentHour + ", Player Inventory slots saved: " + gameState.inventorySlots.Count + ", Sura Slots: " + 
-            gameState.suraInventorySlots.Count + ", Player money saved: " + gameState.playerMoney);
+            ", Ora: " + gameState.currentHour + ", Player Inventory slots saved: " + gameState.inventorySlots.Count + ", Sura Slots: " +
+            gameState.suraInventorySlots.Count + ", Player money saved: " + gameState.playerMoney + ", Soil cubes saved: " + gameState.soilCubesData.Count + ", pozitia lui Brian este: " 
+            + gameState.npcPositionM + ", pozitia lui Megan este: " + gameState.npcPositionF);
     }
 
     public void LoadGame()
     {
-        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null
-            || suraInventoryScript == null)
+        if (playerArmature == null || timeController == null || sunLight == null || moonLight == null || inventorySystem == null ||
+            suraInventoryScript == null)
         {
-            Debug.LogError("Cannot load: one or more references are null.");
+            Debug.LogError("cannot load, erroare");
             return;
         }
 
@@ -174,10 +186,19 @@ public class SaveSystem : MonoBehaviour
             {
                 characterController.enabled = false;
             }
-          
+            // player position
             playerArmature.transform.position = gameState.playerPosition;
             playerArmature.transform.rotation = gameState.playerRotation;
 
+            // npc Brian Position 
+            npcArmatureBrian.transform.position = gameState.npcPositionM;
+            npcArmatureBrian.transform.rotation = gameState.npcRotationM;
+
+            // npc Megan position 
+            npcArmatureMegan.transform.position = gameState.npcPositionF;
+            npcArmatureMegan.transform.rotation = gameState.npcRotationF;
+
+            // day night cycle 
             timeController.daysPassed = gameState.daysPassed;
             timeController.currentTime = DateTime.Today.AddHours((double)gameState.currentHour);
             if (timeController.timeText != null)
@@ -189,103 +210,137 @@ public class SaveSystem : MonoBehaviour
             moonLight.transform.position = gameState.moonPosition;
             moonLight.transform.rotation = gameState.moonRotation;
 
-            // restauram inventarul jucatorului
+
+            // inventar hud jucator
             for (int i = 0; i < inventorySystem.inventorySlots.Count && i < gameState.inventorySlots.Count; i++)
             {
                 InventorySlot slot = inventorySystem.inventorySlots[i];
                 SavedInventorySlot savedSlot = gameState.inventorySlots[i];
-
-                // golim slotul curent
                 slot.ClearSlot();
-
                 if (savedSlot.itemType == "plant")
                 {
-                    Debug.Log($"Attempting to load plant '{savedSlot.itemName}' into slot {i}");
                     PlantData plantData = FindPlantByName(savedSlot.itemName);
                     if (plantData != null)
                     {
                         slot.SetItem(plantData.plantTexture, savedSlot.itemCount, plantData, null);
-                        Debug.Log($"Loaded plant {savedSlot.itemName} with count {savedSlot.itemCount} into slot {i}.");
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"PlantData for {savedSlot.itemName} not found in availablePlants.");
                     }
                 }
                 else if (savedSlot.itemType == "tool")
                 {
-                    Debug.Log($"Attempting to load tool '{savedSlot.itemName}' into slot {i}");
                     ToolData toolData = FindToolByName(savedSlot.itemName);
                     if (toolData != null)
                     {
-                        slot.SetItem(toolData.toolTexture, savedSlot.itemCount, null, toolData);
-                        Debug.Log($"Loaded tool {savedSlot.itemName} with count {savedSlot.itemCount} into slot {i}.");
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"ToolData for {savedSlot.itemName} not found in availableTools.");
+                        slot.SetItem(toolData.toolTexture, savedSlot.itemCount, null, toolData);  
                     }
                 }
                 else
                 {
-                    Debug.Log($"Slot {i} is empty as expected.");
+                    Debug.Log($"Slot {i} este gol");
                 }
             }
 
-            // restauram slotul curent
             inventorySystem.currentSlot = gameState.currentSlot;
             inventorySystem.SelectSlot(gameState.currentSlot);
+            
+            // sura inventar
 
-            // restauram inventarul surii 
-            for(int i = 0; i < suraInventoryScript.suraSlots.Length && i < gameState.suraInventorySlots.Count; i++)
+            for (int i = 0; i < suraInventoryScript.suraSlots.Length && i < gameState.suraInventorySlots.Count; i++)
             {
                 SuraInventoryScript.SuraSlot slot = suraInventoryScript.suraSlots[i];
                 SavedSuraSlots savedSuraSlot = gameState.suraInventorySlots[i];
-
-                // golim sloturile inainte
                 slot.ClearSlot();
-
-                if(savedSuraSlot.itemType == "plant")
+                if (savedSuraSlot.itemType == "plant")
                 {
                     PlantData plantData = FindPlantByName(savedSuraSlot.itemName);
-                    if(plantData != null)
+                    if (plantData != null)
                     {
                         slot.SetPlant(plantData, savedSuraSlot.itemCount);
                     }
                 }
                 else
                 {
-                    Debug.Log($"Sloturile inventarului surii {i} sunt goale.");
+                    Debug.Log($"Sura slot {i} golit.");
+                }
+            }
+            
+            // cubes si plante data
+
+            StCubes[] allSoilCubes = FindObjectsOfType<StCubes>();
+            foreach (SoilCubeData cubeData in gameState.soilCubesData)
+            {
+                StCubes cube = Array.Find(allSoilCubes, c => c.gameObject.name == cubeData.cubeName);
+                if (cube != null)
+                {
+                    cube.stareCurenta = (StCubes.StareCuburi)Enum.Parse(typeof(StCubes.StareCuburi), cubeData.currentState);
+                    if (cubeData.hasWeed && cube.weedPrefab != null)
+                    {
+                        if (cube.currentWeebOnCube != null) Destroy(cube.currentWeebOnCube);
+                        cube.currentWeebOnCube = Instantiate(cube.weedPrefab, cube.transform.position, Quaternion.identity);
+                        cube.currentWeebOnCube.transform.SetParent(cube.transform);
+                    }
+                    else if (!cubeData.hasWeed && cube.currentWeebOnCube != null)
+                    {
+                        Destroy(cube.currentWeebOnCube);
+                        cube.currentWeebOnCube = null;
+                    }
+
+                    if (cubeData.plantName != "")
+                    {
+                        PlantData plantData = FindPlantByName(cubeData.plantName);
+                        if (plantData != null && cubeData.plantStage >= 0 && cubeData.plantStage < plantData.growthStages.Length)
+                        {
+                            if (cube.currentPlantInstance != null) Destroy(cube.currentPlantInstance);
+                            Vector3 position = cube.transform.position;
+                            position.y += cube.GetComponent<Renderer>().bounds.size.y / 2;
+                            GameObject plantInstance = Instantiate(plantData.growthStages[cubeData.plantStage], position, Quaternion.identity);
+                            plantInstance.transform.SetParent(cube.transform);
+                            cube.Planted(plantData, cubeData.plantStage, plantInstance);
+                            cube.isWatered = cubeData.isWatered;
+
+                            BoxCollider boxCollider = plantInstance.AddComponent<BoxCollider>();
+                            boxCollider.isTrigger = true;
+
+                            PickUpScript pickUpScript = plantInstance.AddComponent<PickUpScript>();
+                            pickUpScript.associatedCube = cube;
+                            Animator playerAnimator = FindObjectOfType<Animator>();
+                            if (playerAnimator != null)
+                            {
+                                pickUpScript.playerAnimator = playerAnimator;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        cube.currentPlantData = null;
+                        cube.currentStage = 0;
+                        cube.isWatered = false;
+                        if (cube.currentPlantInstance != null)
+                        {
+                            Destroy(cube.currentPlantInstance);
+                            cube.currentPlantInstance = null;
+                        }
+                    }
+
+                    Debug.Log($"Cub loaded {cubeData.cubeName}: status: {cubeData.currentState}, hasWeed: {cubeData.hasWeed}, plant: {cubeData.plantName}, plantStage: {cubeData.plantStage}, isWatered {cubeData.isWatered}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Cube {cubeData.cubeName} nu a fost gasit pe parcursul load.");
                 }
             }
 
-            // restauram starea cuburilor din momentul salvarii
-            /* StCubes[] allCubes = FindObjectsOfType<StCubes>();
-             foreach (SavedCubeState savedCube in gameState.cubeStates)
-             {
-                 StCubes cube = Array.Find(allCubes, c => c.gameObject.name == savedCube.cubeName);
-                 if (cube != null)
-                 {
-                     cube.SetStateFromString(savedCube.currentState);
-                     Debug.Log($"Restauram starea pentru cub {savedCube.cubeName}: {savedCube.currentState}");
-                 }
-                 else
-                 {
-                     Debug.LogWarning($"Cubul {savedCube.cubeName} nu a fost gasit la incarcare.");
-                 }
-             }*/
+            StartCoroutine(ReenableCharacterController());
 
-          StartCoroutine(ReenableCharacterController());
-
-            // restauram banii dupa load
+            // money system save
             SellScript.instantaBuyTerrain.playerMoney = gameState.playerMoney;
             SellScript.instantaBuyTerrain.UpdateMoneyDisplay();
 
-
-            Debug.Log("Game Loaded! PlayerPosition: " + gameState.playerPosition + ", Current Position: " + playerArmature.transform.position +
+            Debug.Log("Joc Incarcat cu succes! PlayerPosition: " + gameState.playerPosition + ", Current Position: " + playerArmature.transform.position +
                       ", Zile trecute: " + timeController.daysPassed + ", Ora: " + timeController.currentTime.ToString("HH:mm") +
-                      ", Soare Position: "  + ", inventar jucator: " + gameState.inventorySlots.Count + ", inventarul surii dupa load: " + gameState.suraInventorySlots.Count
-                      + ", Player Money acum: " + gameState.playerMoney);
+                      ", Soare Position: " + sunLight.transform.position + ", inventar jucator: " + gameState.inventorySlots.Count +
+                      ", inventarul surii dupa load: " + gameState.suraInventorySlots.Count + ", Player Money acum: " + gameState.playerMoney + ", Soil Cubes loaded:" +
+                      gameState.soilCubesData + ", Pozitia lui NPC Brian: " + gameState.npcPositionM + ", Pozitia lui NPC Megan: " 
+                      + gameState.npcPositionM);
         }
         else
         {
@@ -293,10 +348,9 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-
     private IEnumerator ReenableCharacterController()
     {
-        yield return new WaitForEndOfFrame(); // ast un cadru
+        yield return new WaitForEndOfFrame();
         if (characterController != null)
         {
             characterController.enabled = true;
@@ -305,33 +359,29 @@ public class SaveSystem : MonoBehaviour
 
     private PlantData FindPlantByName(string plantName)
     {
-        Debug.Log($"Searching for PlantData: {plantName} in {availablePlants.Count} available plants");
         foreach (var plant in availablePlants)
         {
-            Debug.Log($"Checking PlantData: {plant.plantName}");
-            if (plant.plantName == plantName)
+            if (plant != null && plant.plantName == plantName)
             {
-                Debug.Log($"Found PlantData: {plantName}");
+                Debug.Log($"Am gasit PlantData: {plantName}");
                 return plant;
             }
         }
-        Debug.LogWarning($"PlantData for {plantName} not found in availablePlants.");
+        Debug.LogWarning($"PlantData pentru {plantName} nu a fost gasit in availablePlants.");
         return null;
     }
 
     private ToolData FindToolByName(string toolName)
     {
-        Debug.Log($"Searching for ToolData: {toolName} in {availableTools.Count} available tools");
         foreach (var tool in availableTools)
         {
-            Debug.Log($"Checking ToolData: {tool.toolName}");
-            if (tool.toolName == toolName)
+            if (tool != null && tool.toolName == toolName)
             {
-                Debug.Log($"Found ToolData: {toolName}");
+                Debug.Log($"Am gasit ToolData: {toolName}");
                 return tool;
             }
         }
-        Debug.LogWarning($"ToolData for {toolName} not found in availableTools.");
+        Debug.LogWarning($"ToolData pentru {toolName} nu a fost gasit in availableTools.");
         return null;
     }
 }

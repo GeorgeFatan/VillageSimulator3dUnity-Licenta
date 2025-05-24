@@ -157,6 +157,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &904883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -412,6 +416,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &14454517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -533,6 +541,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &20350223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -654,6 +666,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &20629729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -892,6 +908,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &59992069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1116,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &83473264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f46b1dda3347ff445bb05336b82420ec, type: 3}
@@ -1190,6 +1214,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &88979929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1383,6 +1411,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &100901038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1858,6 +1890,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &112297609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,6 +1929,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &112297611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2014,6 +2054,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &119976806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2287,6 +2331,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &129454201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2484,6 +2532,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &137290208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2931,6 +2983,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &147434384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,6 +3101,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &151928051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3166,6 +3226,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &163419986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3373,6 +3437,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &179706586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,6 +3562,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &186429665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +3648,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &187577736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3904,6 +3980,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &210561660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4111,6 +4191,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &219054323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4232,6 +4316,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &223310841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4458,6 +4546,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!64 &243594048
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4710,6 +4802,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &255164628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4795,6 +4891,65 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699063278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &264933151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264933153}
+  - component: {fileID: 264933152}
+  m_Layer: 0
+  m_Name: LoadHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &264933152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264933151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf215c4909d8594bb2642be8c9244b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArmature: {fileID: 6518487569490080133}
+  npcArmatureBrian: {fileID: 8507707954081390604}
+  npcArmatureMegan: {fileID: 29778523967361473}
+  timeController: {fileID: 1580652890}
+  sunLight: {fileID: 203772462}
+  moonLight: {fileID: 538857185}
+  inventorySystem: {fileID: 1531333565}
+  suraInventoryScript: {fileID: 1260035982}
+  availablePlants:
+  - {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
+  - {fileID: 11400000, guid: 1c258cfba2a08ac4fa171c3545328763, type: 2}
+  - {fileID: 11400000, guid: 63816c16a5b8d764f86c36bb3746f590, type: 2}
+  availableTools:
+  - {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
+  - {fileID: 11400000, guid: eac5e8afa16bdc54e9915ac31bbc0a80, type: 2}
+--- !u!4 &264933153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264933151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 461.25226, y: 224.28218, z: 14991.914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &277199864
 BoxCollider:
@@ -5021,6 +5176,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &319657839
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5489,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &366009091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,6 +5528,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &366009093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5486,6 +5653,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &366173304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5607,6 +5778,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &366224622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5804,6 +5979,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &382486881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6116,6 +6295,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &401713471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6310,6 +6493,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &426543094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6538,6 +6725,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &464392836
 GameObject:
   m_ObjectHideFlags: 0
@@ -6764,6 +6955,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &491991039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,6 +7073,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &493603772
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7218,6 +7417,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &520954481
 GameObject:
   m_ObjectHideFlags: 0
@@ -7669,6 +7872,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &551683210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7790,6 +7997,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &552972402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8045,6 +8256,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &571155616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8484,6 +8699,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &593525321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8605,6 +8824,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &597557466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8726,6 +8949,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &601296983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9179,6 +9406,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &620864392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9611,6 +9842,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &672758200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9667,6 +9902,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &683542307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9788,6 +10027,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &688559765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9909,6 +10152,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &689016125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10560,6 +10807,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &736832558
 GameObject:
   m_ObjectHideFlags: 0
@@ -10681,6 +10932,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &747260696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10885,6 +11140,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &758371869
 GameObject:
   m_ObjectHideFlags: 0
@@ -11006,6 +11265,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &770845762
 GameObject:
   m_ObjectHideFlags: 0
@@ -11211,6 +11474,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &818282501
 GameObject:
   m_ObjectHideFlags: 0
@@ -11246,6 +11513,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &818282503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11525,6 +11796,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &842485294
 GameObject:
   m_ObjectHideFlags: 0
@@ -11739,6 +12014,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &871071959
 GameObject:
   m_ObjectHideFlags: 0
@@ -11774,6 +12053,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &871071961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13062,6 +13345,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &991863065
 GameObject:
   m_ObjectHideFlags: 0
@@ -13528,6 +13815,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1039739906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13735,6 +14026,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1064946544
 GameObject:
   m_ObjectHideFlags: 0
@@ -13770,6 +14065,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1064946546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13891,6 +14190,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1097645110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14231,6 +14534,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1124930486
 GameObject:
   m_ObjectHideFlags: 0
@@ -14266,6 +14573,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1124930488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14473,6 +14784,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1129969893
 GameObject:
   m_ObjectHideFlags: 0
@@ -14681,6 +14996,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1141437760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14960,6 +15279,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1148494091
 GameObject:
   m_ObjectHideFlags: 0
@@ -15157,6 +15480,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1160704694
 GameObject:
   m_ObjectHideFlags: 0
@@ -15407,6 +15734,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1173786904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15684,6 +16015,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1190936092
 GameObject:
   m_ObjectHideFlags: 0
@@ -15719,6 +16054,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1190936094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15926,6 +16265,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1209519808
 GameObject:
   m_ObjectHideFlags: 0
@@ -16023,6 +16366,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1229194508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16227,6 +16574,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1243738755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16611,6 +16962,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1272749087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16753,6 +17108,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1285358588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17118,6 +17477,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1296650516
 GameObject:
   m_ObjectHideFlags: 0
@@ -17275,6 +17638,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1300608640
 GameObject:
   m_ObjectHideFlags: 0
@@ -17310,6 +17677,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1300608642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18015,6 +18386,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1341780222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18131,6 +18506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerArmature: {fileID: 6518487569490080133}
+  npcArmatureBrian: {fileID: 8507707954081390604}
+  npcArmatureMegan: {fileID: 29778523967361473}
   timeController: {fileID: 1580652890}
   sunLight: {fileID: 203772462}
   moonLight: {fileID: 538857185}
@@ -18351,6 +18728,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1425504502
 GameObject:
   m_ObjectHideFlags: 0
@@ -18683,6 +19064,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1447507606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19159,6 +19544,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1516230019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19772,6 +20161,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1572233693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20175,6 +20568,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1598927949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20296,6 +20693,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1601777831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20417,6 +20818,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1607897240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20726,6 +21131,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1610475766
 GameObject:
   m_ObjectHideFlags: 0
@@ -21191,6 +21600,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1649779584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21312,6 +21725,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1662026524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21433,6 +21850,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1667833447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21931,6 +22352,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1683544257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22426,6 +22851,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1751765363
 GameObject:
   m_ObjectHideFlags: 0
@@ -22547,6 +22976,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1756991569
 GameObject:
   m_ObjectHideFlags: 0
@@ -22665,6 +23098,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1774561712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22786,6 +23223,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1787819935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22990,6 +23431,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1796974040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23142,6 +23587,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1804209812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23294,6 +23743,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1828375755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23487,6 +23940,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1837776372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23608,6 +24065,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1843193577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23812,6 +24273,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1848797664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24010,6 +24475,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1854384878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24217,6 +24686,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1874412698
 GameObject:
   m_ObjectHideFlags: 0
@@ -24252,6 +24725,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1874412700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24373,6 +24850,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1891954025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24571,6 +25052,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1895021046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24809,6 +25294,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1918240540
 GameObject:
   m_ObjectHideFlags: 0
@@ -24997,6 +25486,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1926783387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25197,6 +25690,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1955852982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25404,6 +25901,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &1960655345
 GameObject:
   m_ObjectHideFlags: 0
@@ -25627,6 +26128,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1001 &1971457569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25821,6 +26326,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1988416587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25963,6 +26472,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &1992462091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26394,6 +26907,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!1 &2052201558
 GameObject:
   m_ObjectHideFlags: 0
@@ -26429,6 +26946,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2052201560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26850,6 +27371,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2101326978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26971,6 +27496,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2113669696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27092,6 +27621,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2116078364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27213,6 +27746,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2122564463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27406,6 +27943,10 @@ MonoBehaviour:
   stareCurenta: 2
   weedPrefab: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597, type: 3}
   currentWeebOnCube: {fileID: 0}
+  currentPlantData: {fileID: 0}
+  currentStage: 0
+  currentPlantInstance: {fileID: 0}
+  isWatered: 0
 --- !u!65 &2126175749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -65056,7 +65597,7 @@ Transform:
   m_GameObject: {fileID: 8507707954081390604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 508.68457, y: -0.000009059906, z: 309.57}
+  m_LocalPosition: {x: 486.95, y: -0.000009059906, z: 302.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65674,3 +66215,4 @@ SceneRoots:
   - {fileID: 1483394278}
   - {fileID: 140318317}
   - {fileID: 1365696305}
+  - {fileID: 264933153}

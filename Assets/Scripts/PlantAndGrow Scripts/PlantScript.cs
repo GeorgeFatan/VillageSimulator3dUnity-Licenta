@@ -43,15 +43,24 @@ public class PlantScript : MonoBehaviour
             }
         }
         soilCubes.Clear();
-        // initializam lista cu cuburi
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("SoilCube") && !soilCubes.Contains(child.gameObject)) 
+            if (child.CompareTag("SoilCube") && !soilCubes.Contains(child.gameObject))
             {
-                soilCubes.Add(child.gameObject); // practic pentru fiecare teren cu plant script, avem cuburile copil ale sale.
+                soilCubes.Add(child.gameObject);
             }
         }
 
+        // Inițializăm plantedPlants cu plantele existente
+        plantedPlants.Clear();
+        foreach (GameObject cube in soilCubes)
+        {
+            StCubes soilCube = cube.GetComponent<StCubes>();
+            if (soilCube != null && soilCube.currentPlantInstance != null)
+            {
+                plantedPlants.Add(soilCube.currentPlantInstance);
+            }
+        }
     }
 
     void Update()
@@ -61,7 +70,6 @@ public class PlantScript : MonoBehaviour
             if (isPlayerInPlantingZone)
             {
                 selectedPlantData = SeedSelector.selectedPlant;
-
                 if (selectedPlantData == null)
                 {
                     Debug.LogWarning("Nu a fost selectata nicio planta!");
@@ -77,8 +85,6 @@ public class PlantScript : MonoBehaviour
                 isAnimating = true;
                 PlayPlantingAnimation();
                 StartCoroutine(WaitForAnimation());
-                /* PlantOnCube();
-                 inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);*/
             }
             else
             {
@@ -102,23 +108,17 @@ public class PlantScript : MonoBehaviour
         {
             SapaCubes();
             PlayDiggingAnimation();
-
         }
     }
 
-    // Corutina = multitasking = permite suspendarea si reluarea executiei.
     IEnumerator WaitForAnimation()
     {
         float animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animationTime); // asteptam sa se termina animatia care este in desfasurare
-        PlantOnCube(); // Plasam prefabu dupa terminarea animatiei
+        yield return new WaitForSeconds(animationTime);
+        PlantOnCube();
         inventorySystem.RemoveItemFromSlot(selectedPlantData.seedTexture);
-
         isAnimating = false;
-
     }
-
-
 
     void PlayPlantingAnimation()
     {
@@ -161,7 +161,6 @@ public class PlantScript : MonoBehaviour
 
     void SapaCubes()
     {
-        
         Transform equipHarletPoint = GameObject.Find("EquipHarletPoint")?.transform;
         if (equipHarletPoint == null)
         {
@@ -169,7 +168,6 @@ public class PlantScript : MonoBehaviour
             return;
         }
 
-        // Verif daca exista un tool de tip Harlet echipat
         EquippedHarlet equippedSpade = equipHarletPoint.childCount > 0 ? equipHarletPoint.GetChild(0).GetComponent<EquippedHarlet>() : null;
 
         if (equippedSpade == null || equippedSpade.toolData.toolName != "Spade")
@@ -178,7 +176,6 @@ public class PlantScript : MonoBehaviour
             return;
         }
 
-        // cel mai apropiat cub valid sub jucător
         if (playerTransform == null)
         {
             Debug.LogError("Transformul player-ului nu este setat!");
@@ -204,21 +201,17 @@ public class PlantScript : MonoBehaviour
                 }
             }
         }
-        
-        // efectuam saparea daca am gasit un cub valid 
+
         if (closestCube != null)
         {
             StCubes soilCube = closestCube.GetComponent<StCubes>();
-
-            // Distrugem buruienile existente 
             if (soilCube.currentWeebOnCube != null)
             {
                 Destroy(soilCube.currentWeebOnCube);
                 soilCube.currentWeebOnCube = null;
             }
-
-            // Reset la starea de ReadyToPlant
             soilCube.ResetStare();
+            plantedPlants.Remove(soilCube.currentPlantInstance);
             Debug.Log($"Cubul {soilCube.gameObject.name} a fost sapat si este acum in starea ReadyToPlant.");
         }
         else
@@ -265,8 +258,7 @@ public class PlantScript : MonoBehaviour
             plant.transform.SetParent(closestCube.transform);
             plantedPlants.Add(plant);
 
-            selectedPlantData.isWatered = false;
-            soilCube.Planted();
+            soilCube.Planted(selectedPlantData, 0, plant);
             currentStage = 0;
 
             BoxCollider boxCollider = plant.AddComponent<BoxCollider>();
@@ -295,58 +287,66 @@ public class PlantScript : MonoBehaviour
 
     void AdvanceGrowthStage()
     {
-        if (selectedPlantData == null)
-        {
-            Debug.LogWarning("Nu a fost selectata nicio planta.");
-            return;
-        }
-
-        if (currentStage >= selectedPlantData.growthStages.Length - 1)
-        {
-            Debug.Log("Plantele sunt deja in stadiul final!");
-            return;
-        }
-
-        if (currentStage == 0 && !selectedPlantData.isWatered)
-        {
-            Debug.LogWarning($"Planta {selectedPlantData.plantName} nu este udata.");
-            return;
-        }
-
-        currentStage++;
-        Debug.Log($"Planta {selectedPlantData.plantName} avanseaza la stadiul {currentStage}.");
-
         List<GameObject> newPlantedPlants = new List<GameObject>();
 
-        for (int i = 0; i < plantedPlants.Count; i++)
+        foreach (GameObject cube in soilCubes)
         {
-            GameObject currentPlant = plantedPlants[i];
-
-            if (currentPlant != null)
+            StCubes soilCube = cube.GetComponent<StCubes>();
+            if (soilCube != null && soilCube.stareCurenta == StCubes.StareCuburi.Planted && soilCube.currentPlantData != null)
             {
-                Vector3 position = currentPlant.transform.position;
-                Quaternion rotation = currentPlant.transform.rotation;
+                PlantData plantData = soilCube.currentPlantData;
+                int stage = soilCube.currentStage;
 
-                PickUpScript pickUpScript = currentPlant.GetComponent<PickUpScript>();
+                // Verificăm dacă planta poate avansa
+                if (stage >= plantData.growthStages.Length - 1)
+                {
+                    Debug.Log($"Planta {plantData.plantName} pe cubul {cube.name} este deja in stadiul final!");
+                    newPlantedPlants.Add(soilCube.currentPlantInstance);
+                    continue;
+                }
+
+                if (stage == 0 && !soilCube.isWatered)
+                {
+                    Debug.LogWarning($"Planta {plantData.plantName} pe cubul {cube.name} nu este udata.");
+                    newPlantedPlants.Add(soilCube.currentPlantInstance);
+                    continue;
+                }
+
+                // Avansăm stadiul
+                stage++;
+                Debug.Log($"Planta {plantData.plantName} pe cubul {cube.name} avanseaza la stadiul {stage}.");
+
+                // Distrugem planta veche
+                Vector3 position = soilCube.currentPlantInstance.transform.position;
+                Quaternion rotation = soilCube.currentPlantInstance.transform.rotation;
+
+                PickUpScript pickUpScript = soilCube.currentPlantInstance.GetComponent<PickUpScript>();
                 Animator playerAnimatorRef = pickUpScript != null ? pickUpScript.playerAnimator : null;
                 StCubes associatedCubeRef = pickUpScript != null ? pickUpScript.associatedCube : null;
 
-                Destroy(currentPlant);
+                Destroy(soilCube.currentPlantInstance);
 
-                GameObject newPlant = Instantiate(selectedPlantData.growthStages[currentStage], position, rotation);
+                // Instanțiem planta nouă în stadiul avansat
+                GameObject newPlant = Instantiate(plantData.growthStages[stage], position, rotation);
+                newPlant.transform.SetParent(soilCube.transform);
                 newPlantedPlants.Add(newPlant);
 
-                if (associatedCubeRef != null)
-                {
-                    newPlant.transform.SetParent(associatedCubeRef.transform);
-                }
+                // Actualizăm StCubes
+                soilCube.currentStage = stage;
+                soilCube.currentPlantInstance = newPlant;
+                soilCube.isWatered = false; // Resetăm starea udării după avansare
 
+                // Adăugăm componentele necesare
                 BoxCollider boxCollider = newPlant.AddComponent<BoxCollider>();
                 boxCollider.isTrigger = true;
 
                 PickUpScript newPickUpScript = newPlant.AddComponent<PickUpScript>();
                 newPickUpScript.playerAnimator = playerAnimatorRef;
                 newPickUpScript.associatedCube = associatedCubeRef;
+            }
+            else if (soilCube != null && soilCube.currentPlantInstance != null)
+            {
+                newPlantedPlants.Add(soilCube.currentPlantInstance);
             }
         }
 
@@ -357,22 +357,23 @@ public class PlantScript : MonoBehaviour
     {
         StCubes associatedCube = plant.GetComponent<PickUpScript>()?.associatedCube;
 
-        bool isCorrectCube = associatedCube != null && associatedCube.transform.parent == transform;
-        bool isFinalStage = selectedPlantData != null && currentStage == selectedPlantData.growthStages.Length - 1;
+        if (associatedCube == null || associatedCube.transform.parent != transform)
+        {
+            return false;
+        }
 
-        return isCorrectCube && isFinalStage;
+        return associatedCube.currentStage == associatedCube.currentPlantData.growthStages.Length - 1;
     }
 
     void WaterPlants()
     {
         Transform equipPoint = GameObject.Find("EquipPoint")?.transform;
-        if(equipPoint == null)
+        if (equipPoint == null)
         {
-            Debug.LogError("EquipPoint nu a fost gasit in iarahie");
+            Debug.LogError("EquipPoint nu a fost gasit in ierarhie");
             return;
         }
 
-        // Căutăm scriptul StBucket pe găleata echipată
         StBucket equippedBucket = equipPoint.childCount > 0 ? equipPoint.GetChild(0).GetComponent<StBucket>() : null;
 
         if (equippedBucket == null)
@@ -387,19 +388,28 @@ public class PlantScript : MonoBehaviour
             return;
         }
 
-        if (selectedPlantData != null && !selectedPlantData.isWatered)
+        bool wateredAny = false;
+        foreach (GameObject cube in soilCubes)
         {
-            selectedPlantData.isWatered = true; // Udăm planta
-            equippedBucket.GolireGaleata(); // Golim găleata după udare
-            Debug.Log($"Planta {selectedPlantData.plantName} a fost udata!");
+            StCubes soilCube = cube.GetComponent<StCubes>();
+            if (soilCube != null && soilCube.currentPlantData == selectedPlantData && !soilCube.isWatered)
+            {
+                soilCube.WaterPlant();
+                wateredAny = true;
+            }
+        }
+
+        if (wateredAny)
+        {
+            equippedBucket.GolireGaleata();
+            Debug.Log($"Plantele {selectedPlantData?.plantName} au fost udate!");
         }
         else
         {
-            Debug.Log("Planta este deja udata sau nu exista.");
+            Debug.Log("Toate plantele selectate sunt deja udate sau nu exista.");
         }
     }
 
-  
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
