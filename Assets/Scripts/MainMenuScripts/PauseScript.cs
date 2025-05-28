@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,7 @@ public class PauseScript : MonoBehaviour
 
     public void EscResume()
     {
+
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
@@ -63,6 +65,15 @@ public class PauseScript : MonoBehaviour
 
     }
 
+
+    public void SaveJocFromPauseMenu()
+    {
+        SaveSystem saveSystem = FindAnyObjectByType<SaveSystem>();
+        if(saveSystem != null)
+        {
+            saveSystem.SaveGame(); 
+        }
+    }
 
     public void ExitGame()
     {

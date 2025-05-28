@@ -56,7 +56,7 @@ public class EquippedHarlet : MonoBehaviour
     void DropTool()
     {
         transform.SetParent(null);
-        transform.position = playerTransform.position + new Vector3(0, 0.5f, 0);
+        transform.position = playerTransform.position + new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(90, 0, 0);
 
         Debug.Log($"Harletul {toolData.toolName} a fost pus pe jos.");

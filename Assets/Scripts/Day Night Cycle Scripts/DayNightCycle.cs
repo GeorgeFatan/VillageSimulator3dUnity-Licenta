@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+///  trebuie sa redenumesc variabilele
+/// </summary>
+
 public class TimeController : MonoBehaviour
 {
     [SerializeField]
@@ -51,7 +55,7 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     public  int daysPassed; 
 
-    private DateTime previousTime; 
+    private DateTime previousTime;  
 
     void Start()
     {
@@ -61,18 +65,18 @@ public class TimeController : MonoBehaviour
         sunsetTime = TimeSpan.FromHours(sunsetHour);
 
         daysPassed = 0; 
-        previousTime = currentTime; 
+        previousTime = currentTime; // previos time devine timpul din frame-ul curent
     }
 
    
     void Update()
     {
-        UpdateTimeOfDay();
-        RotateSun();
+        UpdateTime();
+        RotateSoare();
         UpdateLightSettings();
     }
 
-    private void UpdateTimeOfDay()
+    private void UpdateTime()
     {
         currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
 
@@ -80,6 +84,7 @@ public class TimeController : MonoBehaviour
         {
             timeText.text = currentTime.ToString("HH:mm");
         }
+        
 
        
         if (previousTime.Day != currentTime.Day)
@@ -91,7 +96,7 @@ public class TimeController : MonoBehaviour
         previousTime = currentTime; 
     }
 
-    private void RotateSun()
+    private void RotateSoare()
     {
         float sunLightRotation;
 
@@ -152,7 +157,7 @@ public class TimeController : MonoBehaviour
         {
             timeText.text = currentTime.ToString("HH:mm");
         }
-        RotateSun();
+        RotateSoare();
         UpdateLightSettings();
     }
 }

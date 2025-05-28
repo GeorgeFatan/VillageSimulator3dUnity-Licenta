@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -25,21 +25,43 @@ public class GameManager : MonoBehaviour
         }
         
     }
-
-    public void LoadGame()
+    public bool HasSavedGame()
     {
-        if(File.Exists(savePath))
+        return File.Exists(savePath);
+    }
+
+
+    public void IncarcaJoc()
+    {
+        if (File.Exists(savePath))
         {
+            // incarca save file-ul 
             string json = File.ReadAllText(savePath);
             gameState = JsonUtility.FromJson<GameState>(json);
 
-            SceneManager.LoadScene(1); // trecem la scena principala 
+            // incarca scena principala
+            SceneManager.LoadScene("ScenaLaptop");
         }
     }
-    
     public GameState GetGameState()
     {
         return gameState;
+    }
+
+    private IEnumerator LoadGameDataAfterSceneLoad()
+    {
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);
+
+        // Aici apelezi toate funcțiile de încărcare din SaveSystem
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+        if (saveSystem != null)
+        {
+            saveSystem.LoadGame(); // Încarcă datele efective
+        }
+        else
+        {
+            Debug.LogError("SaveSystem nu a fost găsit în scena principală!");
+        }
     }
 
 }

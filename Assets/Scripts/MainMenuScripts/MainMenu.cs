@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,9 +11,14 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
-    public void LoadGame()
+    public void IncarcaJocMainMenu()
     {
-        GameManager.Instance.LoadGame();
+        GameManager.Instance.IncarcaJoc();
+    }
+
+    public void QuitJoc()
+    {
+        Application.Quit();
     }
    
 }
