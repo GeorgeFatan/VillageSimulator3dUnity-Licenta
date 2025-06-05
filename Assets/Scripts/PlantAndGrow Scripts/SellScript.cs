@@ -6,9 +6,8 @@ using UnityEngine;
 public class SellScript : MonoBehaviour
 {
     public InventorySystem inventorySystem; 
-    //public int pretPerItem = 10; 
     public int playerMoney = 0; 
-    public TextMeshProUGUI moneyText; 
+    public TextMeshProUGUI baniJucatorText; 
     public int selectedSlotIndex = 0;
     public static SellScript instantaBuyTerrain;
 
@@ -42,42 +41,34 @@ public class SellScript : MonoBehaviour
 
             if (selectedSlot != null && selectedSlot.itemCount > 0)
             {
-                // Verificăm dacă slotul conține un obiect de tip PlantData
+               
                 if (selectedSlot.plantData != null)
                 {
                     int totalItems = selectedSlot.itemCount;
-                    int pretPerItem = selectedSlot.plantData.plantPrice; // Prețul din PlantData
+                    int pretPerItem = selectedSlot.plantData.plantPrice; // luam pretul din PlantData
                     int baniCastigati = totalItems * pretPerItem;
 
                     playerMoney += baniCastigati;
 
-                    // Resetăm doar dacă este o legumă
+                    // clear slot, daca am vandut legumele din el
                     selectedSlot.ClearSlot();
 
-                    UpdateMoneyDisplay();
-                    Debug.Log($"Ai vândut {totalItems} {selectedSlot.plantData.plantName} pentru {baniCastigati} bani! Total bani: {playerMoney}");
+                    UpdateMoneyUI();
+                    Debug.Log($"Ai vandut {totalItems} {selectedSlot.plantData.plantName} pentru {baniCastigati} bani! Total bani: {playerMoney}");
                 }
                 else
                 {
-                    Debug.LogWarning("Nu poți vinde acest obiect! Doar legumele sunt acceptate.");
+                    Debug.LogWarning("Nu poti vinde acest obiect! Doar legumele sunt acceptate.");
                 }
             }
-            else
-            {
-                Debug.Log("Nu există legume în slotul selectat pentru a fi vândute!");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Slot-ul selectat este invalid!");
         }
     }
 
-   public void UpdateMoneyDisplay()
+   public void UpdateMoneyUI()
     {
-        if (moneyText != null)
+        if (baniJucatorText != null)
         {
-            moneyText.text = $"Bani: {playerMoney}"; 
+            baniJucatorText.text = $"Bani: {playerMoney}"; 
         }
     }
 
@@ -102,10 +93,6 @@ public class SellScript : MonoBehaviour
         {
             selectedSlotIndex = index; // update slot-ul selectat
             Debug.Log($"Slot-ul {index + 1} a fost selectat.");
-        }
-        else
-        {
-            Debug.LogWarning("Indexul slot-ului selectat este in afara limitelor!");
         }
     }
 }

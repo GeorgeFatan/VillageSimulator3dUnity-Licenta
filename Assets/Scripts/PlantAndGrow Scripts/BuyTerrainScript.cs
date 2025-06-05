@@ -42,7 +42,7 @@ public class BuyTerrainScript : MonoBehaviour
         {
             SellScript.instantaBuyTerrain.playerMoney -= terrainPrice; // scadem banii
             terrainToBuy.SetActive(true);
-            SellScript.instantaBuyTerrain.UpdateMoneyDisplay(); // actualizam UI
+            SellScript.instantaBuyTerrain.UpdateMoneyUI(); // actualizam UI
             Debug.Log($"Teren achizitiona! Bani ramasi: {SellScript.instantaBuyTerrain.playerMoney}");
             Destroy(gameObject); // dupa ce achizitionam terenul, distrugem obiectu care reprezinta triggeru de cumparare
         }

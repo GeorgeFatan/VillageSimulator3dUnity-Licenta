@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 1030971990, guid: 090913cc8a2c2d840a6ebe2a1fe0aa9a, type: 3}
   - {fileID: 1030971981, guid: 73cd286a29a684c4f8ae08639a8532aa, type: 3}
   plantPrice: 10
-  seedName: VarzaSeeds
+  seedName: Seminte varza
   isWatered: 1

@@ -50,7 +50,7 @@ public class StCubes : MonoBehaviour
         currentStage = stage;
         currentPlantInstance = plantInstance;
         isWatered = false; // initial planta nu e udata.
-        Debug.Log($"Cubul {gameObject.name} este plantat.");
+        Debug.Log($"Cubul {gameObject.name} a fost plantat.");
     }
 
     public void WaterPlant()

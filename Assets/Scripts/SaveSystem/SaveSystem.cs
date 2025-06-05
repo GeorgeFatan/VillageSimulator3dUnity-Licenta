@@ -328,7 +328,7 @@ public class SaveSystem : MonoBehaviour
 
         // money system save
         SellScript.instantaBuyTerrain.playerMoney = gameState.playerMoney;
-        SellScript.instantaBuyTerrain.UpdateMoneyDisplay();
+        SellScript.instantaBuyTerrain.UpdateMoneyUI();
 
         StartCoroutine(ReenableCharacterController());
 

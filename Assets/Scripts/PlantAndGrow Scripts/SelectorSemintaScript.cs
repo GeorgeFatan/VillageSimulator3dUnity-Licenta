@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SeedSelector : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class SeedSelector : MonoBehaviour
     // Ref catre InventorySystem
     private InventorySystem inventorySystem;
 
+    // UI 
+    public GameObject semintaSelectionUI; // ref catre canvasu pentru UI de selector seminte
+    public TextMeshProUGUI seedNameText;
+ 
+
+
     void Start()
     {
         // Gasim sistemul de inventar in scena
@@ -20,6 +28,16 @@ public class SeedSelector : MonoBehaviour
         {
             Debug.LogError("InventorySystem nu a fost gasit in scena curenta!");
         }
+
+        // ne asiguram ca acest Canvas UI este ascuns la inceputul rularii
+
+        if(semintaSelectionUI != null)
+        {
+            semintaSelectionUI.SetActive(false);
+        }
+
+        ActualizeazaUI();
+            
     }
 
     void Update()
@@ -30,12 +48,14 @@ public class SeedSelector : MonoBehaviour
         {
             currentIndex = (currentIndex - 1 + availablePlants.Count) % availablePlants.Count;
             Debug.Log($"Selectat: {availablePlants[currentIndex].plantName}");
+            ActualizeazaUI();
         }
 
         if (Input.GetKeyDown(KeyCode.E)) // dreapta
         {
             currentIndex = (currentIndex + 1) % availablePlants.Count;
             Debug.Log($"Selectat: {availablePlants[currentIndex].plantName}");
+            ActualizeazaUI();
         }
 
         if (Input.GetKeyDown(KeyCode.Return)) // Confirm cu Enter
@@ -74,6 +94,22 @@ public class SeedSelector : MonoBehaviour
 
         Debug.LogWarning("Inventarul este plin! Nu mai exista sloturi disponibile.");
     }
+    
+    private void ActualizeazaUI()
+    {
+        if(availablePlants == null || availablePlants.Count == 0)
+        {
+            return;
+        }
+
+        // updatam textul cu numele semintei
+        if(seedNameText != null)
+        {
+            seedNameText.text = availablePlants[currentIndex].seedName;
+        }
+
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -81,6 +117,11 @@ public class SeedSelector : MonoBehaviour
         {
             isPlayerInRange = true;
             Debug.Log("Intrat in zona de selectia a semintelor.");
+        }
+
+        if (semintaSelectionUI != null)
+        {
+            semintaSelectionUI.SetActive(true);
         }
     }
 
@@ -90,6 +131,12 @@ public class SeedSelector : MonoBehaviour
         {
             isPlayerInRange = false;
             Debug.Log("Ai iesit din zona de selectia a semintelor.");
+        }
+
+
+        if (semintaSelectionUI != null)
+        {
+            semintaSelectionUI.SetActive(false);
         }
     }
 }

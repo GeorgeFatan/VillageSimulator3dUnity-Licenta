@@ -4,14 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-/// <summary>
-///  trebuie sa redenumesc variabilele
-/// </summary>
+
 
 public class TimeController : MonoBehaviour
 {
     [SerializeField]
-    private float timeMultiplier;
+    private float timeMultiplier; 
 
     [SerializeField]
     private float startHour;
@@ -20,7 +18,7 @@ public class TimeController : MonoBehaviour
     public TextMeshProUGUI timeText;
 
     [SerializeField]
-    private Light sunLight;
+    private Light luminaSoare;
 
     [SerializeField]
     private float sunriseHour;
@@ -38,13 +36,13 @@ public class TimeController : MonoBehaviour
     private AnimationCurve lightChangeCurve;
 
     [SerializeField]
-    private float maxSunLightIntensity;
+    private float maxIntensitateLuminaSoare;
 
     [SerializeField]
-    private Light moonLight;
+    private Light luminaLuna;
 
     [SerializeField]
-    private float maxMoonLightIntensity;
+    private float maxIntensitateLuminaLuna;
 
     public DateTime currentTime;
 
@@ -98,35 +96,39 @@ public class TimeController : MonoBehaviour
 
     private void RotateSoare()
     {
-        float sunLightRotation;
+        float rotatieSoare;
 
         if (currentTime.TimeOfDay > sunriseTime && currentTime.TimeOfDay < sunsetTime)
         {
-            TimeSpan sunriseToSunsetDuration = CalculateTimeDifference(sunriseTime, sunsetTime);
-            TimeSpan timeSinceSunrise = CalculateTimeDifference(sunriseTime, currentTime.TimeOfDay);
+            TimeSpan durataDeLaRasaritLaApus = CalculateTimeDifference(sunriseTime, sunsetTime);
+            TimeSpan rasaritDurataTrecuta = CalculateTimeDifference(sunriseTime, currentTime.TimeOfDay);
 
-            double percentage = timeSinceSunrise.TotalMinutes / sunriseToSunsetDuration.TotalMinutes;
+            double procent = rasaritDurataTrecuta.TotalMinutes / durataDeLaRasaritLaApus.TotalMinutes;
 
-            sunLightRotation = Mathf.Lerp(0, 180, (float)percentage);
+            rotatieSoare = Mathf.Lerp(0, 180, (float)procent);
         }
         else
         {
-            TimeSpan sunsetToSunriseDuration = CalculateTimeDifference(sunsetTime, sunriseTime);
-            TimeSpan timeSinceSunset = CalculateTimeDifference(sunsetTime, currentTime.TimeOfDay);
+            TimeSpan durataDeLaApusLaRasarit = CalculateTimeDifference(sunsetTime, sunriseTime);
+            TimeSpan apusDurataTrecuta = CalculateTimeDifference(sunsetTime, currentTime.TimeOfDay);
 
-            double percentage = timeSinceSunset.TotalMinutes / sunsetToSunriseDuration.TotalMinutes;
+            double procent = apusDurataTrecuta.TotalMinutes / durataDeLaApusLaRasarit.TotalMinutes;
 
-            sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
+            rotatieSoare = Mathf.Lerp(180, 360, (float)procent);
         }
 
-        sunLight.transform.rotation = Quaternion.AngleAxis(sunLightRotation, Vector3.right);
+        luminaSoare.transform.rotation = Quaternion.AngleAxis(rotatieSoare, Vector3.right);
     }
+
 
     private void UpdateLightSettings()
     {
-        float dotProduct = Vector3.Dot(sunLight.transform.forward, Vector3.down);
-        sunLight.intensity = Mathf.Lerp(0, maxSunLightIntensity, lightChangeCurve.Evaluate(dotProduct));
-        moonLight.intensity = Mathf.Lerp(maxMoonLightIntensity, 0, lightChangeCurve.Evaluate(dotProduct));
+        float dotProduct = Vector3.Dot(luminaSoare.transform.forward, Vector3.down);
+
+        luminaSoare.intensity = Mathf.Lerp(0, maxIntensitateLuminaSoare, lightChangeCurve.Evaluate(dotProduct));
+
+        luminaLuna.intensity = Mathf.Lerp(maxIntensitateLuminaLuna, 0, 1 - lightChangeCurve.Evaluate(dotProduct));
+
         RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
 

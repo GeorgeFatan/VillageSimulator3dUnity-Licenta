@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 1030971909, guid: 86d81be581cd3854cba200e97720aafb, type: 3}
   - {fileID: 1030971891, guid: 928514a437384414eb2077167bfafd97, type: 3}
   plantPrice: 15
-  seedName: PorumbSeed
+  seedName: Seminte porumb
   isWatered: 1
