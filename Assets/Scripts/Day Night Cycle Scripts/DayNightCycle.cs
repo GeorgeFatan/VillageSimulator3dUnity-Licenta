@@ -10,49 +10,33 @@ public class TimeController : MonoBehaviour
 {
     [SerializeField]
     private float timeMultiplier; 
-
     [SerializeField]
     private float startHour;
-
     [SerializeField]
     public TextMeshProUGUI timeText;
-
     [SerializeField]
     private Light luminaSoare;
-
     [SerializeField]
     private float sunriseHour;
-
     [SerializeField]
     private float sunsetHour;
-
     [SerializeField]
     private Color dayAmbientLight;
-
     [SerializeField]
     private Color nightAmbientLight;
-
     [SerializeField]
     private AnimationCurve lightChangeCurve;
-
     [SerializeField]
     private float maxIntensitateLuminaSoare;
-
     [SerializeField]
     private Light luminaLuna;
-
     [SerializeField]
     private float maxIntensitateLuminaLuna;
-
     public DateTime currentTime;
-
     private TimeSpan sunriseTime;
-
     private TimeSpan sunsetTime;
-
     [SerializeField]
     public  int daysPassed; 
-
     private DateTime previousTime;  
 
     void Start()
