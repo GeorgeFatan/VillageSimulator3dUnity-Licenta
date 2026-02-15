@@ -26,7 +26,7 @@ public class InventorySystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectSlot(0); } // Slot 1
         if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectSlot(1); } // Slot 2
         if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectSlot(2); } // Slot 3
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); } 
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectSlot(3); } // -//-
         if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectSlot(4); }
         if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectSlot(5); }
         if (Input.GetKeyDown(KeyCode.Alpha7)) { SelectSlot(6); }
@@ -79,7 +79,7 @@ public class InventorySystem : MonoBehaviour
 
     }
 
-    public int GetFirstAvailbleSlot()
+    public int GetFirstAvailbleSlot() // metoda care baga itemul in primul slot liber 
     {
         for (int i = 0; i < inventorySlots.Count; i++)
         {
@@ -92,7 +92,7 @@ public class InventorySystem : MonoBehaviour
         return -1;
     }
 
-    public void AddItemToSlot(PlantData plantData)
+    public void AddItemToSlot(PlantData plantData) 
     {
         if (plantData == null || plantData.plantTexture == null)
         {
