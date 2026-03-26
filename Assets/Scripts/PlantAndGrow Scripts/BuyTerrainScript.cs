@@ -6,8 +6,9 @@ public class BuyTerrainScript : MonoBehaviour
 {
     public GameObject terrainToBuy; // ref la terenu care vrem sa-l cumparam
     public int terrainPrice = 10;
-    private bool playerInTrigger = false; 
-    
+    private bool playerInTrigger = false;
+    public bool terrainUnlocked = false; // var pentru a verif daca terenu a fost deja cumparat
+    public GameObject buyTrigger; // ref la ob cu triggerul pt cumparare
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,20 +37,41 @@ public class BuyTerrainScript : MonoBehaviour
         
     }
 
+    public void LockTerrain()
+    {
+        terrainUnlocked = false;
+        terrainToBuy.SetActive(false);
+        buyTrigger.SetActive(true); 
+    }
+
+    public void UnlockTerrain()
+    {
+        terrainUnlocked = true;
+        terrainToBuy.SetActive(true);
+        buyTrigger.SetActive(false);
+    }
+
     void BuyTerrain()
     {
         if(SellScript.instantaBuyTerrain.playerMoney >= terrainPrice)
         {
             SellScript.instantaBuyTerrain.playerMoney -= terrainPrice; // scadem banii
-            terrainToBuy.SetActive(true);
+            UnlockTerrain(); // deblocam terenul
             SellScript.instantaBuyTerrain.UpdateMoneyUI(); // actualizam UI
             Debug.Log($"Teren achizitiona! Bani ramasi: {SellScript.instantaBuyTerrain.playerMoney}");
-            Destroy(gameObject); // dupa ce achizitionam terenul, distrugem obiectu care reprezinta triggeru de cumparare
+            gameObject.SetActive(false); // dezactivam triggerul dupa cumparare
+            
         }
         else
         {
             Debug.LogWarning("Nu ai suficienti bani pentru a cumpara un teren nou..");
         }
+    }
+
+   public void ForceExitTrigger()
+    {
+        playerInTrigger = false; 
+       
     }
 
 }

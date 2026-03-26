@@ -27,6 +27,10 @@ public class SaveSystem : MonoBehaviour
     [SerializeField]
     private List<ToolData> availableTools;   // Lista de ToolData
     private CharacterController characterController; // Ref la CharacterController
+    [SerializeField]
+    private BuyTerrainScript buyTerrainSCript; // ref la scriptu de buy terrain 
+    [SerializeField]
+    private TextInformativScript textInformativScript; // ref la scriptu de text informativ
 
     private string savePath;
 
@@ -139,6 +143,8 @@ public class SaveSystem : MonoBehaviour
             Debug.Log($"Saving cube {cubeData.cubeName}: state {cubeData.currentState}, hasWeed {cubeData.hasWeed}, plant {cubeData.plantName}, stage {cubeData.plantStage}, isWatered {cubeData.isWatered}");
         }
 
+
+
         GameState gameState = new GameState
         {
             playerPosition = playerArmature.transform.position, // Player Armature
@@ -157,7 +163,8 @@ public class SaveSystem : MonoBehaviour
             currentSlot = inventorySystem.currentSlot,
             suraInventorySlots = savedSuraSlots,
             playerMoney = SellScript.instantaBuyTerrain.playerMoney,
-            soilCubesData = soilCubesData
+            soilCubesData = soilCubesData,
+            terrain2Unlocked = buyTerrainSCript.terrainUnlocked
         };
 
         string json = JsonUtility.ToJson(gameState, true);
@@ -326,6 +333,16 @@ public class SaveSystem : MonoBehaviour
             }
         }
 
+        // terrain 2
+        if(gameState.terrain2Unlocked)
+        {
+            buyTerrainSCript.UnlockTerrain();
+        }
+        else
+        {
+            buyTerrainSCript.LockTerrain(); 
+        }
+
         // money system save
         SellScript.instantaBuyTerrain.playerMoney = gameState.playerMoney;
         SellScript.instantaBuyTerrain.UpdateMoneyUI();
@@ -342,13 +359,26 @@ public class SaveSystem : MonoBehaviour
 
     }
 
+    private void ResetTerrainsToDefault()
+    {
+        buyTerrainSCript.LockTerrain();
+        buyTerrainSCript.ForceExitTrigger();
+    }
+
     public void LoadGame()
     {
         if (File.Exists(savePath))
         {
+            ResetTerrainsToDefault();
+           
+
             string json = File.ReadAllText(savePath);
             GameState gameState = JsonUtility.FromJson<GameState>(json);
             ApplyGameState(gameState);
+
+            textInformativScript.HideTutorial(); 
+
+
         }
     }
 
@@ -360,6 +390,8 @@ public class SaveSystem : MonoBehaviour
             characterController.enabled = true;
         }
     }
+
+  
 
     private PlantData FindPlantByName(string plantName)
     {

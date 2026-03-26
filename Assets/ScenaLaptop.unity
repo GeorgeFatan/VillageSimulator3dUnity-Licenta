@@ -19250,6 +19250,8 @@ MonoBehaviour:
   availableTools:
   - {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
   - {fileID: 11400000, guid: eac5e8afa16bdc54e9915ac31bbc0a80, type: 2}
+  buyTerrainSCript: {fileID: 2000159116}
+  textInformativScript: {fileID: 919132149286742622}
 --- !u!4 &1365696305
 Transform:
   m_ObjectHideFlags: 0
@@ -28033,6 +28035,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainToBuy: {fileID: 699063275}
   terrainPrice: 10
+  terrainUnlocked: 0
+  buyTrigger: {fileID: 919132149286742621}
 --- !u!65 &2000159118
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -25,6 +25,11 @@ public class TextInformativScript : MonoBehaviour
         }
     }
 
+    public void HideTutorial()
+    {
+        tutorialPanel.SetActive(false);
+    }
+
     void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Player"))

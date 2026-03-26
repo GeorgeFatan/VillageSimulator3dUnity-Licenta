@@ -28,6 +28,8 @@ public class GameState
     public Vector3 npcPositionF; // pt Megan NPC
     public Quaternion npcRotationF;
 
+    // terrain2 state
+    public bool terrain2Unlocked; 
 
 }
 
