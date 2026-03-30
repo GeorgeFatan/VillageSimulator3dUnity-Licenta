@@ -21,6 +21,10 @@ public class StCubes : MonoBehaviour
         {
             currentWeebOnCube = Instantiate(weedPrefab,transform.position, Quaternion.identity);
             currentWeebOnCube.transform.SetParent(transform);
+
+            currentWeebOnCube.transform.localPosition = new Vector3(0, 0.5f, 0);
+            currentWeebOnCube.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            
         }
     }
 
