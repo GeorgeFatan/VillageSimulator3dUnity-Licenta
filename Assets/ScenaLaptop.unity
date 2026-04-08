@@ -304,7 +304,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: ' - Pentru a putea achizitiona acest teren, apasa tasta ENTER
+
+
+    - Contra
+    sumei de 10 Banuti.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -331,8 +335,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2477,7 +2481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 153.55443, y: -69.347046}
+  m_AnchoredPosition: {x: 400, y: -225.00002}
   m_SizeDelta: {x: 307.1089, y: 138.694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134822798
@@ -5589,8 +5593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36695db90c009e84da12198886a83156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesajTutorial: Pentru a putea echipa un nou harlet, apasa pe tasta `E`
-  mesajTutorialUI: {fileID: 1608136586}
   tutorialPanel: {fileID: 190781373}
 --- !u!65 &336428601
 BoxCollider:
@@ -6732,7 +6734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 155.12886, y: -70.393585}
+  m_AnchoredPosition: {x: 400.00006, y: -225.00003}
   m_SizeDelta: {x: 310.2577, y: 140.7872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &401713473
@@ -10186,7 +10188,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -13388,15 +13390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36695db90c009e84da12198886a83156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesajTutorial: '- Procesul de plantare a semintelor legumelor nu este unul foarte
-    usor, inainte de a planta semintele, trebuie sa iei unealta harlet si sa sapi
-    buruieniile de pe teren (tasta H). - Apoi poti lua seminte din dreptul paletiilor
-    cu seminte si poti incepe procesul de  plantare. (tasta P) - Dupa ce plantam,
-    plantele trebuiesc udate pentru a facilita cresterea lor, acest lucru il poti
-    face luand galeata de la fantana (apasa tasta U in dreptul terenului)  - Dupa
-    trebuie sa astepti 3 zile ca legumele sa creasca si  sa fie gata de a fi recoltate.
-    (tasta E , in dreptul fiecarei plante)'
-  mesajTutorialUI: {fileID: 963512588}
   tutorialPanel: {fileID: 1148494091}
 --- !u!1 &957617681
 GameObject:
@@ -13504,7 +13497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0010521, y: -0.00057936}
+  m_AnchoredPosition: {x: 0.0001049, y: 67.722}
   m_SizeDelta: {x: 317.68, y: 197.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963512588
@@ -13527,14 +13520,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Procesul de plantare a semintelor legumelor nu este unul foarte usor,
+  m_text: "  - Procesul de plantare a semintelor legumelor nu este unul foarte usor,
     inainte de a planta semintele, trebuie sa iei unealta harlet si sa sapi buruieniile
-    de pe teren (tasta H).\n- Apoi poti lua seminte din dreptul paletiilor cu seminte
-    si poti incepe procesul de  plantare. (tasta P)\n- Dupa ce plantam, plantele
-    trebuiesc udate pentru a facilita cresterea lor, acest lucru il poti face luand
-    galeata de la fantana (apasa tasta U in dreptul terenului) \n- Dupa trebuie sa
-    astepti 3 zile ca legumele sa creasca si  sa fie gata de a fi recoltate. (tasta
-    E , in dreptul fiecarei plante)"
+    de pe teren (tasta H). \n\n  - Apoi poti lua seminte din dreptul paletiilor cu
+    seminte si poti incepe procesul de  plantare. (tasta P) \n\n  - Dupa ce plantam,
+    plantele trebuiesc udate pentru a facilita cresterea lor, acest lucru il poti
+    face luand galeata de la fantana (apasa tasta U in dreptul terenului)  \n\n 
+    - Dupa trebuie sa astepti 3 zile ca legumele sa creasca si  sa fie gata de a
+    fi recoltate. (tasta E , in dreptul fiecarei plante)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13597,7 +13590,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -77.45587}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -15875,8 +15868,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 158.84012, y: -98.62195}
-  m_SizeDelta: {x: 317.6802, y: 197.2439}
+  m_AnchoredPosition: {x: 400, y: -213.63199}
+  m_SizeDelta: {x: 317.6802, y: 332.684}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148494093
 MonoBehaviour:
@@ -16411,8 +16404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36695db90c009e84da12198886a83156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesajTutorial: Pentru a vinde legumele, apasa pe tasta "O".
-  mesajTutorialUI: {fileID: 1310137207}
   tutorialPanel: {fileID: 401713471}
 --- !u!65 &1177080093
 BoxCollider:
@@ -18553,7 +18544,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310137205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2376e-11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18561,7 +18552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000012546, y: 0.0000086726}
+  m_AnchoredPosition: {x: 0.0011516, y: -0.0013986}
   m_SizeDelta: {x: 310.26, y: 140.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310137207
@@ -21826,7 +21817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: ' - Apasa taste E pentru a echipa harletul intr-un slot liber de inventar.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21853,8 +21844,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -23906,8 +23897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36695db90c009e84da12198886a83156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesajTutorial: Pentru a putea echipa o galeata noua, apasa pe tasta `E`
-  mesajTutorialUI: {fileID: 153264080}
   tutorialPanel: {fileID: 387939871}
 --- !u!65 &1741842754
 BoxCollider:
@@ -33704,9 +33693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36695db90c009e84da12198886a83156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesajTutorial: 'Pentru a putea cumpara un nou teren agricol, apasa pe tasta "ENTER"
-    , desigur ca trebuie sa dispui de pretul total al terenului : 10 Euro'
-  mesajTutorialUI: {fileID: 6922356}
   tutorialPanel: {fileID: 134822796}
 --- !u!1 &919132149340830681
 GameObject:

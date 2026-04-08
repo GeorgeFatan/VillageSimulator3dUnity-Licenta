@@ -6,8 +6,7 @@ using TMPro;
 
 public class TextInformativScript : MonoBehaviour
 {
-    public string mesajTutorial;
-    public TextMeshProUGUI mesajTutorialUI;
+    
     public GameObject tutorialPanel;
 
     private void Start()
@@ -20,15 +19,9 @@ public class TextInformativScript : MonoBehaviour
         if (other.CompareTag("Player")) //verificam daca jucatorul intra sau iese din zona colider-ului
         {
             tutorialPanel.SetActive(true);
-            mesajTutorialUI.text = mesajTutorial; 
-           
         }
     }
 
-    public void HideTutorial()
-    {
-        tutorialPanel.SetActive(false);
-    }
 
     void OnTriggerExit(Collider other)
     {

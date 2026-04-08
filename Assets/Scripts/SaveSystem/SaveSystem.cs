@@ -376,7 +376,7 @@ public class SaveSystem : MonoBehaviour
             GameState gameState = JsonUtility.FromJson<GameState>(json);
             ApplyGameState(gameState);
 
-            textInformativScript.HideTutorial(); 
+           // textInformativScript.HideTutorial(); 
 
 
         }
