@@ -22895,6 +22895,7 @@ GameObject:
   - component: {fileID: 1610475767}
   - component: {fileID: 1610475768}
   - component: {fileID: 1610475769}
+  - component: {fileID: 1610475770}
   m_Layer: 0
   m_Name: Teren
   m_TagString: Untagged
@@ -23075,6 +23076,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.47, y: 1.32, z: 8.46}
   m_Center: {x: 4.4, y: -2.99, z: 3.74}
+--- !u!114 &1610475770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610475766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46dba4de5ce562c4e9d4e4c56e5f3391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1612026066
 MeshFilter:
   m_ObjectHideFlags: 0

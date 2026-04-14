@@ -28,7 +28,7 @@ public class PlantScript : MonoBehaviour
         {
             Debug.LogError("Eroare! Inventory System nu a fost gasit in scena actuala...");
         }
-
+        
         if (playerTransform == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -194,7 +194,7 @@ public class PlantScript : MonoBehaviour
             if (distance < 0.6f && distance < minDistance)
             {
                 StCubes soilCube = currentCube.GetComponent<StCubes>();
-                if (soilCube != null && soilCube.stareCurenta == StCubes.StareCuburi.Planted)
+                if (soilCube != null && (soilCube.stareCurenta == StCubes.StareCuburi.Planted || soilCube.stareCurenta == StCubes.StareCuburi.Weeds))
                 {
                     closestCube = currentCube;
                     minDistance = distance;

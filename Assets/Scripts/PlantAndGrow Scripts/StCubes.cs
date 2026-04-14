@@ -16,8 +16,13 @@ public class StCubes : MonoBehaviour
     
     void Start()
     {
-        stareCurenta = StareCuburi.Planted;
-        if(weedPrefab != null)
+        if(SaveSystem.gameIsLoaded)
+        {
+            return;
+        }
+
+        stareCurenta = StareCuburi.Weeds;
+        if(weedPrefab != null && stareCurenta == StareCuburi.Weeds)
         {
             currentWeebOnCube = Instantiate(weedPrefab,transform.position, Quaternion.identity);
             currentWeebOnCube.transform.SetParent(transform);

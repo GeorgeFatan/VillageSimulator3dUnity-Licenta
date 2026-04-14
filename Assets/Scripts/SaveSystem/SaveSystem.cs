@@ -32,6 +32,8 @@ public class SaveSystem : MonoBehaviour
     [SerializeField]
     private TextInformativScript textInformativScript; // ref la scriptu de text informativ
 
+    public static bool gameIsLoaded = false; // flag pentru a verifica daca jocul a fost incarcat
+
     private string savePath;
 
     private void Awake()
@@ -375,6 +377,8 @@ public class SaveSystem : MonoBehaviour
             string json = File.ReadAllText(savePath);
             GameState gameState = JsonUtility.FromJson<GameState>(json);
             ApplyGameState(gameState);
+
+            gameIsLoaded = true;
 
            // textInformativScript.HideTutorial(); 
 
