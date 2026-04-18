@@ -283,6 +283,9 @@ public class SaveSystem : MonoBehaviour
                     if (cube.currentWeebOnCube != null) Destroy(cube.currentWeebOnCube);
                     cube.currentWeebOnCube = Instantiate(cube.weedPrefab, cube.transform.position, Quaternion.identity);
                     cube.currentWeebOnCube.transform.SetParent(cube.transform);
+
+                    cube.currentWeebOnCube.transform.localPosition = new Vector3(0, 0.5f, 0);
+                    cube.currentWeebOnCube.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
                 }
                 else if (!cubeData.hasWeed && cube.currentWeebOnCube != null)
                 {

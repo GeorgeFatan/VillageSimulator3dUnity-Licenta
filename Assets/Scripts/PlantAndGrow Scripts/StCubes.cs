@@ -44,6 +44,13 @@ public class StCubes : MonoBehaviour
             Destroy(currentPlantInstance);
             currentPlantInstance = null;
         }
+
+        if(currentWeebOnCube != null)
+        {
+            Destroy(currentWeebOnCube);
+            currentWeebOnCube = null;
+        }
+
         Debug.Log($"Cubul {gameObject.name} a fost resetat la starea ReadyToPlant.");
     }
 
