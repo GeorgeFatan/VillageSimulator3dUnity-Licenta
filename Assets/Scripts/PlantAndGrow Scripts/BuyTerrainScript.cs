@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuyTerrainScript : MonoBehaviour
 {
     public GameObject terrainToBuy; // ref la terenu care vrem sa-l cumparam
-    public int terrainPrice = 10;
+    public int terrainPrice = 150;
     private bool playerInTrigger = false;
     public bool terrainUnlocked = false; // var pentru a verif daca terenu a fost deja cumparat
     public GameObject buyTrigger; // ref la ob cu triggerul pt cumparare

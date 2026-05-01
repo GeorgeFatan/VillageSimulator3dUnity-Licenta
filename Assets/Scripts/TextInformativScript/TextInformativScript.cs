@@ -30,4 +30,12 @@ public class TextInformativScript : MonoBehaviour
             tutorialPanel.SetActive(false);
         }
     }
+
+    public void HideTextInformativLaLoad()
+    {
+        tutorialPanel.SetActive(false); // la load, ascudem textul informativ
+        // asa rezolvam bugu cand dam save si dupa mergem la un obiect care are tutorial, apare textu
+        // pe urma ne facem treaba, si daca dam load apare textu informativ desi nu suntem in triggeru de tutorial
+    }
+
 }

@@ -381,9 +381,12 @@ public class SaveSystem : MonoBehaviour
             GameState gameState = JsonUtility.FromJson<GameState>(json);
             ApplyGameState(gameState);
 
+
+            textInformativScript.HideTextInformativLaLoad(); 
+
             gameIsLoaded = true;
 
-           // textInformativScript.HideTutorial(); 
+          
 
 
         }
