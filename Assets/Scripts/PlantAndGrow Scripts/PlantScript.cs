@@ -21,6 +21,10 @@ public class PlantScript : MonoBehaviour
 
     [SerializeField] private Transform playerTransform;
 
+
+    [SerializeField] public ParticleSystem waterParticlesEffect;
+
+
     private void Start()
     {
         inventorySystem = FindObjectOfType<InventorySystem>();
@@ -96,6 +100,8 @@ public class PlantScript : MonoBehaviour
         {
             WaterPlants();
             PlayWateringAnimation();
+
+            StartCoroutine(StopEffectAfterDelay(3f));
         }
 
         if (timeController != null && timeController.daysPassed > lastDaysPassed)
@@ -138,6 +144,10 @@ public class PlantScript : MonoBehaviour
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("Watering");
+             if(waterParticlesEffect != null)
+            {
+                waterParticlesEffect.Play();
+            }
             Debug.Log("Animatia de udare a plantelor a fost declansata.");
         }
         else
@@ -145,6 +155,13 @@ public class PlantScript : MonoBehaviour
             Debug.LogWarning("Animatorul nu este setat!");
         }
     }
+
+    private IEnumerator StopEffectAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        waterParticlesEffect.Stop();
+    }
+  
 
     void PlayDiggingAnimation()
     {
