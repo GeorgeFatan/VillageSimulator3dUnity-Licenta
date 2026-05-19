@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         return gameState;
     }
 
+    public void SetLoadedGameState(GameState loadedState)
+    {
+        gameState = loadedState;
+    }
+
     private IEnumerator LoadGameDataAfterSceneLoad()
     {
         yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);

@@ -24,7 +24,7 @@ public class MainMenuLoadScript : MonoBehaviour
         { 
             string json = File.ReadAllText(savePath);
             gameStateLoadMeniu = JsonUtility.FromJson<GameState>(json);
-
+            GameManager.Instance.SetLoadedGameState(gameStateLoadMeniu);
 
             SceneManager.LoadScene("ScenaLaptop");
         }
@@ -32,14 +32,32 @@ public class MainMenuLoadScript : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 1) // 1 = scena laptop
+        if(scene.buildIndex == 1)
         {
-            SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
-            if (saveSystem != null)
-            {
-                saveSystem.ApplyGameState(gameStateLoadMeniu);
-                Debug.Log("Ai incarcat jocul din main menu cu succes");
-            }
+            StartCoroutine(ApplyAfterOneFrame());
+        }
+        
+    }
+
+    private IEnumerator ApplyAfterOneFrame()
+    {
+        yield return null; // asteptam 1 frame
+
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+
+        if (saveSystem != null)
+        {
+            // Citește JSON-ul din fișier ACUM, nu cel vechi
+            string json = File.ReadAllText(savePath);
+            GameState freshState = JsonUtility.FromJson<GameState>(json);
+
+            saveSystem.ApplyGameState(freshState);
+
+            Debug.Log("Game state applied fresh from JSON.");
+        }
+        else
+        {
+            Debug.LogError("SaveSystem nu a fost găsit în scena principală!"); 
         }
     }
 

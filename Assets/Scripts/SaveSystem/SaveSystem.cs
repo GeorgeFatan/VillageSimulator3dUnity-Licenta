@@ -3,6 +3,7 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using StarterAssets;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -188,6 +189,8 @@ public class SaveSystem : MonoBehaviour
             return;
         }
 
+
+        ThirdPersonController controllerScript = playerArmature.GetComponent<ThirdPersonController>();
         if (characterController != null)
         {
             characterController.enabled = false;
@@ -395,10 +398,18 @@ public class SaveSystem : MonoBehaviour
     private IEnumerator ReenableCharacterController()
     {
         yield return new WaitForEndOfFrame();
+
         if (characterController != null)
         {
             characterController.enabled = true;
         }
+
+        ThirdPersonController controllerScript = playerArmature.GetComponent<ThirdPersonController>();
+        if(controllerScript != null)
+        {
+            controllerScript.enabled = true;
+        }
+
     }
 
   

@@ -11,16 +11,21 @@ public class LoadHandler : MonoBehaviour
 
     private IEnumerator InitializeAfterLoad()
     {
-        yield return null; // Wait one frame
+        SaveSystem saveSystem = null;
+        while (saveSystem == null)
+        {
+            saveSystem = FindObjectOfType<SaveSystem>();
+            yield return null; // 1 frame wait
+        }
 
-        GameState gameState = GameManager.Instance.GetGameState();
+        // mai asteptam 1 frame sa ne asiguram ca toate obietele sunt initializate
+        yield return null;
+
+        GameState gameState = GameManager.Instance.GetGameState();  // preluam starea curenta a jocului din GameManager
+
         if (gameState != null)
         {
-            SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
-            if (saveSystem != null)
-            {
-                saveSystem.ApplyGameState(gameState);
-            }
+            saveSystem.ApplyGameState(gameState);
         }
     }
 }

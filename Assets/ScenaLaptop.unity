@@ -24897,9 +24897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7063462a02a78ae4486d56aa02722e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArmature: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-  npcArmatureBrian: {fileID: 919132149155446097, guid: ec92b4180e3aa71498bfe5081c80aae5, type: 3}
-  npcArmatureMegan: {fileID: 919132149155446097, guid: 6638a807866cad448816cc5c8a393655, type: 3}
+  playerArmature: {fileID: 6518487569490080133}
+  npcArmatureBrian: {fileID: 8507707954081390604}
+  npcArmatureMegan: {fileID: 29778523967361473}
   timeController: {fileID: 1580652890}
   sunLight: {fileID: 203772462}
   moonLight: {fileID: 538857185}
