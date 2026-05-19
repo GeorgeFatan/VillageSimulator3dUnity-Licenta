@@ -271,6 +271,16 @@ public class SaveSystem : MonoBehaviour
 
         // cubes si plante data
 
+        // terrain 2
+        if (gameState.terrain2Unlocked)
+        {
+            buyTerrainSCript.UnlockTerrain();
+        }
+        else
+        {
+            buyTerrainSCript.LockTerrain();
+        }
+        
         StCubes[] allSoilCubes = FindObjectsOfType<StCubes>();
         foreach (SoilCubeData cubeData in gameState.soilCubesData)
         {
@@ -338,15 +348,7 @@ public class SaveSystem : MonoBehaviour
             }
         }
 
-        // terrain 2
-        if(gameState.terrain2Unlocked)
-        {
-            buyTerrainSCript.UnlockTerrain();
-        }
-        else
-        {
-            buyTerrainSCript.LockTerrain(); 
-        }
+      
 
         // money system save
         SellScript.instantaBuyTerrain.playerMoney = gameState.playerMoney;
@@ -374,7 +376,7 @@ public class SaveSystem : MonoBehaviour
     {
         if (File.Exists(savePath))
         {
-            ResetTerrainsToDefault();
+            //ResetTerrainsToDefault();
            
 
             string json = File.ReadAllText(savePath);
@@ -385,8 +387,6 @@ public class SaveSystem : MonoBehaviour
             textInformativScript.HideTextInformativLaLoad(); 
 
             gameIsLoaded = true;
-
-          
 
 
         }

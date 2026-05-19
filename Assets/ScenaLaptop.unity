@@ -18981,6 +18981,80 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: abc00000000004255958001886619790, type: 3}
+--- !u!1 &969558484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 969558487}
+  - component: {fileID: 969558486}
+  - component: {fileID: 969558485}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &969558485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969558484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf215c4909d8594bb2642be8c9244b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &969558486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969558484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7063462a02a78ae4486d56aa02722e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArmature: {fileID: 6518487569490080133}
+  npcArmatureBrian: {fileID: 8507707954081390604}
+  npcArmatureMegan: {fileID: 29778523967361473}
+  timeController: {fileID: 1580652890}
+  sunLight: {fileID: 203772462}
+  moonLight: {fileID: 538857185}
+  inventorySystem: {fileID: 1531333565}
+  suraInventoryScript: {fileID: 1260035982}
+  availablePlants:
+  - {fileID: 11400000, guid: a5e2d2bc9605d3b49ada7f9ee1d1af71, type: 2}
+  - {fileID: 11400000, guid: 1c258cfba2a08ac4fa171c3545328763, type: 2}
+  - {fileID: 11400000, guid: 63816c16a5b8d764f86c36bb3746f590, type: 2}
+  availableTools:
+  - {fileID: 11400000, guid: 559324b4f3634f041aad18261dbcad42, type: 2}
+  - {fileID: 11400000, guid: eac5e8afa16bdc54e9915ac31bbc0a80, type: 2}
+  buyTerrainSCript: {fileID: 2000159116}
+  textInformativScript: {fileID: 919132149286742622}
+--- !u!4 &969558487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969558484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 495.81583, y: 1.369262, z: 300.12265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971027748
 GameObject:
   m_ObjectHideFlags: 0
@@ -24823,9 +24897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7063462a02a78ae4486d56aa02722e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArmature: {fileID: 6518487569490080133}
-  npcArmatureBrian: {fileID: 8507707954081390604}
-  npcArmatureMegan: {fileID: 29778523967361473}
+  playerArmature: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  npcArmatureBrian: {fileID: 919132149155446097, guid: ec92b4180e3aa71498bfe5081c80aae5, type: 3}
+  npcArmatureMegan: {fileID: 919132149155446097, guid: 6638a807866cad448816cc5c8a393655, type: 3}
   timeController: {fileID: 1580652890}
   sunLight: {fileID: 203772462}
   moonLight: {fileID: 538857185}
@@ -24862,7 +24936,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365696303}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf215c4909d8594bb2642be8c9244b6, type: 3}
   m_Name: 
@@ -72705,10 +72779,11 @@ SceneRoots:
   - {fileID: 615903725}
   - {fileID: 543450653307474521}
   - {fileID: 140318317}
-  - {fileID: 1365696305}
+  - {fileID: 969558487}
   - {fileID: 1947267299}
   - {fileID: 42025763}
   - {fileID: 543450652953751642}
   - {fileID: 543450652446028715}
   - {fileID: 543450652572883986}
   - {fileID: 543450652760206650}
+  - {fileID: 1365696305}
