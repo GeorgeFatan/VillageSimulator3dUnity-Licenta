@@ -101,7 +101,7 @@ public class PlantScript : MonoBehaviour
             WaterPlants();
             PlayWateringAnimation();
 
-            StartCoroutine(StopEffectAfterDelay(3f));
+            
         }
 
         if (timeController != null && timeController.daysPassed > lastDaysPassed)
@@ -155,13 +155,6 @@ public class PlantScript : MonoBehaviour
             Debug.LogWarning("Animatorul nu este setat!");
         }
     }
-
-    private IEnumerator StopEffectAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        waterParticlesEffect.Stop();
-    }
-  
 
     void PlayDiggingAnimation()
     {
