@@ -11,6 +11,9 @@ public class SellScript : MonoBehaviour
     public int selectedSlotIndex = 0;
     public static SellScript instantaBuyTerrain;
 
+    [SerializeField]
+    private GameObject uiTextMeshPro;
+
     private void Awake()
     {
         if(instantaBuyTerrain == null)
@@ -29,7 +32,8 @@ public class SellScript : MonoBehaviour
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.O))
         {
-            SellItems(); 
+            SellItems();
+            uiTextMeshPro.SetActive(true);
         }
     }
 
@@ -94,5 +98,10 @@ public class SellScript : MonoBehaviour
             selectedSlotIndex = index; // update slot-ul selectat
             Debug.Log($"Slot-ul {index + 1} a fost selectat.");
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        uiTextMeshPro.SetActive(false);
     }
 }

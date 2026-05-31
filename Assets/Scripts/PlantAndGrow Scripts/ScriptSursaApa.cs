@@ -6,6 +6,9 @@ public class ScriptSursaApa : MonoBehaviour
 {
     private bool isPlayerNeaby = false;
 
+    [SerializeField]
+    private GameObject uiTextMeshPro;
+
     private void Update()
     {
            if(isPlayerNeaby && Input.GetKeyDown(KeyCode.F))
@@ -14,6 +17,7 @@ public class ScriptSursaApa : MonoBehaviour
             if(equippedBucket != null)
             {
                 equippedBucket.UmplereGaleata();
+                uiTextMeshPro.SetActive(true);
                 Debug.Log("Galeata a fost umpluta cu apa.");
             }
             else
@@ -35,5 +39,6 @@ public class ScriptSursaApa : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isPlayerNeaby = false;
+        uiTextMeshPro.SetActive(false);
     }
 }
