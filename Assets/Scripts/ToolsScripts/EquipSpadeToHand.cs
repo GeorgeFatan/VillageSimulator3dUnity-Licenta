@@ -37,7 +37,7 @@ public class EquipSpadeToHand : MonoBehaviour
         GameObject newHarlet = Instantiate(toolData.toolPrefab, equipHarletPoint.position,equipHarletPoint.rotation);
         newHarlet.transform.SetParent(equipHarletPoint); // attach la EquipHarletPoint din armature
 
-        newHarlet.transform.localPosition = new Vector3(-0.02f, 0.07f, 0.01f);
+        newHarlet.transform.localPosition = new Vector3(-0.045f, 0.147f, 0.034f);
         newHarlet.transform.localRotation = Quaternion.Euler(24.534f, -45.742f, 180f);
 
         Debug.Log($"Unealta de tip {toolData.toolName} a fost echipata intr-un slot liber");
@@ -85,6 +85,8 @@ public class EquipSpadeToHand : MonoBehaviour
             {
                 inventory.RemoveToolFromSlot(toolData);
             }
+
+            Destroy(harletToDrop);
         }
     }
 

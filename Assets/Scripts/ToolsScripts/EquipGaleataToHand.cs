@@ -32,7 +32,8 @@ public class EquipGaleataToHand : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             DropTool();
-       
+            
+
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -59,8 +60,8 @@ public class EquipGaleataToHand : MonoBehaviour
         // Generam o clona noua din galeata principala
         GameObject newTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
         newTool.transform.SetParent(equipPoint); // Atasam galeata la punctul de echipare
-        newTool.transform.localPosition = new Vector3(4.145782e-06f, -2.980232e-07f, -6.888062e-06f);
-        newTool.transform.localRotation = Quaternion.Euler(0f,90f,0f);
+        newTool.transform.localPosition = new Vector3(0.017f, -0.081f, -0.003f);
+        newTool.transform.localRotation = Quaternion.Euler(0f, 58.18f, 0f);
 
         Debug.Log($"Galeata clonata de tip {toolData.toolName} a fost echipata!");
 
@@ -113,6 +114,8 @@ public class EquipGaleataToHand : MonoBehaviour
                 inventory.RemoveToolFromSlot(toolData);
                 Debug.Log($"Galeata {toolData.toolName} a fost eliminata din inventar.");
             }
+
+            Destroy(toolToDrop);
         }
        
     }

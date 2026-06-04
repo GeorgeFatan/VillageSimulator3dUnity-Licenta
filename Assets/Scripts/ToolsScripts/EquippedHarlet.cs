@@ -35,7 +35,7 @@ public class EquippedHarlet : MonoBehaviour
     void EquipTool()
     {
         transform.SetParent(equipPoint);
-        transform.localPosition = new Vector3(-0.02f, 0.07f, 0.01f);
+        transform.localPosition = new Vector3(-0.045f, 0.147f, 0.034f);
         transform.localRotation = Quaternion.Euler(24.534f, -45.742f, 180f);
 
         Debug.Log($"Harletul {toolData.toolName} a fost echipat.");
@@ -69,6 +69,7 @@ public class EquippedHarlet : MonoBehaviour
             inventory.RemoveToolFromSlot(toolData);
             inventory.equippedTool = null;
         }
+
 
         // reactivam colideru 
         GetComponent<Collider>().enabled = true;

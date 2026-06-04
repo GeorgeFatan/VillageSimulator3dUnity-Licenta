@@ -63,7 +63,7 @@ public class SeedSelector : MonoBehaviour
             selectedPlant = availablePlants[currentIndex];
             Debug.Log($"Seminte selectate: {selectedPlant.seedName}");
 
-            // Adaugam un stack de 12 seminte in inventar
+            // Adaugam un stack de 6 seminte in inventar
             AddSeedsToInventory(selectedPlant);
         }
     }
@@ -80,13 +80,13 @@ public class SeedSelector : MonoBehaviour
         {
             if (slot.slotImage.texture == plantData.seedTexture)
             {
-                slot.IncrementItemCount(12); //  nr de seminte 12
+                slot.IncrementItemCount(6); //  nr de seminte 6
                 Debug.Log($"Seminte de {plantData.plantName} adaugate intr-un slot existent. Total: {slot.itemCount}");
                 return;
             }
             else if (slot.slotImage.texture == null)
             {
-                slot.SetItem(plantData.seedTexture, 12); // Ad un stack de 12 seminte intr-un slot gol
+                slot.SetItem(plantData.seedTexture, 6); // Ad un stack de 6 seminte intr-un slot gol
                 Debug.Log($"Seminte de {plantData.plantName} adaugate intr-un slot nou.");
                 return;
             }

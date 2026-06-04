@@ -55,7 +55,7 @@ public class PlantScript : MonoBehaviour
             }
         }
 
-        // Inițializăm plantedPlants cu plantele existente
+        // init plantedPlants cu plantele existente
         plantedPlants.Clear();
         foreach (GameObject cube in soilCubes)
         {
