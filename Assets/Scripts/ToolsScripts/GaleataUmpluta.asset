@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a15df17080298764fa42072418181eb6, type: 3}
-  m_Name: GaleataToolData
+  m_Name: GaleataUmpluta
   m_EditorClassIdentifier: 
-  toolName: Galeata
-  toolTexture: {fileID: 2800000, guid: 4ee02bcb1644e1345ba7bc0ef7c20095, type: 3}
-  toolPrefab: {fileID: 919132149155446097, guid: 1a9fa12496ec02149a89078cad59f1f1, type: 3}
-  toolDescription: Galeata folosita pentru a uda plantele
+  toolName: Galeata Umpluta cu apa
+  toolTexture: {fileID: 0}
+  toolPrefab: {fileID: 919132149155446097, guid: 2b74394e3d52d1e41a63e86cc443911f, type: 3}
+  toolDescription: Galeata umpluta cu apa.

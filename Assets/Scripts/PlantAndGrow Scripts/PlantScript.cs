@@ -24,6 +24,9 @@ public class PlantScript : MonoBehaviour
 
     [SerializeField] public ParticleSystem waterParticlesEffect;
 
+    [SerializeField]
+    private ToolData emptyGaleataToolData;
+
 
     private void Start()
     {
@@ -402,7 +405,7 @@ public class PlantScript : MonoBehaviour
         foreach (GameObject cube in soilCubes)
         {
             StCubes soilCube = cube.GetComponent<StCubes>();
-            if (soilCube != null && soilCube.currentPlantData == selectedPlantData && !soilCube.isWatered)
+            if (soilCube != null && soilCube.currentPlantData != null && !soilCube.isWatered)
             {
                 soilCube.WaterPlant();
                 wateredAny = true;
@@ -411,8 +414,31 @@ public class PlantScript : MonoBehaviour
 
         if (wateredAny)
         {
+            // golim galeata logic
             equippedBucket.GolireGaleata();
             Debug.Log($"Plantele {selectedPlantData?.plantName} au fost udate!");
+
+            // inlocuim modelul plin cu modelul gol
+
+            // salvam poz si rotatia galetii pline
+            Transform bucketEquipPoint = equippedBucket.transform.parent; // punctul de echipare al galetii pline
+            Vector3 position = equippedBucket.transform.position; // pozitia galetii pline
+            Quaternion rotation = equippedBucket.transform.rotation; // rotatia galetii pline
+            Vector3 scale = equippedBucket.transform.localScale; // scara galetii pline
+
+            // distrugem galeata plina
+            Destroy(equippedBucket.gameObject);
+
+            // instantiem o galeata noua goala in locul celei pline
+            GameObject emptyGaleata = Instantiate(emptyGaleataToolData.toolPrefab, position, rotation);
+
+            // atasam la eq point
+            emptyGaleata.transform.SetParent(bucketEquipPoint);
+            emptyGaleata.transform.localPosition = new Vector3(0.062f, -0.081f, 0.004f); // pozitionam la 0,0,0 fata de punctul de echipare
+            emptyGaleata.transform.localRotation = Quaternion.Euler(1.33f, -34.61f, 0f); // rotatie default fata de punctul de echipare
+            emptyGaleata.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+
+            inventorySystem.equippedTool = emptyGaleata;
         }
         else
         {

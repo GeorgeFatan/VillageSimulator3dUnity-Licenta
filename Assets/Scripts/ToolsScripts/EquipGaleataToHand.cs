@@ -60,8 +60,9 @@ public class EquipGaleataToHand : MonoBehaviour
         // Generam o clona noua din galeata principala
         GameObject newTool = Instantiate(toolData.toolPrefab, equipPoint.position, equipPoint.rotation);
         newTool.transform.SetParent(equipPoint); // Atasam galeata la punctul de echipare
-        newTool.transform.localPosition = new Vector3(0.017f, -0.081f, -0.003f);
-        newTool.transform.localRotation = Quaternion.Euler(0f, 58.18f, 0f);
+        newTool.transform.localPosition = new Vector3(0.062f, -0.081f, 0.004f);
+        newTool.transform.localRotation = Quaternion.Euler(1.33f, -34.61f, 0f);
+        newTool.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f); 
 
         Debug.Log($"Galeata clonata de tip {toolData.toolName} a fost echipata!");
 
