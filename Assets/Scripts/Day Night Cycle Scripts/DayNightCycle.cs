@@ -135,8 +135,8 @@ public class TimeController : MonoBehaviour
         Debug.Log($"Ziua curenta este acum: {daysPassed}");
 
 
-        // ne trezim mereu la 7 dimi => reset ceas la ora 7
-        currentTime = DateTime.Now.Date + TimeSpan.FromHours(7.0f);
+        // ne trezim mereu la 8 dimi => reset ceas la ora 8
+        currentTime = DateTime.Now.Date + TimeSpan.FromHours(8.0f);
         Debug.Log($"Ora este acum: {currentTime.ToString("HH:mm")}");
 
         if(timeText != null)
